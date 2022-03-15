@@ -23,7 +23,7 @@ const config = {
   fontFamily: `'Roboto', sans-serif`,
   borderRadius: 12,
   outlinedFilled: true,
-  theme: "dark",
+  theme: "light",
   i18n: "pt",
   rtlLayout: false,
   jwt: {

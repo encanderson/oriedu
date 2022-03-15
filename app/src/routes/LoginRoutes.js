@@ -6,6 +6,7 @@ import MinimalLayout from "@src/layout/MinimalLayout";
 import NavMotion from "@src/layout/NavMotion";
 import Loadable from "@src/components/Loadable";
 
+const Register = Loadable(lazy(() => import("@src/pages/auth/register")));
 const Login = Loadable(lazy(() => import("@src/pages/auth/login")));
 const AuthLogin = Loadable(lazy(() => import("@src/pages/auth/confirm-user")));
 
@@ -13,11 +14,12 @@ const LoginRoutes = () => {
   const location = useLocation();
 
   return (
-    <Route path={["/sign", "/sign/:token"]}>
+    <Route path={["/registro", "/sign", "/sign/:token"]}>
       <MinimalLayout>
         <Switch location={location} key={location.pathname}>
           <NavMotion>
             <GuestGuard>
+              <Route path="/registro" component={Register} />
               <Route path="/sign" component={Login} />
               <Route path="/sign/:token" component={AuthLogin} />
             </GuestGuard>
