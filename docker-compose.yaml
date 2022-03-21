@@ -17,7 +17,7 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - /home/oriedu/.env
+      - /home/enganderson/.env
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
