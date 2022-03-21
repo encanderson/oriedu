@@ -11,7 +11,7 @@ services:
     volumes:
       - /home/enganderson/app/frontend/oriedu:/app/frontend/oriedu
   db:
-    image: postgres:13-alpine
+    build: ./database
     restart: always
     container_name: postgres
     ports:
