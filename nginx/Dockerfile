@@ -12,7 +12,7 @@ EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
-WORKDIR /ori-app
+WORKDIR /app
 
 COPY . /etc/nginx
 

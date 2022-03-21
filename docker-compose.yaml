@@ -8,6 +8,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - /home/enganderson/app/frontend/oriedu:/app/frontend/oriedu
   db:
     image: postgres:13-alpine
     restart: always

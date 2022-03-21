@@ -1,1 +1,20 @@
 # https://github.com/marketplace/actions/rsync-deployments-action
+
+on:
+  push:
+    branches:
+      - main
+name: Deploy on push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@5.1
+        with:
+          switches: -avzr --delete
+          remote_path: ${{ secrets.HOST_PATH }}
+          remote_host: ${{ secrets.HOST_NAME }}
+          remote_user: ${{ secrets.HOST_USER }}
+          remote_key: ${{ secrets.HOST_SSH_KEY }}
