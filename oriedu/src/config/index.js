@@ -1,4 +1,4 @@
-const environment = "developmen";
+const environment = "development";
 
 let baseUrl;
 let home;
@@ -7,7 +7,7 @@ if (environment === "development") {
   baseUrl = "http://localhost:4000/api/v1";
   home = "/";
 } else {
-  baseUrl = "https://api.orisistem.com/api/v1";
+  baseUrl = "https://api.tiadidi.com/api/v1";
   home = "/";
 }
 

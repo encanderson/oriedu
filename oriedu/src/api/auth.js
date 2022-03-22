@@ -62,26 +62,36 @@ export const logoutUser = async () => {
   }
 };
 
-export const getUser = async () => {
-  const serviceToken = window.localStorage.getItem("serviceToken");
-  const refreshToken = window.localStorage.getItem("refreshToken");
-
+export async function recoveryPassword(data) {
   try {
     const response = await axios({
-      method: "GET",
-      baseURL: createUrlAuth(`/user`),
+      method: "POST",
+      baseURL: createUrlAuth(`/auth/recovery-password`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceToken}`,
-        "Refresh-Token": refreshToken,
       },
+      data: data,
     });
-
     return response;
   } catch (err) {
-    const { response } = err;
-
-    return response.data;
+    return err.response;
   }
-};
+}
+
+export async function resetPassword(data) {
+  try {
+    const response = await axios({
+      method: "PUT",
+      baseURL: createUrlAuth(`/auth/recovery-password`),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      data: data,
+    });
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+}

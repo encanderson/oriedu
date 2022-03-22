@@ -7,6 +7,8 @@ import logger from "./logs";
 
 import { Config } from "./@types";
 
+import routes from "./routes";
+
 export class ServerSetup {
   httpServer: http.Server;
   app: express.Application;
@@ -36,6 +38,8 @@ export class ServerSetup {
         limit: "50mb",
       })
     );
+
+    routes(this.app);
   }
 
   start(PORT: number): void {
