@@ -1,9 +1,13 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 
 import { UsersServices } from "../services";
 
 export class UsersControllers {
-  static async createUser(req: Request, res: Response): Promise<void> {
+  static async createUser(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
     try {
       const newUser = req.body;
 
@@ -11,9 +15,7 @@ export class UsersControllers {
 
       res.status(201).end();
     } catch (err) {
-      res.status(500).send({
-        message: "We get a trouble in our server, please, try again.",
-      });
+      next(err);
     }
   }
 }

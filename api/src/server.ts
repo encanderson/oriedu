@@ -9,6 +9,8 @@ import { Config } from "./@types";
 
 import routes from "./routes";
 
+import { headersMiddleware, errorMiddleware } from "./api/middlewares";
+
 export class ServerSetup {
   httpServer: http.Server;
   app: express.Application;
@@ -26,6 +28,8 @@ export class ServerSetup {
   private setupExpress(): void {
     this.app.use(cors(this.config.corsOptions));
 
+    headersMiddleware(this.app);
+
     this.app.use(
       json({
         limit: "50mb",
@@ -40,6 +44,8 @@ export class ServerSetup {
     );
 
     routes(this.app);
+
+    errorMiddleware(this.app);
   }
 
   start(PORT: number): void {
