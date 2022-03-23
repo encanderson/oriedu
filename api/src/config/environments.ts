@@ -24,7 +24,7 @@ export let config: Config = {
   blocklist: {
     prefix: "blocklist-access-token:",
   },
-  url: "http://localhost:3001",
+  url: "http://localhost:3002",
 };
 
 if (environment === "production") {
@@ -74,6 +74,6 @@ if (environment === "production") {
     blocklist: {
       prefix: "blocklist-access-token:",
     },
-    url: "http://localhost:3001",
+    url: "http://localhost:3002",
   };
 }
