@@ -3,7 +3,7 @@ import { prisma } from "../database";
 import { User } from "@src/@types";
 
 import { createdAt, hashFunction, hashPassword } from "@src/utils";
-import { UserExist } from "../errors";
+import { UserExist, Forbidden } from "../errors";
 
 export class Users {
   user: User;
@@ -55,10 +55,30 @@ export class Users {
           createdAt: this.date,
           updatedAt: this.date,
           consents: this.user.consents,
+          profile: {
+            create: {
+              name: this.user.name,
+            },
+          },
         },
       });
     } catch (err) {
       throw new Error();
+    }
+  }
+
+  static async confirmUser(userId: string): Promise<void> {
+    try {
+      await prisma.user.update({
+        where: {
+          userId: userId,
+        },
+        data: {
+          active: true,
+        },
+      });
+    } catch (err) {
+      throw new Forbidden();
     }
   }
 }

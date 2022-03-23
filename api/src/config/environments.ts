@@ -25,6 +25,7 @@ export let config: Config = {
     prefix: "blocklist-access-token:",
   },
   url: "http://localhost:3002",
+  api: "http://localhost:4000/api/v1",
 };
 
 if (environment === "production") {
@@ -54,6 +55,7 @@ if (environment === "production") {
       port: 6379,
     },
     url: "https://www.tiadidi.com.br",
+    api: "https://api.tiadidi.com.br/api/v1",
   };
 } else {
   config = {
@@ -75,5 +77,6 @@ if (environment === "production") {
       prefix: "blocklist-access-token:",
     },
     url: "http://localhost:3002",
+    api: "http://localhost:4000/api/v1",
   };
 }

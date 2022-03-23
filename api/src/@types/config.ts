@@ -21,4 +21,5 @@ export interface Config {
     port?: number;
   };
   url: string;
+  api?: string;
 }

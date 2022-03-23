@@ -21,8 +21,19 @@ model User {
   job        String
   updatedAt  DateTime
   consents   Json?
+  profile    Profile?
 
   @@map("users")
 }
 
+model Profile {
+  id          String   @id @default(uuid())
+  city        String?
+  contacts    String?
+  name        String
+  usersId     String?  @unique(map: "profiles_usersId_unique")
+  picture     String?
+  user        User?    @relation(fields: [usersId], references: [id])
 
+  @@map("profiles")
+}

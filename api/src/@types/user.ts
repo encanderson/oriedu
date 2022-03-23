@@ -4,6 +4,7 @@ export interface User {
   app?: string;
   cpf?: string;
   email?: string;
+  name?: string;
   password?: string;
   job?: string;
   code?: number;
