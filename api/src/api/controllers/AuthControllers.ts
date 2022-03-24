@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
 import { AuthServices } from "../services";
-import { config } from "@src/config";
 
 export class AuthControllers {
   static async confirmUser(
@@ -14,7 +13,7 @@ export class AuthControllers {
 
       await AuthServices.confirmUser(token);
 
-      res.status(301).redirect(config.url);
+      res.status(200).end();
     } catch (err) {
       next(err);
     }

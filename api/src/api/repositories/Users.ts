@@ -42,29 +42,25 @@ export class Users {
   async createUser(code: number): Promise<void> {
     const password = await hashPassword(this.user.password);
 
-    try {
-      await prisma.user.create({
-        data: {
-          active: false,
-          app: this.user.app,
-          job: this.user.job,
-          userId: hashFunction(this.user.cpf),
-          email: this.user.email,
-          code: code,
-          password: password,
-          createdAt: this.date,
-          updatedAt: this.date,
-          consents: this.user.consents,
-          profile: {
-            create: {
-              name: this.user.name,
-            },
+    await prisma.user.create({
+      data: {
+        active: false,
+        app: this.user.app,
+        job: this.user.job,
+        userId: hashFunction(this.user.cpf),
+        email: this.user.email,
+        code: code,
+        password: password,
+        createdAt: this.date,
+        updatedAt: this.date,
+        consents: this.user.consents,
+        profile: {
+          create: {
+            name: this.user.name,
           },
         },
-      });
-    } catch (err) {
-      throw new Error();
-    }
+      },
+    });
   }
 
   static async confirmUser(userId: string): Promise<void> {

@@ -1,23 +1,11 @@
 export const filterUser = (data) => {
   const name = data.firstName + " " + data.lastName;
 
-  const profession = data.profession;
+  const job = data.job;
   let app = "";
 
-  if (
-    profession === "engenheiro(a)" ||
-    profession === "arquiteto(a)" ||
-    profession === "agrimensor(a)"
-  ) {
-    app = "engineer";
-  } else if (profession === "empreiteiro(a)") {
-    app = "constructor";
-  } else if (profession === "fornecedor") {
-    app = "provider";
-  } else if (profession === "estudante") {
-    app = "intern";
-  } else {
-    app = "worker";
+  if (job === "Secretário(a)") {
+    app = "secretaria";
   }
 
   const user = {
@@ -25,7 +13,7 @@ export const filterUser = (data) => {
     cpf: data.cpf,
     email: data.email,
     password: data.password,
-    profession: profession,
+    job: job,
     name: name,
     consents: data.consents,
   };

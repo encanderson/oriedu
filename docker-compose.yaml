@@ -26,6 +26,20 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - /var/lib/postgresql/data:/var/lib/postgresql/data
+  
+  api:
+    build: ./api
+    container_name: tiadidi-api
+    restart: unless-stopped
+    command: npm run start
+    ports:
+      - 4000:4000
+    env_file:
+      - /home/enganderson/.env
+    volumes:
+      - ./api/dist:/app/dist
+      - ./api/prisma:/app/prisma
+
   redis:
     image: redis:6.2.4
     container_name: redis

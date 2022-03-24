@@ -1,7 +1,12 @@
 import { Users } from "../repositories";
 
 import { User } from "@src/@types";
-import { generateCode, hashFunction, AccessToken } from "@src/utils";
+import {
+  generateCode,
+  hashFunction,
+  AccessToken,
+  verifyRegister,
+} from "@src/utils";
 import { htmlCode } from "../../config";
 import { sendEmail } from "../subscribers";
 
@@ -10,6 +15,8 @@ export class UsersServices {
     const user = await Users.searchUser(newUser);
 
     const code = generateCode();
+
+    verifyRegister(newUser);
 
     const token = AccessToken.generateToken({
       userId: hashFunction(newUser.cpf),

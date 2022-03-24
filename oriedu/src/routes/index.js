@@ -7,6 +7,10 @@ import MinimalLayout from "@src/layout/MinimalLayout";
 import Loadable from "@src/components/Loadable";
 
 const Register = Loadable(lazy(() => import("@src/pages/auth/register")));
+const ConfirmUser = Loadable(
+  lazy(() => import("@src/pages/auth/confirm-user/ConfirmRegister"))
+);
+
 const Login = Loadable(lazy(() => import("@src/pages/auth/login")));
 // const AuthLogin = Loadable(lazy(() => import("@src/pages/auth/confirm-user")));
 
@@ -18,6 +22,10 @@ const ResetPassword = Loadable(
   lazy(() => import("@src/pages/auth/reset-password"))
 );
 
+// const UserVerification = Loadable(
+//   lazy(() => import("@src/pages/auth/confirm-user"))
+// );
+
 const ErrorPage = Loadable(lazy(() => import("@src/pages/NotFound")));
 
 const Routes = () => {
@@ -26,10 +34,7 @@ const Routes = () => {
       <Router>
         <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Register />} />
-        {/* <Route
-          path="/confirmar-registro/:token"
-          element={<UserVerification />}
-        /> */}
+        <Route path="/confirmar-registro/:token" element={<ConfirmUser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-senha" element={<ForgotPassword />} />
         {/* <Route path="/recuperar-senha/:token" element={<UserVerification />} /> */}

@@ -19,6 +19,22 @@ export async function createUser(data) {
   }
 }
 
+export async function confirmRegister(token) {
+  try {
+    const response = await axios({
+      method: "GET",
+      baseURL: createUrlAuth(`/auth/${token}`),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+}
+
 export const userSignIn = async (data) => {
   try {
     const response = await axios({

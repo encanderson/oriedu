@@ -119,9 +119,14 @@ const FormRegister = ({ ...others }) => {
       firstName: values.firstName,
       lastName: values.lastName,
       password: values.password,
-      profession: values.profession,
+      job: values.profession,
     };
-    if (checkdTerms && checkedPrivacy && data.profession !== "") {
+    if (
+      checkdTerms &&
+      checkedPrivacy &&
+      data.profession !== "" &&
+      values.confirmPassword === data.password
+    ) {
       const user = filterUser(data);
       const response = await createUser(user);
 
@@ -207,9 +212,10 @@ const FormRegister = ({ ...others }) => {
           password: "",
           profession: "",
           submit: null,
+          confirmPassword: "",
         }}
         validationSchema={Yup.object().shape({
-          profession: Yup.string().required("Indique sua área de atuação"),
+          profession: Yup.string().required("Indique seu perfil"),
           cpf: Yup.string().min(14).max(14).required("CPF é obrigatório"),
           email: Yup.string()
             .email("O email deve ser válido")
@@ -480,6 +486,41 @@ const FormRegister = ({ ...others }) => {
                 >
                   {" "}
                   {errors.password}{" "}
+                </FormHelperText>
+              )}
+            </FormControl>
+            <FormControl
+              fullWidth
+              error={Boolean(touched.confirmPassword && errors.confirmPassword)}
+              className={classes.loginInput}
+              variant="outlined"
+            >
+              <InputLabel htmlFor="outlined-adornment-confirmPassword-register">
+                Confirmar Senha
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-confirmPassword-register"
+                value={values.confirmPassword}
+                name="confirmPassword"
+                label="Confirmar Senha"
+                onBlur={handleBlur}
+                onChange={(e) => {
+                  handleChange(e);
+                  changePassword(e.target.value);
+                }}
+                inputProps={{
+                  classes: {
+                    notchedOutline: classes.notchedOutline,
+                  },
+                }}
+              />
+              {touched.confirmPassword && errors.confirmPassword && (
+                <FormHelperText
+                  error
+                  id="standard-weight-helper-text-confirmPassword-register"
+                >
+                  {" "}
+                  {errors.confirmPassword}{" "}
                 </FormHelperText>
               )}
             </FormControl>
