@@ -1,1 +1,1 @@
-export const formatsAccepts = ["application/json", "*/*"];
+export const formatsAccepts = ["application/json", "*/*", undefined];

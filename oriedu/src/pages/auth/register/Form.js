@@ -500,6 +500,7 @@ const FormRegister = ({ ...others }) => {
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-confirmPassword-register"
+                type={showPassword ? "text" : "password"}
                 value={values.confirmPassword}
                 name="confirmPassword"
                 label="Confirmar Senha"
