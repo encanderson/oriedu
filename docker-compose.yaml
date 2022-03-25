@@ -1,4 +1,4 @@
-# docker-compose --env-file path/.env
+# docker-compose --env-file path/.env --
 version: "3.8"
 
 services:
