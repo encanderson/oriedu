@@ -828,3 +828,8 @@
   level: 'info',
   timestamp: '2022-03-25T14:05:08.368Z'
 }
+{
+  message: 'jwt expired',
+  level: 'error',
+  timestamp: '2022-03-25T14:42:34.186Z'
+}
