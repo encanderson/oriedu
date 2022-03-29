@@ -21,7 +21,6 @@ model User {
   job        String
   updatedAt  DateTime
   consents   Json?
-  profile    Profile?
 
   @@map("users")
 }
@@ -31,9 +30,8 @@ model Profile {
   city        String?
   contacts    String?
   name        String
-  usersId     String?  @unique(map: "profiles_usersId_unique")
+  usersId     String   @unique
   picture     String?
-  user        User?    @relation(fields: [usersId], references: [id])
 
   @@map("profiles")
 }

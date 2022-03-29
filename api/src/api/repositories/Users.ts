@@ -54,11 +54,13 @@ export class Users {
         createdAt: this.date,
         updatedAt: this.date,
         consents: this.user.consents,
-        profile: {
-          create: {
-            name: this.user.name,
-          },
-        },
+      },
+    });
+
+    await prisma.profile.create({
+      data: {
+        usersId: hashFunction(this.user.cpf),
+        name: this.user.name,
       },
     });
   }
