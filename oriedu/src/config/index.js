@@ -1,14 +1,17 @@
 const environment = "development";
 
-let baseUrl;
 let home;
+let api;
+let auth;
 
 if (environment === "development") {
-  baseUrl = "http://localhost:4000/api/v1";
   home = "/";
+  api = "http://localhost:4000/api/v1";
+  auth = "http://localhost:6000/api/v1";
 } else {
-  baseUrl = "https://api.tiadidi.com.br/api/v1";
   home = "/";
+  api = "https://api.tiadidi.com.br/api/v1";
+  auth = "https://auth.tiadidi.com.br/api/v1";
 }
 
 const config = {
@@ -21,7 +24,8 @@ const config = {
   i18n: "pt",
   rtlLayout: false,
   home: home,
-  baseUrl: baseUrl,
+  api: api,
+  auth: auth,
 };
 
 export default config;

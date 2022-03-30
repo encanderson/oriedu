@@ -14,7 +14,7 @@ const Routes = () => {
         exact
         path="/"
         component={() => {
-          window.location.href = `${config.orihome}`;
+          window.location.href = `${config.oriedu}`;
           return null;
         }}
       />

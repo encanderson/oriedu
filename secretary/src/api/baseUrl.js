@@ -1,8 +1,8 @@
 import config from "@src/config";
 
-const AUTH_URL = config.baseUrl;
+const URL = config.api;
 
-export const createUrlAuth = (path) => {
-  const url = `${AUTH_URL}${path}`;
+export const createUrl = (path) => {
+  const url = `${URL}${path}`;
   return url;
 };

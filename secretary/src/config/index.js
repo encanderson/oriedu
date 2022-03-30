@@ -1,20 +1,17 @@
 const environment = "development";
 
-let orisistem;
-let baseUrl;
-let orihome;
-let orihomeApp;
+let api;
+let oriedu;
+let auth;
 
 if (environment === "development") {
-  orisistem = "http://orianderson.com";
-  baseUrl = "http://localhost:4000/api/v1";
-  orihome = "http://localhost:3002/sign";
-  orihomeApp = "orianderson.com:3002";
+  api = "http://localhost:4000/api/v1";
+  oriedu = "http://localhost:3002";
+  auth = "http://localhost:6000/api/v1";
 } else {
-  orisistem = "https://orisistem.com";
-  baseUrl = "https://api.orisistem.com/api/v1";
-  orihome = "https://orihome.com.br";
-  orihomeApp = "orihome.com.br";
+  api = "https://api.tiadidi.com.br/api/v1";
+  oriedu = "https://www.tiadidi.com.br";
+  auth = "https://auth.tiadidi.com.br/api/v1";
 }
 
 const config = {
@@ -30,10 +27,9 @@ const config = {
     secret: process.env.REACT_APP_SECRET_KEY,
     timeout: "1 days",
   },
-  orisistem: orisistem,
-  orihome: orihome,
-  orihomeApp: orihomeApp,
-  baseUrl: baseUrl,
+  oriedu: oriedu,
+  api: api,
+  auth: auth,
 };
 
 export default config;
