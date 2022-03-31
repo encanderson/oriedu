@@ -2,23 +2,6 @@ import axios from "axios";
 
 import { createUrlAuth } from "./baseUrl";
 
-export async function createUser(data) {
-  try {
-    const response = await axios({
-      method: "POST",
-      baseURL: createUrlAuth(`/users`),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      data: data,
-    });
-    return response;
-  } catch (err) {
-    return err.response;
-  }
-}
-
 export async function confirmRegister(token) {
   try {
     const response = await axios({
@@ -39,7 +22,7 @@ export const userSignIn = async (data) => {
   try {
     const response = await axios({
       method: "POST",
-      baseURL: createUrlAuth(`/auth/check-singin`),
+      baseURL: createUrlAuth(`/auth/verify-user`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

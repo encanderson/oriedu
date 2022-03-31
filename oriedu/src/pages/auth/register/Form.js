@@ -34,7 +34,7 @@ import Mask from "@src/utils/Mask";
 import { SNACKBAR_OPEN } from "@src/store/actions";
 import { profiles } from "@src/store/constant";
 import config from "@src/config";
-import { createUser } from "@src/api/auth";
+import { createUser } from "@src/api";
 import { filterUser } from "@src/utils/createUser";
 
 // assets
