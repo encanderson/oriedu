@@ -22,7 +22,7 @@ import useScriptRef from "@src/hooks/useScriptRef";
 import Mask from "@src/utils/Mask";
 import { SNACKBAR_OPEN } from "@src/store/actions";
 
-import { recoveryPassword } from "@src/api";
+import { AuthServices } from "@src/services";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -42,23 +42,12 @@ const ForgotPasswordForm = ({ ...others }) => {
   const navigate = useNavigate();
 
   async function handlerSend(cpf) {
-    const response = await recoveryPassword({ cpf: cpf });
-    if (response.status === 200) {
+    const response = await AuthServices.recoveryPassword(cpf, navigate);
+    if (response) {
       dispatch({
         type: SNACKBAR_OPEN,
         open: true,
-        message: response.data.message,
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "success",
-        close: false,
-      });
-      navigate("/");
-    } else {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "Verifique se seus dados estão corretos.",
+        message: "Verifique se os dados estão corretos.",
         variant: "alert",
         anchorOrigin: { vertical: "top", horizontal: "center" },
         alertSeverity: "error",

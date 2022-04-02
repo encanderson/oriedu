@@ -1,42 +1,61 @@
-import { userSignIn, getUser } from "@src/api";
+import {
+  userSignIn,
+  recoveryPassword,
+  resetPassword,
+  verifyUser,
+} from "@src/api";
 
-const items = ["id", "userId", "email", "app", "name", "picture"];
+import config from "@src/config";
 
 export class AuthServices {
-  static async signIn(code, token) {
-    const response = await userSignIn({ code: code, token: token });
+  static async signIn(cpf, password) {
+    const response = await userSignIn({ cpf: cpf, password: password });
+
     if (response.status === 200) {
-      localStorage.setItem("serviceToken", response.headers["access-token"]);
+      const { app, token } = response.data;
 
-      localStorage.setItem("refreshToken", response.headers["refresh-token"]);
-
-      const user = {};
-
-      items.forEach((item) => (user[item] = response.data[item]));
-
-      return user;
+      window.location.href = `${config.protocol}${app}.${config.app}/sign/${token}`;
     } else {
       return response;
     }
   }
 
-  static async getUser() {
-    const response = await getUser();
+  static async recoveryPassword(cpf, navigate) {
+    const response = await recoveryPassword({ cpf: cpf });
 
     if (response.status === 200) {
-      const user = {};
+      const { token } = response.data;
 
-      items.forEach((item) => (user[item] = response.data[item]));
-
-      return user;
+      navigate(`/recuperar-senha/${token}`);
     } else {
       return response;
     }
   }
 
-  static async logout() {
-    sessionStorage.removeItem("serviceToken");
+  static async isUser(code, token, navigate) {
+    const response = await verifyUser({
+      code: code,
+      token: token,
+    });
 
-    sessionStorage.removeItem("refreshToken");
+    if (response.status === 200) {
+      const { token } = response.data;
+      navigate(`/atualizar-senha/${token}`);
+    } else {
+      return response;
+    }
+  }
+
+  static async resetPassword(password, token, navigate) {
+    const response = await resetPassword({
+      password: password,
+      token: token,
+    });
+
+    if (response.status === 204) {
+      navigate("/login");
+    } else {
+      return response;
+    }
   }
 }

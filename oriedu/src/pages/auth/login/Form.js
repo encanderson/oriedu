@@ -31,11 +31,9 @@ import { Formik } from "formik";
 import useScriptRef from "@src/hooks/useScriptRef";
 import Mask from "@src/utils/Mask";
 import Loader from "@src/components/Loader";
-import { userSignIn } from "@src/api";
+import { AuthServices } from "@src/services";
 
 import { SNACKBAR_OPEN } from "@src/store/actions";
-
-import config from "@src/config";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -66,13 +64,9 @@ const LoginForm = (props, { ...others }) => {
   const handleSignIn = async (cpf, password) => {
     setInitialized(true);
 
-    const response = await userSignIn({ cpf: cpf, password: password });
+    const response = await AuthServices.signIn(cpf, password);
 
-    if (response.status === 200) {
-      const { app, token } = response.data;
-
-      window.location.href = `${config.protocol}${app}.${config.orihomeApp}/singin/${token}`;
-    } else {
+    if (response) {
       dispatch({
         type: SNACKBAR_OPEN,
         open: true,
@@ -82,9 +76,8 @@ const LoginForm = (props, { ...others }) => {
         alertSeverity: "error",
         close: false,
       });
+      setInitialized(false);
     }
-
-    setInitialized(false);
   };
 
   if (isInitialized) {

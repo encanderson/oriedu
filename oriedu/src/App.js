@@ -7,7 +7,6 @@ import theme from "@src/themes";
 
 import Locales from "@src/components/Locales";
 import NavigationScroll from "@src/layout/NavigationScroll";
-import { AuthProvider } from "@src/contexts";
 import Snackbar from "@src/components/extended/Snackbar";
 
 import AppRoutes from "@src/routes";
@@ -20,10 +19,8 @@ const App = () => {
         <CssBaseline>
           <Locales>
             <NavigationScroll>
-              <AuthProvider>
-                <AppRoutes />
-                <Snackbar />
-              </AuthProvider>
+              <AppRoutes />
+              <Snackbar />
             </NavigationScroll>
           </Locales>
         </CssBaseline>

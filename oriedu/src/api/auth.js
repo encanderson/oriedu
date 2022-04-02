@@ -22,7 +22,7 @@ export const userSignIn = async (data) => {
   try {
     const response = await axios({
       method: "POST",
-      baseURL: createUrlAuth(`/auth/verify-user`),
+      baseURL: createUrlAuth(`/auth/login`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -33,31 +33,7 @@ export const userSignIn = async (data) => {
   } catch (err) {
     const { response } = err;
 
-    return response.data;
-  }
-};
-
-export const logoutUser = async () => {
-  const serviceToken = window.localStorage.getItem("serviceToken");
-  const refreshToken = window.localStorage.getItem("refreshToken");
-
-  try {
-    const response = await axios({
-      method: "POST",
-      baseURL: createUrlAuth(`/auth/logout`),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceToken}`,
-        "Refresh-Token": refreshToken,
-      },
-    });
-
     return response;
-  } catch (err) {
-    const { response } = err;
-
-    return response.data;
   }
 };
 
@@ -65,7 +41,7 @@ export async function recoveryPassword(data) {
   try {
     const response = await axios({
       method: "POST",
-      baseURL: createUrlAuth(`/auth/recovery-password`),
+      baseURL: createUrlAuth(`/recovery-password`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -74,7 +50,9 @@ export async function recoveryPassword(data) {
     });
     return response;
   } catch (err) {
-    return err.response;
+    const { response } = err;
+
+    return response;
   }
 }
 
@@ -82,7 +60,7 @@ export async function resetPassword(data) {
   try {
     const response = await axios({
       method: "PUT",
-      baseURL: createUrlAuth(`/auth/recovery-password`),
+      baseURL: createUrlAuth(`/recovery-password`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -91,6 +69,27 @@ export async function resetPassword(data) {
     });
     return response;
   } catch (err) {
-    return err.response;
+    const { response } = err;
+
+    return response;
+  }
+}
+
+export async function verifyUser(data) {
+  try {
+    const response = await axios({
+      method: "POST",
+      baseURL: createUrlAuth(`/auth/confirm-user`),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      data: data,
+    });
+    return response;
+  } catch (err) {
+    const { response } = err;
+
+    return response;
   }
 }

@@ -3,15 +3,21 @@ const environment = "development";
 let home;
 let api;
 let auth;
+let protocol;
+let app;
 
 if (environment === "development") {
+  app = "orianderson.com:3000";
   home = "/";
   api = "http://localhost:4000/api/v1";
-  auth = "http://localhost:6000/api/v1";
+  auth = "http://auth.orianderson.com/api/v1";
+  protocol = "http://";
 } else {
+  app = "tiadidi.com.br";
   home = "/";
   api = "https://api.tiadidi.com.br/api/v1";
   auth = "https://auth.tiadidi.com.br/api/v1";
+  protocol = "https://";
 }
 
 const config = {
@@ -26,6 +32,8 @@ const config = {
   home: home,
   api: api,
   auth: auth,
+  protocol: protocol,
+  app: app,
 };
 
 export default config;

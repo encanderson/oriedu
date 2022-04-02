@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // material-ui
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Button, Grid, TextField } from "@material-ui/core";
 
-import useAuth from "@src/hooks/useAuth";
-
 import { SNACKBAR_OPEN } from "@src/store/actions";
+
+import { AuthServices } from "@src/services";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -28,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
 
 const FormVerification = () => {
   const classes = useStyles();
-  const { signIn } = useAuth();
   const { token } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [code, setCode] = React.useState({
     code1: "",
@@ -60,13 +61,13 @@ const FormVerification = () => {
       code.code5 +
       code.code6;
 
-    const message = await signIn(codeData, token);
+    const response = await AuthServices.isUser(codeData, token, navigate);
 
-    if (message) {
+    if (response) {
       dispatch({
         type: SNACKBAR_OPEN,
         open: true,
-        message: message,
+        message: "Código não corresponde",
         variant: "alert",
         anchorOrigin: { vertical: "top", horizontal: "center" },
         alertSeverity: "error",

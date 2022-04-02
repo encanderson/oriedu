@@ -22,9 +22,9 @@ const ResetPassword = Loadable(
   lazy(() => import("@src/pages/auth/reset-password"))
 );
 
-// const UserVerification = Loadable(
-//   lazy(() => import("@src/pages/auth/confirm-user"))
-// );
+const UserVerification = Loadable(
+  lazy(() => import("@src/pages/auth/confirm-user"))
+);
 
 const ErrorPage = Loadable(lazy(() => import("@src/pages/NotFound")));
 
@@ -37,7 +37,7 @@ const Routes = () => {
         <Route path="/confirmar-registro/:token" element={<ConfirmUser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-senha" element={<ForgotPassword />} />
-        {/* <Route path="/recuperar-senha/:token" element={<UserVerification />} /> */}
+        <Route path="/recuperar-senha/:token" element={<UserVerification />} />
         <Route path="/atualizar-senha/:token" element={<ResetPassword />} />
         <Route path="*" element={<ErrorPage />} />
       </Router>
