@@ -6,3 +6,4 @@ export * from "./NotFound";
 export * from "./NotAuthenticate";
 export * from "./ToLarge";
 export * from "./Forbidden";
+export * from "./InvalidToken";

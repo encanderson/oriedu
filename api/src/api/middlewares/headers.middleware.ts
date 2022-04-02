@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 
-import { NotSupport } from "../errors";
+import { NotSupport } from "../../errors";
 
 import { formatsAccepts } from "@src/config";
 

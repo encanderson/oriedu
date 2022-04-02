@@ -3,7 +3,7 @@ import { prisma } from "../database";
 import { User } from "@src/@types";
 
 import { createdAt, hashFunction, hashPassword } from "@src/utils";
-import { UserExist, Forbidden } from "../errors";
+import { UserExist, Forbidden } from "../../errors";
 
 export class Users {
   user: User;
@@ -46,7 +46,6 @@ export class Users {
       data: {
         active: false,
         app: this.user.app,
-        job: this.user.job,
         userId: hashFunction(this.user.cpf),
         email: this.user.email,
         code: code,
@@ -59,8 +58,9 @@ export class Users {
 
     await prisma.profile.create({
       data: {
-        usersId: hashFunction(this.user.cpf),
+        userId: hashFunction(this.user.cpf),
         name: this.user.name,
+        job: this.user.job,
       },
     });
   }
@@ -78,5 +78,37 @@ export class Users {
     } catch (err) {
       throw new Forbidden();
     }
+  }
+
+  static async getUser(userId: string): Promise<User> {
+    const user = await prisma.user.findUnique({
+      where: {
+        userId: userId,
+      },
+      select: {
+        id: true,
+        app: true,
+        userId: true,
+        email: true,
+      },
+    });
+
+    const profile = await prisma.profile.findUnique({
+      where: {
+        userId: userId,
+      },
+      select: {
+        name: true,
+        job: true,
+        picture: true,
+      },
+    });
+
+    const data = {
+      ...user,
+      profile,
+    };
+
+    return data;
   }
 }

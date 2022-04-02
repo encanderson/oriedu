@@ -18,7 +18,6 @@ model User {
   createdAt  DateTime
   email      String   @unique
   password   String
-  job        String
   updatedAt  DateTime
   consents   Json?
 
@@ -27,10 +26,9 @@ model User {
 
 model Profile {
   id          String   @id @default(uuid())
-  city        String?
-  contacts    String?
+  userId      String   @unique
   name        String
-  usersId     String   @unique
+  job         String?
   picture     String?
 
   @@map("profiles")

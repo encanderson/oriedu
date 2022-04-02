@@ -10,6 +10,7 @@ import { Config } from "./@types";
 import routes from "./routes";
 
 import { headersMiddleware, errorMiddleware } from "./api/middlewares";
+import { initialize } from "./api/services";
 
 export class ServerSetup {
   httpServer: http.Server;
@@ -27,6 +28,8 @@ export class ServerSetup {
 
   private setupExpress(): void {
     this.app.use(cors(this.config.corsOptions));
+
+    initialize(this.app);
 
     headersMiddleware(this.app);
 

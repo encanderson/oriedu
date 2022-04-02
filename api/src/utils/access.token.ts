@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import { InvalidToken } from "@src/api/errors";
+import { InvalidToken } from "@src/errors";
 
 import { config } from "@src/config";
 

@@ -9,7 +9,7 @@ import {
   InvalidField,
   Forbidden,
   ToLarge,
-} from "../errors";
+} from "../../errors";
 import { ErrorType } from "@src/@types";
 
 import logger from "../../logs";

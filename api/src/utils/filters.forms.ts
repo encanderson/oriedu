@@ -1,6 +1,6 @@
 import { User } from "@src/@types";
 
-import { InvalidField } from "../api/errors";
+import { InvalidField } from "../errors";
 
 export const verifyTermsConsents = (consents: {
   privacy: boolean;
