@@ -1,15 +1,16 @@
 import axios from "axios";
 
-import { createUrl } from "./baseUrl";
+import { createUrl, createUrlAuth } from "./baseUrl";
 
-export const userSignIn = async (data) => {
+export const userSignIn = async (data, token) => {
   try {
     const response = await axios({
       method: "POST",
-      baseURL: createUrl(`/auth/confirm-user`),
+      baseURL: createUrlAuth(`/auth/verify-user`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       data: data,
     });
@@ -17,7 +18,7 @@ export const userSignIn = async (data) => {
   } catch (err) {
     const { response } = err;
 
-    return response.data;
+    return response.data.message;
   }
 };
 
@@ -28,7 +29,7 @@ export const logoutUser = async () => {
   try {
     const response = await axios({
       method: "POST",
-      baseURL: createUrl(`/auth/logout`),
+      baseURL: createUrlAuth(`/auth/logout`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

@@ -27,18 +27,18 @@ export const AuthProvider = ({ children }) => {
   const state = useSelector((state) => state.accounts);
 
   const signIn = async (code, accessToken) => {
-    const user = await AuthServices.signIn(code, accessToken);
+    const isUser = await AuthServices.signIn(code, accessToken);
 
-    if (!user.message) {
+    if (isUser) {
       dispatch({
         type: LOGIN,
         payload: {
-          user: user,
+          user: {},
           isLoggedIn: true,
         },
       });
     } else {
-      return user.message;
+      return "Usuário não autorizado";
     }
   };
 

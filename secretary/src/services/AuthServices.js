@@ -4,19 +4,15 @@ const items = ["id", "userId", "email", "app", "name", "picture"];
 
 export class AuthServices {
   static async signIn(code, token) {
-    const response = await userSignIn({ code: code, token: token });
+    const response = await userSignIn({ code: code }, token);
     if (response.status === 200) {
       localStorage.setItem("serviceToken", response.headers["access-token"]);
 
       localStorage.setItem("refreshToken", response.headers["refresh-token"]);
 
-      const user = {};
-
-      items.forEach((item) => (user[item] = response.data[item]));
-
-      return user;
+      return true;
     } else {
-      return response;
+      return false;
     }
   }
 

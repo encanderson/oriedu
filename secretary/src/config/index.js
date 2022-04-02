@@ -7,7 +7,7 @@ let auth;
 if (environment === "development") {
   api = "http://localhost:4000/api/v1";
   oriedu = "http://localhost:3002";
-  auth = "http://localhost:6000/api/v1";
+  auth = "http://auth.orianderson.com/api/v1";
 } else {
   api = "https://api.tiadidi.com.br/api/v1";
   oriedu = "https://www.tiadidi.com.br";
