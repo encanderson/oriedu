@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { createUrl, createUrlAuth } from "./baseUrl";
+import { verifyCredentials } from "./";
 
 export const userSignIn = async (data, token) => {
   try {
@@ -47,6 +48,12 @@ export const logoutUser = async () => {
 };
 
 export const getUser = async () => {
+  const isValid = await verifyCredentials();
+
+  if (!isValid) {
+    return { message: "Credenciais inválidas." };
+  }
+
   const serviceToken = window.localStorage.getItem("serviceToken");
   const refreshToken = window.localStorage.getItem("refreshToken");
 
@@ -66,6 +73,6 @@ export const getUser = async () => {
   } catch (err) {
     const { response } = err;
 
-    return response.data;
+    return response;
   }
 };

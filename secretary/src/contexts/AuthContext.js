@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "@src/components/Loader";
 
 import { AuthServices } from "@src/services";
-import { getUser, verifyCredentials, logoutUser } from "@src/api";
 
 import { LOGIN, LOGOUT, ACCOUNT_INITIALIZE } from "@src/store/actions";
 
@@ -30,13 +29,17 @@ export const AuthProvider = ({ children }) => {
     const isUser = await AuthServices.signIn(code, accessToken);
 
     if (isUser) {
-      dispatch({
-        type: LOGIN,
-        payload: {
-          user: {},
-          isLoggedIn: true,
-        },
-      });
+      const user = await AuthServices.getUser();
+
+      if (user) {
+        dispatch({
+          type: LOGIN,
+          payload: {
+            user: user,
+            isLoggedIn: true,
+          },
+        });
+      }
     } else {
       return "Usuário não autorizado";
     }
@@ -47,30 +50,28 @@ export const AuthProvider = ({ children }) => {
       try {
         const serviceToken = window.localStorage.getItem("serviceToken");
 
-        const credentials = await verifyCredentials();
-        if (serviceToken && credentials) {
-          const response = await getUser(serviceToken);
+        if (serviceToken) {
+          const user = await AuthServices.getUser();
 
-          const user = response.data;
-
-          dispatch({
-            type: ACCOUNT_INITIALIZE,
-            payload: {
-              isLoggedIn: true,
-              user: user,
-            },
-          });
-        } else {
-          dispatch({
-            type: ACCOUNT_INITIALIZE,
-            payload: {
-              isLoggedIn: false,
-              user: null,
-            },
-          });
+          if (user) {
+            dispatch({
+              type: ACCOUNT_INITIALIZE,
+              payload: {
+                isLoggedIn: true,
+                user: user,
+              },
+            });
+          } else {
+            dispatch({
+              type: ACCOUNT_INITIALIZE,
+              payload: {
+                isLoggedIn: false,
+                user: null,
+              },
+            });
+          }
         }
       } catch (err) {
-        console.error(err);
         dispatch({
           type: ACCOUNT_INITIALIZE,
           payload: {
@@ -89,7 +90,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = async () => {
-    await logoutUser();
+    await AuthServices.logoutUser();
 
     localStorage.removeItem("serviceToken");
 

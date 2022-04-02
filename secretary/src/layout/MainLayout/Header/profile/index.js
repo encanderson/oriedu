@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+// import { Link as RouterLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 // material-ui
@@ -246,8 +246,8 @@ const ProfileSection = () => {
                           <ListItemText
                             primary={
                               <Link
-                                component={RouterLink}
-                                to="/perfil"
+                                // component={RouterLink}
+                                // to="/perfil"
                                 sx={{
                                   "&:hover, &:focus": {
                                     textDecoration: "none",

@@ -64,7 +64,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
           sx={{ display: { xs: "none", md: "block" }, flexGrow: 1 }}
         >
           {/* <LogoSection /> */}
-          OriHome
+          OriSistem
         </Box>
         <ButtonBase sx={{ borderRadius: "12px", overflow: "hidden" }}>
           <Avatar

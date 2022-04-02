@@ -1,6 +1,6 @@
-import { userSignIn, getUser } from "@src/api";
+import { userSignIn, getUser, logoutUser } from "@src/api";
 
-const items = ["id", "userId", "email", "app", "name", "picture"];
+const items = ["id", "userId", "email", "app", "name", "picture", "job"];
 
 export class AuthServices {
   static async signIn(code, token) {
@@ -26,13 +26,11 @@ export class AuthServices {
 
       return user;
     } else {
-      return response;
+      return false;
     }
   }
 
   static async logout() {
-    sessionStorage.removeItem("serviceToken");
-
-    sessionStorage.removeItem("refreshToken");
+    logoutUser();
   }
 }
