@@ -1,10 +1,10 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+// import { Link as RouterLink } from "react-router-dom";
 
 // material-ui
 import { useTheme } from "@material-ui/core";
 import {
-  Button,
+  // Button,
   Divider,
   Grid,
   Stack,
@@ -90,38 +90,6 @@ const CodeVerification = () => {
                   </Grid>
                   <Grid item xs={12}>
                     <Divider />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Grid
-                      item
-                      container
-                      direction="column"
-                      alignItems="center"
-                      xs={12}
-                    >
-                      <Typography
-                        component={RouterLink}
-                        to="#"
-                        variant="subtitle1"
-                        sx={{ textDecoration: "none" }}
-                        textAlign={matchDownSM ? "center" : ""}
-                      >
-                        Não recebeu um email? Verifique a caixa de Spam, ou
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button
-                      disableElevation
-                      fullWidth
-                      size="large"
-                      component={RouterLink}
-                      to="/contato"
-                      variant="outlined"
-                      color="secondary"
-                    >
-                      Contato
-                    </Button>
                   </Grid>
                 </Grid>
               </AuthCardWrapper>

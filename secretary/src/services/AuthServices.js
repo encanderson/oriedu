@@ -31,6 +31,6 @@ export class AuthServices {
   }
 
   static async logout() {
-    logoutUser();
+    await logoutUser();
   }
 }

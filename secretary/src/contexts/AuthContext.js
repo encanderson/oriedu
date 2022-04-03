@@ -70,6 +70,14 @@ export const AuthProvider = ({ children }) => {
               },
             });
           }
+        } else {
+          dispatch({
+            type: ACCOUNT_INITIALIZE,
+            payload: {
+              isLoggedIn: false,
+              user: null,
+            },
+          });
         }
       } catch (err) {
         dispatch({
@@ -90,7 +98,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = async () => {
-    await AuthServices.logoutUser();
+    await AuthServices.logout();
 
     localStorage.removeItem("serviceToken");
 
