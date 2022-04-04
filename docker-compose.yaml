@@ -13,6 +13,7 @@ services:
       - "443:443"
     volumes:
       - /home/enganderson/app/oriedu:/app/oriedu
+      - /home/enganderson/app/secretary:/app/secretary
   db:
     image: postgres:13-alpine
     restart: always
@@ -46,6 +47,18 @@ services:
     volumes:
       - ./api/dist:/app/dist
       - ./api/prisma:/app/prisma
+  auth:
+    build: ./auth
+    container_name: auth
+    restart: unless-stopped
+    command: npm run start
+    ports:
+      - 6000:6000
+    env_file:
+      - /home/engnaderson/.env
+    volumes:
+      - ./auth/dist:/app/dist
+      - ./auth/prisma:/app/prisma
       
 networks:
   default:
