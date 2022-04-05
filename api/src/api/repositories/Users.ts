@@ -1,6 +1,6 @@
 import { prisma } from "../database";
 
-import { User } from "@src/@types";
+import { User, Profile } from "@src/@types";
 
 import { createdAt, hashFunction, hashPassword } from "@src/utils";
 import { UserExist, Forbidden } from "../../errors";
@@ -110,5 +110,14 @@ export class Users {
     };
 
     return data;
+  }
+
+  static async update(userId: string, data: Profile): Promise<void> {
+    await prisma.profile.update({
+      where: {
+        userId: userId,
+      },
+      data: data,
+    });
   }
 }

@@ -18,4 +18,22 @@ export class UserControllers {
       next(err);
     }
   }
+
+  static async update(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const data = req.body;
+
+      const { userId } = req.user;
+
+      await UserServices.update(userId, data);
+
+      res.status(204).end();
+    } catch (err) {
+      next(err);
+    }
+  }
 }

@@ -30,6 +30,21 @@ model Profile {
   name        String
   job         String?
   picture     String?
+  school      School?
 
   @@map("profiles")
+}
+
+model School {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  cnpj        String
+  fantasia    String
+  logo        String?
+  city        String
+  state       String
+  address     Json?
+  school      Profile? @relation(fields: [userId], references: [id])
+  
+  @@map("school")
 }

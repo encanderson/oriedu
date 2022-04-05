@@ -1,4 +1,4 @@
-import { User } from "@src/@types";
+import { User, Profile } from "@src/@types";
 
 import { InvalidField } from "../errors";
 
@@ -36,4 +36,18 @@ export const verifyRegister = (user: User): boolean => {
   }
 
   throw new InvalidField("Verificar os campos não preenchidos.");
+};
+
+export const filterProfile = (data: Profile): Profile => {
+  const fields = ["id", "userId", "name", "job", "picture"];
+
+  const obj = {};
+
+  Object.keys(data).forEach((key) => {
+    if (fields.includes(key)) {
+      obj[key] = data[key];
+    }
+  });
+
+  return obj;
 };
