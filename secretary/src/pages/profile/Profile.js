@@ -4,24 +4,14 @@ import { useDispatch } from "react-redux";
 
 // material-ui
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Autocomplete,
-  Avatar,
-  Button,
-  Grid,
-  TextField,
-  Typography,
-} from "@material-ui/core";
+import { Avatar, Button, Grid, TextField, Typography } from "@material-ui/core";
 
 // project imports
 import SubCard from "@src/components/cards/SubCard";
 import { gridSpacing } from "@src/store/constant";
 import { saveImage } from "@src/utils/Images";
-import { states } from "@src/store/constant";
-import { getCities } from "@src/api/getCities";
 import { EDIT_USER, SNACKBAR_OPEN } from "@src/store/actions";
-// import { updateProfile } from "@src/api";
-import TextMaskCExpDate from "@src/utils/Mask";
+import { ProfileServices } from "@src/services";
 import useAuth from "@src/hooks/useAuth";
 
 // style constant
@@ -49,40 +39,7 @@ const ProfileData = () => {
   const classes = useStyles();
 
   const { user } = useAuth();
-
-  const [city, setCity] = React.useState(null);
   const [isDisabled, setIsDisabled] = React.useState(true);
-  const [cities, setCities] = React.useState([]);
-
-  const handleStateChange = async (_, value) => {
-    setCity(null);
-
-    const cityList = await getCities(value?.value);
-    setCities(cityList);
-
-    dispatch({
-      type: EDIT_USER,
-      payload: {
-        user: {
-          ...user,
-          state: value?.value,
-        },
-      },
-    });
-  };
-
-  const handleSelectCity = (_, value) => {
-    setCity(value);
-    dispatch({
-      type: EDIT_USER,
-      payload: {
-        user: {
-          ...user,
-          city: value,
-        },
-      },
-    });
-  };
 
   const handleClick = (event) => {
     hiddenFileInput.current.click();
@@ -111,30 +68,38 @@ const ProfileData = () => {
   };
 
   const handleSubmit = async (action) => {
-    // const response = await updateProfile({
-    //   ...user,
-    //   action: action,
-    // });
-    if ("response.status" === 200) {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "Atualização realizada com sucesso.",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "success",
-        close: true,
+    if (action === "picture") {
+      const response = await ProfileServices.updateProfile({
+        picture: user.picture,
       });
+
+      if (!response) {
+        dispatch({
+          type: SNACKBAR_OPEN,
+          open: true,
+          message: "Atualização falhou, por favor tente mais tarde.",
+          variant: "alert",
+          anchorOrigin: { vertical: "top", horizontal: "center" },
+          alertSeverity: "error",
+          close: true,
+        });
+      }
     } else {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "response.message",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "error",
-        close: true,
+      const response = await ProfileServices.updateProfile({
+        name: user?.profile.name,
       });
+
+      if (!response) {
+        dispatch({
+          type: SNACKBAR_OPEN,
+          open: true,
+          message: "Atualização falhou, por favor tente mais tarde.",
+          variant: "alert",
+          anchorOrigin: { vertical: "top", horizontal: "center" },
+          alertSeverity: "error",
+          close: true,
+        });
+      }
     }
   };
 
@@ -147,7 +112,9 @@ const ProfileData = () => {
               <Avatar
                 alt="User 1"
                 src={
-                  user?.picture ? `data:image/png;base64,${user?.picture}` : ""
+                  user?.profile?.picture
+                    ? `data:image/png;base64,${user?.profile?.picture}`
+                    : ""
                 }
                 className={classes.accountAvatar}
               />
@@ -198,7 +165,7 @@ const ProfileData = () => {
         </SubCard>
       </Grid>
       <Grid item sm={6} md={8}>
-        <SubCard title="Detalhes &nbsp;&nbsp; - &nbsp;&nbsp; Perfis completos são mais facilmente encontrados">
+        <SubCard>
           <form>
             <Grid container spacing={gridSpacing}>
               <Grid item xs={12} md={6}>
@@ -209,14 +176,17 @@ const ProfileData = () => {
                   disabled={isDisabled}
                   label="Nome"
                   variant="outlined"
-                  value={user?.name || ""}
+                  value={user?.profile?.name || ""}
                   onChange={(event) =>
                     dispatch({
                       type: EDIT_USER,
                       payload: {
                         user: {
                           ...user,
-                          name: user?.name,
+                          profile: {
+                            ...user?.profile,
+                            name: event.target.value,
+                          },
                         },
                       },
                     })
@@ -227,7 +197,7 @@ const ProfileData = () => {
                 <TextField
                   id="outlined-basic2"
                   fullWidth
-                  disabled={isDisabled}
+                  disabled={true}
                   autoComplete="none"
                   onChange={(event) =>
                     dispatch({
@@ -235,58 +205,17 @@ const ProfileData = () => {
                       payload: {
                         user: {
                           ...user,
-                          username: event.target.value,
+                          profile: {
+                            ...user.profile,
+                            job: event.target.value,
+                          },
                         },
                       },
                     })
                   }
-                  label="username"
+                  label="Cargo"
                   variant="outlined"
-                  value={user?.username || ""}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  autoComplete="none"
-                  id="outlined-basic7"
-                  fullWidth
-                  disabled={isDisabled}
-                  label="Profissão"
-                  variant="outlined"
-                  value={user?.job || ""}
-                  onChange={(event) =>
-                    dispatch({
-                      type: EDIT_USER,
-                      payload: {
-                        user: {
-                          ...user,
-                          job: event.target.value,
-                        },
-                      },
-                    })
-                  }
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  autoComplete="none"
-                  id="outlined-basic8"
-                  fullWidth
-                  disabled={isDisabled}
-                  label="Especialidades"
-                  variant="outlined"
-                  value={user?.specialties?.join() || ""}
-                  onChange={(event) =>
-                    dispatch({
-                      type: EDIT_USER,
-                      payload: {
-                        user: {
-                          ...user,
-                          specialties: event.target.value.split(","),
-                        },
-                      },
-                    })
-                  }
+                  value={user?.profile?.job || ""}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -294,105 +223,21 @@ const ProfileData = () => {
                   autoComplete="none"
                   id="outlined-basic3"
                   fullWidth
-                  disabled={isDisabled}
+                  disabled={true}
                   label="Email"
                   variant="outlined"
                   value={user?.email || ""}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  autoComplete="none"
-                  id="outlined-basic4"
-                  disabled={isDisabled}
-                  label="Telefone"
-                  variant="outlined"
-                  value={user?.contacts || ""}
                   onChange={(event) =>
                     dispatch({
                       type: EDIT_USER,
                       payload: {
                         user: {
                           ...user,
-                          contacts: event.target.value,
+                          email: event.target.value,
                         },
                       },
                     })
                   }
-                  inputProps={{
-                    mask: [
-                      "(",
-                      /[0-9]/,
-                      /[0-9]/,
-                      ")",
-                      " ",
-                      /[0-9]/,
-                      /[0-9]/,
-                      /[0-9]/,
-                      /[0-9]/,
-                      /[0-9]/,
-                      "-",
-                      /[0-9]/,
-                      /[0-9]/,
-                      /[0-9]/,
-                      /[0-9]/,
-                    ],
-                    showMask: false,
-                  }}
-                  InputProps={{
-                    defaultValue: "",
-                    inputComponent: TextMaskCExpDate,
-                  }}
-                />{" "}
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Autocomplete
-                  autoSelect={true}
-                  id="state"
-                  disabled={isDisabled}
-                  style={{ marginBottom: 8 }}
-                  options={states}
-                  getOptionLabel={(uf) => uf.label}
-                  getOptionSelected={(option, value) =>
-                    option.value === value.value
-                  }
-                  onChange={handleStateChange}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder={user?.state || "Estado"}
-                      value={user?.state}
-                      variant="outlined"
-                      inputProps={{
-                        ...params.inputProps,
-                        autoComplete: "new-password",
-                      }}
-                    />
-                  )}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Autocomplete
-                  autoSelect={true}
-                  id="city"
-                  disabled={isDisabled}
-                  options={cities}
-                  getOptionLabel={(value) => value}
-                  getOptionSelected={(option, value) => option === value}
-                  value={city}
-                  onChange={handleSelectCity}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder={user?.city || "Cidade"}
-                      variant="outlined"
-                      inputProps={{
-                        ...params.inputProps,
-                        autoComplete: "new-password",
-                      }}
-                    />
-                  )}
                 />
               </Grid>
               <Grid

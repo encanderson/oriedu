@@ -1,4 +1,4 @@
-import { getProfile } from "@src/api";
+import { getProfile, updateProfile } from "@src/api";
 
 export class ProfileServices {
   static async getProfile() {
@@ -6,6 +6,16 @@ export class ProfileServices {
 
     if (response.status === 200) {
       return response.data;
+    } else {
+      return false;
+    }
+  }
+
+  static async updateProfile(data) {
+    const response = await updateProfile(data);
+
+    if (response.status === 204) {
+      return true;
     } else {
       return false;
     }

@@ -147,7 +147,7 @@ const ProfileSection = () => {
     }
 
     if (user) {
-      setSource(user.picture);
+      setSource(user?.profile?.picture);
     }
     prevOpen.current = open;
   }, [open, user]);
