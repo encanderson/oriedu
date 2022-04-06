@@ -28,7 +28,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import useScriptRef from "@src/hooks/useScriptRef";
 import { gridSpacing } from "@src/store/constant";
 import { strengthColor, strengthIndicator } from "@src/utils/password-strength";
-// import { updateProfile } from "@src/api";
+import { ProfileServices } from "@src/services";
 import { SNACKBAR_OPEN } from "@src/store/actions";
 
 // style constant
@@ -60,24 +60,14 @@ const Security = ({ ...others }) => {
       const data = {
         password: values.password,
         newPassword: values.newPassword,
-        action: action,
       };
-      // const response = await updateProfile(data);
-      if ("response.status" === 200) {
+      const response = await ProfileServices.updateProfile(data);
+      if (!response) {
         dispatch({
           type: SNACKBAR_OPEN,
           open: true,
-          message: "Atualização realizada com sucesso",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "success",
-          close: true,
-        });
-      } else {
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message: "response.message",
+          message:
+            "Algo de errado aconteceu, por favor, volte tente mais tarde.",
           variant: "alert",
           anchorOrigin: { vertical: "top", horizontal: "center" },
           alertSeverity: "error",

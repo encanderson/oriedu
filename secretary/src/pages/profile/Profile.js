@@ -86,7 +86,7 @@ const ProfileData = () => {
       }
     } else {
       const response = await ProfileServices.updateProfile({
-        name: user?.profile.name,
+        name: user?.name,
       });
 
       if (!response) {
