@@ -101,12 +101,28 @@ export class Users {
         name: true,
         job: true,
         picture: true,
+        school: {
+          select: {
+            contacts: true,
+            address: true,
+            cnpj: true,
+            fantasia: true,
+          },
+        },
       },
     });
 
     const data = {
       ...user,
-      profile,
+      name: profile.name,
+      job: profile.job,
+      picture: profile.picture,
+      address: profile.school?.address,
+      contacts: profile.school?.contacts,
+      school: {
+        cnpj: profile.school?.cnpj,
+        fantasia: profile.school?.fantasia,
+      },
     };
 
     return data;

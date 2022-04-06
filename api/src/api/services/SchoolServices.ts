@@ -7,9 +7,9 @@ export class SchoolServices {
     const isSchool = await SchoolRepository.isSchool(userId);
 
     if (!isSchool) {
-      await SchoolRepository.create(data, userId);
+      await SchoolRepository.create(userId, data);
     } else {
-      await SchoolRepository.update(data);
+      await SchoolRepository.update(userId, data);
     }
     return isSchool;
   }

@@ -43,8 +43,9 @@ model School {
   logo        String?
   city        String
   state       String
+  contacts    Json?
   address     Json?
-  school      Profile? @relation(fields: [userId], references: [id])
+  school      Profile? @relation(fields: [userId], references: [userId])
   
   @@map("school")
 }

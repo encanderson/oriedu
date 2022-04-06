@@ -13,38 +13,38 @@ export class SchoolRepository {
       },
     });
 
-    if (isSchool) {
+    if (isSchool.school) {
       return true;
     }
     return false;
   }
 
-  static async create(data: School, userId: string): Promise<void> {
+  static async create(userId: string, data: School): Promise<void> {
     await prisma.school.create({
       data: {
         address: data.address,
-        city: data.city,
+        city: data.address.city,
         cnpj: data.cnpj,
         fantasia: data.fantasia,
-        logo: data.logo,
-        state: data.state,
+        // logo: data.logo,
+        state: data.address.state,
         userId: userId,
       },
     });
   }
 
-  static async update(data: School): Promise<void> {
+  static async update(userId: string, data: School): Promise<void> {
     await prisma.school.update({
       where: {
-        id: data.id,
+        userId: userId,
       },
       data: {
         address: data.address,
-        city: data.city,
+        city: data.address.city,
         cnpj: data.cnpj,
         fantasia: data.fantasia,
-        logo: data.logo,
-        state: data.state,
+        state: data.address.state,
+        contacts: data.contacts,
       },
     });
   }

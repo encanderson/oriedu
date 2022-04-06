@@ -14,4 +14,8 @@ export interface School {
     city: string;
     state: string;
   };
+  contacts?: {
+    phone?: string;
+    email?: string;
+  };
 }
