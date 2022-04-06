@@ -112,9 +112,7 @@ const ProfileData = () => {
               <Avatar
                 alt="User 1"
                 src={
-                  user?.profile?.picture
-                    ? `data:image/png;base64,${user?.profile?.picture}`
-                    : ""
+                  user?.picture ? `data:image/png;base64,${user?.picture}` : ""
                 }
                 className={classes.accountAvatar}
               />
@@ -176,17 +174,14 @@ const ProfileData = () => {
                   disabled={isDisabled}
                   label="Nome"
                   variant="outlined"
-                  value={user?.profile?.name || ""}
+                  value={user?.name || ""}
                   onChange={(event) =>
                     dispatch({
                       type: EDIT_USER,
                       payload: {
                         user: {
                           ...user,
-                          profile: {
-                            ...user?.profile,
-                            name: event.target.value,
-                          },
+                          name: event.target.value,
                         },
                       },
                     })
@@ -205,17 +200,14 @@ const ProfileData = () => {
                       payload: {
                         user: {
                           ...user,
-                          profile: {
-                            ...user.profile,
-                            job: event.target.value,
-                          },
+                          job: event.target.value,
                         },
                       },
                     })
                   }
                   label="Cargo"
                   variant="outlined"
-                  value={user?.profile?.job || ""}
+                  value={user?.job || ""}
                 />
               </Grid>
               <Grid item xs={12} md={6}>

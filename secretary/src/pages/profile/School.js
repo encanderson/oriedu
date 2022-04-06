@@ -14,12 +14,11 @@ import {
 // project imports
 import SubCard from "@src/components/cards/SubCard";
 import { gridSpacing } from "@src/store/constant";
-import { activities, categories } from "@src/store/constant";
 import { getCities } from "@src/api/getCities";
 import { EDIT_USER, SNACKBAR_OPEN } from "@src/store/actions";
 import { states } from "@src/store/constant";
 import TextMaskCExpDate from "@src/utils/Mask";
-// import { updateProfile } from "@src/api";
+import { SchoolServices } from "@src/services";
 
 import useAuth from "@src/hooks/useAuth";
 
@@ -34,24 +33,16 @@ const Company = () => {
 
   const handleSubmit = async (action) => {
     const data = {
-      id: user?.id,
-      action: action,
-      activity: user?.activity,
-      city: user?.city,
-      cnpj: user?.cnpj,
+      userId: user?.userId,
+      cnpj: user?.school?.cnpj,
       contacts: user?.contacts,
-      complemento: user?.complemento,
-      description: user?.description,
-      district: user?.district,
-      fantasia: user?.fantasia,
-      number: user?.number,
-      categories: user?.categories,
-      state: user?.state,
-      street: user?.street,
-      zip: user?.zip,
+      fantasia: user?.school?.fantasia,
+      address: user?.address,
     };
-    // const response = await updateProfile(data);
-    if ("response.status" === 200) {
+
+    const response = await SchoolServices.update(data);
+
+    if (response) {
       dispatch({
         type: SNACKBAR_OPEN,
         open: true,
@@ -65,7 +56,7 @@ const Company = () => {
       dispatch({
         type: SNACKBAR_OPEN,
         open: true,
-        message: "response.message",
+        message: "Ocorreu um erro, por favor, tente mais tarde",
         variant: "alert",
         anchorOrigin: { vertical: "top", horizontal: "center" },
         alertSeverity: "error",
@@ -80,7 +71,10 @@ const Company = () => {
       payload: {
         user: {
           ...user,
-          state: value?.value,
+          address: {
+            ...user.address,
+            state: value?.value,
+          },
         },
       },
     });
@@ -98,31 +92,10 @@ const Company = () => {
       payload: {
         user: {
           ...user,
-          city: value,
-        },
-      },
-    });
-  };
-
-  const handleActivity = (_, value) => {
-    dispatch({
-      type: EDIT_USER,
-      payload: {
-        user: {
-          ...user,
-          activity: value?.value,
-        },
-      },
-    });
-  };
-
-  const handleCategories = (_, value) => {
-    dispatch({
-      type: EDIT_USER,
-      payload: {
-        user: {
-          ...user,
-          categories: value,
+          address: {
+            ...user.address,
+            city: value,
+          },
         },
       },
     });
@@ -140,47 +113,26 @@ const Company = () => {
                   fullWidth
                   disabled={isDisabled}
                   autoComplete="none"
-                  label="Nome da Empresa"
+                  label="Nome da Escola"
                   variant="outlined"
-                  value={user?.fantasia || ""}
+                  value={user?.school?.fantasia || ""}
                   onChange={(event) =>
                     dispatch({
                       type: EDIT_USER,
                       payload: {
                         user: {
                           ...user,
-                          fantasia: event.target.value,
+                          school: {
+                            ...user.school,
+                            fantasia: event.target.value,
+                          },
                         },
                       },
                     })
                   }
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Autocomplete
-                  autoSelect={true}
-                  disabled={isDisabled}
-                  id="activity"
-                  style={{ marginBottom: 8 }}
-                  options={activities}
-                  getOptionLabel={(uf) => uf.label}
-                  getOptionSelected={(option, value) =>
-                    option.value === value.value
-                  }
-                  onChange={handleActivity}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="outlined"
-                      placeholder={user?.activity || "Atividade Principal"}
-                      inputProps={{
-                        ...params.inputProps,
-                        autoComplete: "new-password",
-                      }}
-                    />
-                  )}
-                />
-              </Grid>
+
               <Grid item xs={12} md={6}>
                 <TextField
                   id="cnpj"
@@ -189,14 +141,17 @@ const Company = () => {
                   autoComplete="none"
                   label="CNPJ"
                   variant="outlined"
-                  value={user?.cnpj || ""}
+                  value={user?.school?.cnpj || ""}
                   onChange={(event) =>
                     dispatch({
                       type: EDIT_USER,
                       payload: {
                         user: {
                           ...user,
-                          cnpj: event.target.value,
+                          school: {
+                            ...user.school,
+                            cnpj: event.target.value,
+                          },
                         },
                       },
                     })
@@ -230,47 +185,7 @@ const Company = () => {
                   }}
                 />{" "}
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Autocomplete
-                  multiple
-                  disabled={isDisabled}
-                  options={categories}
-                  getOptionLabel={(option) => option}
-                  onChange={handleCategories}
-                  renderInput={(params) => (
-                    <TextField {...params} label={"Categorias *"} />
-                  )}
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      pr: "30px !important",
-                    },
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} md={12}>
-                <TextField
-                  id="description"
-                  maxLength="10"
-                  fullWidth
-                  disabled={isDisabled}
-                  autoComplete="none"
-                  label="Breve descrição"
-                  variant="outlined"
-                  value={user?.description || ""}
-                  onChange={(event) =>
-                    dispatch({
-                      type: EDIT_USER,
-                      payload: {
-                        user: {
-                          ...user,
-                          description: event.target.value,
-                        },
-                      },
-                    })
-                  }
-                  inputProps={{ maxLength: 100 }}
-                />
-              </Grid>
+
               <Grid item xs={12} md={12} lg={6}>
                 <SubCard title={"Endereço"}>
                   <Grid container spacing={2}>
@@ -282,14 +197,17 @@ const Company = () => {
                         autoComplete="none"
                         label="Endereço"
                         variant="outlined"
-                        value={user?.street || ""}
+                        value={user?.address?.street || ""}
                         onChange={(event) =>
                           dispatch({
                             type: EDIT_USER,
                             payload: {
                               user: {
                                 ...user,
-                                street: event.target.value,
+                                address: {
+                                  ...user.address,
+                                  street: event.target.value,
+                                },
                               },
                             },
                           })
@@ -304,14 +222,17 @@ const Company = () => {
                         autoComplete="none"
                         label="Número"
                         variant="outlined"
-                        value={user?.number || ""}
+                        value={user?.address?.number || ""}
                         onChange={(event) =>
                           dispatch({
                             type: EDIT_USER,
                             payload: {
                               user: {
                                 ...user,
-                                number: event.target.value,
+                                address: {
+                                  ...user.address,
+                                  number: event.target.value,
+                                },
                               },
                             },
                           })
@@ -326,14 +247,17 @@ const Company = () => {
                         autoComplete="none"
                         label="Complemento"
                         variant="outlined"
-                        value={user?.complemento || ""}
+                        value={user?.address?.complemento || ""}
                         onChange={(event) =>
                           dispatch({
                             type: EDIT_USER,
                             payload: {
                               user: {
                                 ...user,
-                                complemento: event.target.value,
+                                address: {
+                                  ...user.address,
+                                  complemento: event.target.value,
+                                },
                               },
                             },
                           })
@@ -348,14 +272,17 @@ const Company = () => {
                         autoComplete="none"
                         label="Bairro"
                         variant="outlined"
-                        value={user?.district || ""}
+                        value={user?.address?.district || ""}
                         onChange={(event) =>
                           dispatch({
                             type: EDIT_USER,
                             payload: {
                               user: {
                                 ...user,
-                                district: event.target.value,
+                                address: {
+                                  ...user.address,
+                                  district: event.target.value,
+                                },
                               },
                             },
                           })
@@ -370,14 +297,17 @@ const Company = () => {
                         autoComplete="none"
                         label="Cep"
                         variant="outlined"
-                        value={user?.zip || ""}
+                        value={user?.address?.zip || ""}
                         onChange={(event) =>
                           dispatch({
                             type: EDIT_USER,
                             payload: {
                               user: {
                                 ...user,
-                                zip: event.target.value,
+                                address: {
+                                  ...user.address,
+                                  zip: event.target.value,
+                                },
                               },
                             },
                           })
@@ -419,7 +349,7 @@ const Company = () => {
                           <TextField
                             {...params}
                             variant="outlined"
-                            placeholder={user?.state}
+                            placeholder={user?.address?.state}
                             inputProps={{
                               ...params.inputProps,
                               autoComplete: "new-password",
@@ -441,7 +371,7 @@ const Company = () => {
                         renderInput={(params) => (
                           <TextField
                             {...params}
-                            placeholder={user?.city}
+                            placeholder={user?.address?.city}
                             variant="outlined"
                             inputProps={{
                               ...params.inputProps,
@@ -450,6 +380,83 @@ const Company = () => {
                           />
                         )}
                       />
+                    </Grid>
+                  </Grid>
+                </SubCard>
+              </Grid>
+              <Grid item xs={12} md={12} lg={6}>
+                <SubCard title={"Contatos"}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={12}>
+                      <TextField
+                        fullWidth
+                        disabled={isDisabled}
+                        autoComplete="none"
+                        label="email"
+                        variant="outlined"
+                        value={user?.contacts?.email || ""}
+                        onChange={(event) =>
+                          dispatch({
+                            type: EDIT_USER,
+                            payload: {
+                              user: {
+                                ...user,
+                                contacts: {
+                                  ...user.contacts,
+                                  email: event.target.value,
+                                },
+                              },
+                            },
+                          })
+                        }
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} md={12}>
+                      <TextField
+                        disabled={isDisabled}
+                        fullWidth
+                        autoComplete="none"
+                        label="Telefone"
+                        variant="outlined"
+                        value={user?.contacts?.phone || ""}
+                        onChange={(event) =>
+                          dispatch({
+                            type: EDIT_USER,
+                            payload: {
+                              user: {
+                                ...user,
+                                contacts: {
+                                  ...user.contacts,
+                                  phone: event.target.value,
+                                },
+                              },
+                            },
+                          })
+                        }
+                        inputProps={{
+                          mask: [
+                            /[0-9]/,
+                            /[0-9]/,
+                            " ",
+                            /[0-9]/,
+                            /[0-9]/,
+                            /[0-9]/,
+                            /[0-9]/,
+                            " ",
+                            /[0-9]/,
+                            /[0-9]/,
+                            /[0-9]/,
+                            /[0-9]/,
+                            /[0-9]/,
+                          ],
+                          showMask: false,
+                        }}
+                        InputProps={{
+                          defaultValue: "",
+                          inputComponent: TextMaskCExpDate,
+                        }}
+                      />{" "}
                     </Grid>
                   </Grid>
                 </SubCard>
