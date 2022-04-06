@@ -90,6 +90,7 @@ export class Users {
         app: true,
         userId: true,
         email: true,
+        password: true,
       },
     });
 
@@ -134,6 +135,18 @@ export class Users {
         userId: userId,
       },
       data: data,
+    });
+  }
+
+  static async updatePassword(userId: string, password: string): Promise<void> {
+    await prisma.user.update({
+      where: {
+        userId: userId,
+      },
+      data: {
+        password: password,
+        updatedAt: createdAt(),
+      },
     });
   }
 }

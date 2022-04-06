@@ -4,4 +4,5 @@ export interface Profile {
   name?: string;
   job?: string;
   picture?: string;
+  newPassword?: string;
 }

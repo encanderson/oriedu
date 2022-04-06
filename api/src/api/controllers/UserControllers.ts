@@ -29,7 +29,9 @@ export class UserControllers {
 
       const { userId } = req.user;
 
-      await UserServices.update(userId, data);
+      const { password } = req.body;
+
+      await UserServices.update(userId, data, password);
 
       res.status(204).end();
     } catch (err) {
