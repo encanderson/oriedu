@@ -29,3 +29,16 @@ Object.keys(_errors).forEach(function (key) {
     }
   });
 });
+
+var _auth = require("./auth.middleware");
+
+Object.keys(_auth).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _auth[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _auth[key];
+    }
+  });
+});

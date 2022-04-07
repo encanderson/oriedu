@@ -16,3 +16,16 @@ Object.keys(_Users).forEach(function (key) {
     }
   });
 });
+
+var _School = require("./School");
+
+Object.keys(_School).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _School[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _School[key];
+    }
+  });
+});

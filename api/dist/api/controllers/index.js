@@ -17,15 +17,41 @@ Object.keys(_UsersControllers).forEach(function (key) {
   });
 });
 
-var _AuthControllers = require("./AuthControllers");
+var _DocsControllers = require("./DocsControllers");
 
-Object.keys(_AuthControllers).forEach(function (key) {
+Object.keys(_DocsControllers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _AuthControllers[key]) return;
+  if (key in exports && exports[key] === _DocsControllers[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _AuthControllers[key];
+      return _DocsControllers[key];
+    }
+  });
+});
+
+var _UserControllers = require("./UserControllers");
+
+Object.keys(_UserControllers).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _UserControllers[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _UserControllers[key];
+    }
+  });
+});
+
+var _SchoolControllers = require("./SchoolControllers");
+
+Object.keys(_SchoolControllers).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _SchoolControllers[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _SchoolControllers[key];
     }
   });
 });

@@ -3,32 +3,32 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.UsersServices = void 0;
+exports.UserServices = void 0;
 
 var _repositories = require("../repositories");
 
 var _utils = require("../../utils");
 
-var _config = require("../../config");
+class UserServices {
+  static async getUser(userId) {
+    const user = await _repositories.Users.getUser(userId);
+    delete user.password;
+    return user;
+  }
 
-var _subscribers = require("../subscribers");
-
-class UsersServices {
-  static async createUser(newUser) {
-    const user = await _repositories.Users.searchUser(newUser);
-    const code = (0, _utils.generateCode)();
-    (0, _utils.verifyRegister)(newUser);
-
-    const token = _utils.AccessToken.generateToken({
-      userId: (0, _utils.hashFunction)(newUser.cpf),
-      expires: "180m",
-      app: newUser.app
-    });
-
-    await (0, _subscribers.sendEmail)(newUser.email, "Verificação de email", (0, _config.htmlCode)("Nome", token, "confirmar-registro"));
-    user.createUser(code);
+  static async update(userId, data, actualPassword) {
+    if (!actualPassword) {
+      const obj = (0, _utils.filterProfile)(data);
+      await _repositories.Users.update(userId, obj);
+    } else {
+      const {
+        password
+      } = await _repositories.Users.getUser(userId);
+      await (0, _utils.comparePassword)(actualPassword, password);
+      await _repositories.Users.updatePassword(userId, await (0, _utils.hashPassword)(data.newPassword));
+    }
   }
 
 }
 
-exports.UsersServices = UsersServices;
+exports.UserServices = UserServices;

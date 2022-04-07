@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.verifyTermsConsents = exports.verifyRegister = void 0;
+exports.verifyTermsConsents = exports.verifyRegister = exports.filterProfile = void 0;
 
-var _errors = require("../api/errors");
+var _errors = require("../errors");
 
 const verifyTermsConsents = consents => {
   if (consents.privacy && consents.terms) {
@@ -40,3 +40,16 @@ const verifyRegister = user => {
 };
 
 exports.verifyRegister = verifyRegister;
+
+const filterProfile = data => {
+  const fields = ["id", "userId", "name", "job", "picture", "contacts"];
+  const obj = {};
+  Object.keys(data).forEach(key => {
+    if (fields.includes(key)) {
+      obj[key] = data[key];
+    }
+  });
+  return obj;
+};
+
+exports.filterProfile = filterProfile;

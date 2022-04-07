@@ -17,15 +17,41 @@ Object.keys(_UserServices).forEach(function (key) {
   });
 });
 
-var _AuthServices = require("./AuthServices");
+var _passport = require("./passport.services");
 
-Object.keys(_AuthServices).forEach(function (key) {
+Object.keys(_passport).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _AuthServices[key]) return;
+  if (key in exports && exports[key] === _passport[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _AuthServices[key];
+      return _passport[key];
+    }
+  });
+});
+
+var _UsersServices = require("./UsersServices");
+
+Object.keys(_UsersServices).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _UsersServices[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _UsersServices[key];
+    }
+  });
+});
+
+var _SchoolServices = require("./SchoolServices");
+
+Object.keys(_SchoolServices).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _SchoolServices[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _SchoolServices[key];
     }
   });
 });

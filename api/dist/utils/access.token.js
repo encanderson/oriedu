@@ -7,7 +7,7 @@ exports.AccessToken = void 0;
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var _errors = require("../api/errors");
+var _errors = require("../errors");
 
 var _config = require("../config");
 

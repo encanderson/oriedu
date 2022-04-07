@@ -22,7 +22,7 @@ let config = {
   emailServer: process.env.MAIL_SERVER,
   geobingKey: process.env.GEOBING_KEY,
   corsOptions: {
-    origin: ["http://localhost:3002"],
+    origin: ["http://oriedu.orianderson.com", "http://secretaria.orianderson.com:3000"],
     "Access-Control-Allow-Credentials": true
   },
   allowlist: {
@@ -72,7 +72,7 @@ if (environment === "production") {
     emailServer: process.env.MAIL_SERVER,
     geobingKey: process.env.GEOBING_KEY,
     corsOptions: {
-      origin: ["http://localhost:3002"],
+      origin: ["http://oriedu.orianderson.com", "http://secretaria.orianderson.com:3000"],
       "Access-Control-Allow-Credentials": true
     },
     allowlist: {

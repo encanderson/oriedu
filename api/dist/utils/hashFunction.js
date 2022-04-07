@@ -3,11 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.hashPassword = exports.hashFunction = void 0;
+exports.hashPassword = exports.hashFunction = exports.comparePassword = void 0;
 
 var _crypto = _interopRequireDefault(require("crypto"));
 
 var bcrypt = _interopRequireWildcard(require("bcrypt"));
+
+var _errors = require("../errors");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -30,3 +32,13 @@ const hashPassword = async password => {
 };
 
 exports.hashPassword = hashPassword;
+
+const comparePassword = async (password, hashPassword) => {
+  const isValid = await bcrypt.compare(password, hashPassword);
+
+  if (!isValid) {
+    throw new _errors.NotAuthenticate("Senha inválida.");
+  }
+};
+
+exports.comparePassword = comparePassword;

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.errorMiddleware = void 0;
 
-var _errors = require("../errors");
+var _errors = require("../../errors");
 
 var _logs = _interopRequireDefault(require("../../logs"));
 

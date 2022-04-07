@@ -16,3 +16,16 @@ Object.keys(_email).forEach(function (key) {
     }
   });
 });
+
+var _blocklistAccessToken = require("./blocklist-access-token");
+
+Object.keys(_blocklistAccessToken).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _blocklistAccessToken[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _blocklistAccessToken[key];
+    }
+  });
+});

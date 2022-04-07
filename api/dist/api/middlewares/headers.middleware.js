@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.headersMiddleware = void 0;
 
-var _errors = require("../errors");
+var _errors = require("../../errors");
 
 var _config = require("../../config");
 
@@ -14,7 +14,7 @@ const headersMiddleware = app => {
     res.setHeader("X-Powered-By", "PHP/7.1.7");
     const applicationFormat = req.header("Accept");
 
-    if (_config.formatsAccepts.indexOf(applicationFormat) === -1) {
+    if (_config.formatsAccepts.indexOf(applicationFormat) === -1 && req.originalUrl !== "/docs") {
       throw new _errors.NotSupport(applicationFormat);
     }
 
