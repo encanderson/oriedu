@@ -42,7 +42,7 @@ const verifyRegister = user => {
 exports.verifyRegister = verifyRegister;
 
 const filterProfile = data => {
-  const fields = ["id", "userId", "name", "job", "picture"];
+  const fields = ["id", "userId", "name", "job", "picture", "contacts"];
   const obj = {};
   Object.keys(data).forEach(key => {
     if (fields.includes(key)) {
