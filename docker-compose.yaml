@@ -55,7 +55,7 @@ services:
     ports:
       - 6000:6000
     env_file:
-      - /home/engnaderson/.env
+      - /home/enganderson/.env
     volumes:
       - ./auth/dist:/app/dist
       - ./auth/prisma:/app/prisma
