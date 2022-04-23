@@ -39,7 +39,7 @@ export const verifyRegister = (user: User): boolean => {
 };
 
 export const filterProfile = (data: Profile): Profile => {
-  const fields = ["id", "userId", "name", "job", "picture", "contacts"];
+  const fields = ["id", "user_id", "name", "job", "picture", "contacts"];
 
   const obj = {};
 

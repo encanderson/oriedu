@@ -1,6 +1,6 @@
 export interface Profile {
   id?: string;
-  userId?: string;
+  user_id?: string;
   name?: string;
   job?: string;
   picture?: string;

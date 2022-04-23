@@ -19,7 +19,7 @@ export class UsersServices {
     verifyRegister(newUser);
 
     const token = AccessToken.generateToken({
-      userId: hashFunction(newUser.cpf),
+      user_id: hashFunction(newUser.cpf),
       expires: "180m",
       app: newUser.app,
     });

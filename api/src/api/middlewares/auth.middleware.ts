@@ -33,7 +33,7 @@ export const authMiddleware = async (
         }
 
         req.user = {
-          userId: payload.userId,
+          user_id: payload.user_id,
           app: payload.app,
           id: payload.id,
         };

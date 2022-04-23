@@ -12,5 +12,5 @@ export interface User {
     terms: boolean;
     privacy: boolean;
   };
-  userId?: string;
+  user_id?: string;
 }

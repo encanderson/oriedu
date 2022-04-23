@@ -9,9 +9,9 @@ export class UserControllers {
     next: NextFunction
   ): Promise<void> {
     try {
-      const { userId } = req.user;
+      const { user_id } = req.user;
 
-      const user = await UserServices.getUser(userId);
+      const user = await UserServices.getUser(user_id);
 
       res.status(200).send(user);
     } catch (err) {
@@ -27,11 +27,11 @@ export class UserControllers {
     try {
       const data = req.body;
 
-      const { userId } = req.user;
+      const { user_id } = req.user;
 
       const { password } = req.body;
 
-      await UserServices.update(userId, data, password);
+      await UserServices.update(user_id, data, password);
 
       res.status(204).end();
     } catch (err) {

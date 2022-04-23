@@ -5,8 +5,8 @@ import { User, Profile } from "@src/@types";
 import { filterProfile, comparePassword, hashPassword } from "../../utils";
 
 export class UserServices {
-  static async getUser(userId: string): Promise<User> {
-    const user = await Users.getUser(userId);
+  static async getUser(user_id: string): Promise<User> {
+    const user = await Users.getUser(user_id);
 
     delete user.password;
 
@@ -14,19 +14,19 @@ export class UserServices {
   }
 
   static async update(
-    userId: string,
+    user_id: string,
     data: Profile,
     actualPassword: string
   ): Promise<void> {
     if (!actualPassword) {
       const obj = filterProfile(data);
-      await Users.update(userId, obj);
+      await Users.update(user_id, obj);
     } else {
-      const { password } = await Users.getUser(userId);
+      const { password } = await Users.getUser(user_id);
 
       await comparePassword(actualPassword, password);
 
-      await Users.updatePassword(userId, await hashPassword(data.newPassword));
+      await Users.updatePassword(user_id, await hashPassword(data.newPassword));
     }
   }
 }

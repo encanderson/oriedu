@@ -11,7 +11,7 @@ datasource db {
 
 model User {
   id         String   @id @default(uuid())
-  userId     String   @unique
+  user_id    String   @unique
   active     Boolean
   app        String
   code       Int?
@@ -24,20 +24,8 @@ model User {
   @@map("users")
 }
 
-model Profile {
-  id          String   @id @default(uuid())
-  userId      String   @unique
-  name        String
-  job         String?
-  picture     String?
-  school      School?
-
-  @@map("profiles")
-}
-
 model School {
   id          String   @id @default(uuid())
-  userId      String   @unique
   cnpj        String
   fantasia    String
   logo        String?
@@ -45,7 +33,19 @@ model School {
   state       String
   contacts    Json?
   address     Json?
-  school      Profile? @relation(fields: [userId], references: [userId])
+  school      Profile[]
   
-  @@map("school")
+  @@map("schools")
+}
+
+model Profile {
+  id          String   @id @default(uuid())
+  user_id     String   @unique
+  name        String
+  job         String?
+  picture     String?
+  school_id   String
+  school      School   @relation(fields: [school_id], references: [id])
+
+  @@map("profiles")
 }

@@ -3,10 +3,10 @@ import { prisma } from "../database";
 import { School } from "../../@types";
 
 export class SchoolRepository {
-  static async isSchool(userId: string): Promise<boolean> {
+  static async isSchool(user_id: string): Promise<boolean> {
     const isSchool = await prisma.profile.findUnique({
       where: {
-        userId: userId,
+        user_id: user_id,
       },
       select: {
         school: true,
@@ -19,7 +19,7 @@ export class SchoolRepository {
     return false;
   }
 
-  static async create(userId: string, data: School): Promise<void> {
+  static async create(user_id: string, data: School): Promise<void> {
     await prisma.school.create({
       data: {
         address: data.address,
@@ -28,15 +28,15 @@ export class SchoolRepository {
         fantasia: data.fantasia,
         // logo: data.logo,
         state: data.address.state,
-        userId: userId,
+        user_id: user_id,
       },
     });
   }
 
-  static async update(userId: string, data: School): Promise<void> {
+  static async update(user_id: string, data: School): Promise<void> {
     await prisma.school.update({
       where: {
-        userId: userId,
+        user_id: user_id,
       },
       data: {
         address: data.address,

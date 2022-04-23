@@ -1,6 +1,6 @@
 export interface School {
   id: string;
-  userId: string;
+  user_id: string;
   cnpj: string;
   fantasia: string;
   logo?: string;

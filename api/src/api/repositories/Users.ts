@@ -16,7 +16,7 @@ export class Users {
   static async searchUser(newUser: User): Promise<Users> {
     const user = await prisma.user.findUnique({
       where: {
-        userId: hashFunction(newUser.cpf),
+        user_id: hashFunction(newUser.cpf),
       },
       select: {
         app: true,
@@ -46,7 +46,7 @@ export class Users {
       data: {
         active: false,
         app: this.user.app,
-        userId: hashFunction(this.user.cpf),
+        user_id: hashFunction(this.user.cpf),
         email: this.user.email,
         code: code,
         password: password,
@@ -58,18 +58,18 @@ export class Users {
 
     await prisma.profile.create({
       data: {
-        userId: hashFunction(this.user.cpf),
+        user_id: hashFunction(this.user.cpf),
         name: this.user.name,
         job: this.user.job,
       },
     });
   }
 
-  static async confirmUser(userId: string): Promise<void> {
+  static async confirmUser(user_id: string): Promise<void> {
     try {
       await prisma.user.update({
         where: {
-          userId: userId,
+          user_id: user_id,
         },
         data: {
           active: true,
@@ -80,15 +80,15 @@ export class Users {
     }
   }
 
-  static async getUser(userId: string): Promise<User> {
+  static async getUser(user_id: string): Promise<User> {
     const user = await prisma.user.findUnique({
       where: {
-        userId: userId,
+        user_id: user_id,
       },
       select: {
         id: true,
         app: true,
-        userId: true,
+        user_id: true,
         email: true,
         password: true,
       },
@@ -96,7 +96,7 @@ export class Users {
 
     const profile = await prisma.profile.findUnique({
       where: {
-        userId: userId,
+        user_id: user_id,
       },
       select: {
         name: true,
@@ -129,19 +129,22 @@ export class Users {
     return data;
   }
 
-  static async update(userId: string, data: Profile): Promise<void> {
+  static async update(user_id: string, data: Profile): Promise<void> {
     await prisma.profile.update({
       where: {
-        userId: userId,
+        user_id: user_id,
       },
       data: data,
     });
   }
 
-  static async updatePassword(userId: string, password: string): Promise<void> {
+  static async updatePassword(
+    user_id: string,
+    password: string
+  ): Promise<void> {
     await prisma.user.update({
       where: {
-        userId: userId,
+        user_id: user_id,
       },
       data: {
         password: password,
