@@ -29,6 +29,10 @@ export let config: Config = {
   },
   url: "http://localhost:3002",
   api: "http://localhost:4000/api/v1",
+  awsAccessKeyId: process.env.AWS_ACCESS_KEY,
+  awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  awsRegion: process.env.AWS_REGION,
+  kmsKeyId: process.env.AWS_KEY_ID,
 };
 
 if (environment === "production") {
@@ -59,6 +63,10 @@ if (environment === "production") {
     },
     url: "https://www.tiadidi.com.br",
     api: "https://api.tiadidi.com.br/api/v1",
+    awsAccessKeyId: process.env.AWS_ACCESS_KEY,
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    awsRegion: process.env.AWS_REGION,
+    kmsKeyId: process.env.AWS_KEY_ID,
   };
 } else {
   config = {
@@ -84,5 +92,9 @@ if (environment === "production") {
     },
     url: "http://localhost:3002",
     api: "http://localhost:4000/api/v1",
+    awsAccessKeyId: process.env.AWS_ACCESS_KEY,
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    awsRegion: process.env.AWS_REGION,
+    kmsKeyId: process.env.AWS_KEY_ID,
   };
 }

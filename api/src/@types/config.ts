@@ -22,4 +22,8 @@ export interface Config {
   };
   url: string;
   api?: string;
+  awsAccessKeyId: string;
+  awsSecretAccessKey: string;
+  awsRegion: string;
+  kmsKeyId: string;
 }

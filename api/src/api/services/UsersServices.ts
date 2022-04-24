@@ -1,20 +1,13 @@
 import { Users } from "../repositories";
 
 import { User } from "@src/@types";
-import {
-  generateCode,
-  hashFunction,
-  AccessToken,
-  verifyRegister,
-} from "@src/utils";
+import { hashFunction, AccessToken, verifyRegister } from "@src/utils";
 import { htmlCode } from "../../config";
 import { sendEmail } from "../subscribers";
 
 export class UsersServices {
   static async createUser(newUser: User): Promise<void> {
     const user = await Users.searchUser(newUser);
-
-    const code = generateCode();
 
     verifyRegister(newUser);
 
@@ -30,6 +23,6 @@ export class UsersServices {
       htmlCode("Nome", token, "confirmar-registro")
     );
 
-    user.createUser(code);
+    user.createUser();
   }
 }

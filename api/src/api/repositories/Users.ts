@@ -1,16 +1,23 @@
 import { prisma } from "../database";
 
-import { User, Profile } from "@src/@types";
+import { User } from "@src/@types";
 
-import { createdAt, hashFunction, hashPassword } from "@src/utils";
+import { createdAt, hashFunction } from "@src/utils";
 import { UserExist, Forbidden } from "../../errors";
 
 export class Users {
-  user: User;
+  user: {
+    app?: string;
+    cpf?: string;
+    email?: string;
+    name?: string;
+  };
   date: string;
+  user_id: string;
   constructor(user: User) {
     this.date = createdAt();
     this.user = user;
+    this.user_id = hashFunction(user.cpf);
   }
 
   static async searchUser(newUser: User): Promise<Users> {
@@ -33,36 +40,32 @@ export class Users {
     });
 
     if (user || email) {
-      throw new UserExist();
+      throw new UserExist("Usuário já registrado.");
     }
 
     return new Users(newUser);
   }
 
-  async createUser(code: number): Promise<void> {
-    const password = await hashPassword(this.user.password);
-
+  async create(): Promise<void> {
     await prisma.user.create({
       data: {
         active: false,
         app: this.user.app,
-        user_id: hashFunction(this.user.cpf),
+        user_id: this.user_id,
         email: this.user.email,
-        code: code,
-        password: password,
-        createdAt: this.date,
-        updatedAt: this.date,
-        consents: this.user.consents,
+        created_at: this.date,
+        updated_at: this.date,
+        consents: {},
       },
     });
 
-    await prisma.profile.create({
-      data: {
-        user_id: hashFunction(this.user.cpf),
-        name: this.user.name,
-        job: this.user.job,
-      },
-    });
+    // await prisma.profile.create({
+    //   data: {
+    //     user_id: hashFunction(this.user.cpf),
+    //     name: this.user.name,
+    //     job: this.user.job,
+    //   },
+    // });
   }
 
   static async confirmUser(user_id: string): Promise<void> {
@@ -94,49 +97,49 @@ export class Users {
       },
     });
 
-    const profile = await prisma.profile.findUnique({
-      where: {
-        user_id: user_id,
-      },
-      select: {
-        name: true,
-        job: true,
-        picture: true,
-        school: {
-          select: {
-            contacts: true,
-            address: true,
-            cnpj: true,
-            fantasia: true,
-          },
-        },
-      },
-    });
+    // const profile = await prisma.profile.findUnique({
+    //   where: {
+    //     user_id: user_id,
+    //   },
+    //   select: {
+    //     name: true,
+    //     job: true,
+    //     picture: true,
+    //     school: {
+    //       select: {
+    //         contacts: true,
+    //         address: true,
+    //         cnpj: true,
+    //         fantasia: true,
+    //       },
+    //     },
+    //   },
+    // });
 
     const data = {
       ...user,
-      name: profile.name,
-      job: profile.job,
-      picture: profile.picture,
-      address: profile.school?.address,
-      contacts: profile.school?.contacts,
-      school: {
-        cnpj: profile.school?.cnpj,
-        fantasia: profile.school?.fantasia,
-      },
+      // name: profile.name,
+      // job: profile.job,
+      // picture: profile.picture,
+      // address: profile.school?.address,
+      // contacts: profile.school?.contacts,
+      // school: {
+      //   cnpj: profile.school?.cnpj,
+      //   fantasia: profile.school?.fantasia,
+      // },
     };
 
     return data;
   }
 
-  static async update(user_id: string, data: Profile): Promise<void> {
-    await prisma.profile.update({
-      where: {
-        user_id: user_id,
-      },
-      data: data,
-    });
-  }
+  // static async update(user_id: string, data: Profile): Promise<void> {
+  //   await prisma.profile.update({
+  //     where: {
+  //       user_id: user_id,
+  //     },
+  //     data: data,
+  //   });
+  // }
 
   static async updatePassword(
     user_id: string,
@@ -148,7 +151,7 @@ export class Users {
       },
       data: {
         password: password,
-        updatedAt: createdAt(),
+        updated_at: createdAt(),
       },
     });
   }

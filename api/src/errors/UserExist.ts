@@ -1,7 +1,7 @@
 export class UserExist extends Error {
   idError: number;
-  constructor() {
-    super("Usuário(a) já foi existe.");
+  constructor(msg: string) {
+    super(msg);
     this.name = "UserExist";
   }
 }

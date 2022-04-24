@@ -15,10 +15,10 @@ model User {
   active     Boolean
   app        String
   code       Int?
-  createdAt  DateTime
+  created_at DateTime
   email      String   @unique
-  password   String
-  updatedAt  DateTime
+  password   String?
+  updated_at DateTime
   consents   Json?
 
   @@map("users")
@@ -26,26 +26,36 @@ model User {
 
 model School {
   id          String   @id @default(uuid())
-  cnpj        String
+  cnpj        String   @unique
   fantasia    String
   logo        String?
-  city        String
-  state       String
   contacts    Json?
   address     Json?
-  school      Profile[]
+  modalities  String[]
+  classes     String[]
+  school      Employee[]
   
   @@map("schools")
 }
 
-model Profile {
+model Employee {
   id          String   @id @default(uuid())
   user_id     String   @unique
   name        String
+  birthday    DateTime?
+  gender      String?
+  ethnic      String?
+  docs        String?
   job         String?
+  contacts    String?
+  address     String?
+  contract    Json?
+  qualifications  Json?
+  salary      Float?
+  bank        String?
   picture     String?
   school_id   String
   school      School   @relation(fields: [school_id], references: [id])
 
-  @@map("profiles")
+  @@map("employees")
 }

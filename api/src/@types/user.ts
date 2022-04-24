@@ -13,4 +13,10 @@ export interface User {
     privacy: boolean;
   };
   user_id?: string;
+  user?: {
+    app?: string;
+    cpf?: string;
+    email?: string;
+    name?: string;
+  };
 }
