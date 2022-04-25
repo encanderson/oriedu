@@ -2,11 +2,11 @@ import axios from "axios";
 
 import { createUrlApi } from "./baseUrl";
 
-export async function createUser(data) {
+export async function sendContact(data) {
   try {
     const response = await axios({
       method: "POST",
-      baseURL: createUrlApi(`/users`),
+      baseURL: createUrlApi(`/admin/contact`),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

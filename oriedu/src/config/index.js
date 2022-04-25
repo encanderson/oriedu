@@ -9,7 +9,7 @@ let app;
 if (environment === "development") {
   app = "orianderson.com:3000";
   home = "/";
-  api = "http://localhost:4000/api/v1";
+  api = "http://orianderson.com:4000/api/v1";
   auth = "http://auth.orianderson.com/api/v1";
   protocol = "http://";
 } else {
@@ -34,6 +34,7 @@ const config = {
   auth: auth,
   protocol: protocol,
   app: app,
+  orisistem: "https://orisistem.com",
 };
 
 export default config;

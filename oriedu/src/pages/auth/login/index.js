@@ -101,7 +101,7 @@ const Login = () => {
                     >
                       <Typography
                         component={RouterLink}
-                        to="/registro"
+                        to="/contato"
                         variant="subtitle1"
                         sx={{ textDecoration: "none" }}
                       >
