@@ -6,7 +6,6 @@ import { Route, Routes as Router } from "react-router-dom";
 import MinimalLayout from "@src/layout/MinimalLayout";
 import Loadable from "@src/components/Loadable";
 
-const Register = Loadable(lazy(() => import("@src/pages/auth/register")));
 const ConfirmUser = Loadable(
   lazy(() => import("@src/pages/auth/confirm-user/ConfirmRegister"))
 );
@@ -33,7 +32,6 @@ const Routes = () => {
     <MinimalLayout>
       <Router>
         <Route path="/" element={<Login />} />
-        <Route path="/registro" element={<Register />} />
         <Route path="/confirmar-registro/:token" element={<ConfirmUser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recuperar-senha" element={<ForgotPassword />} />

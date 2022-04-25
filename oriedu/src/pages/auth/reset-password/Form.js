@@ -31,7 +31,7 @@ import { SNACKBAR_OPEN } from "@src/store/actions";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import { resetPassword } from "@src/api";
+import { resetPassword, confirmRegister } from "@src/api";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -74,6 +74,8 @@ const FormResetPassword = ({ ...others }) => {
       token: token,
     });
     if (response.status === 204) {
+      await confirmRegister(token);
+
       navigate("/login");
     } else {
       dispatch({
