@@ -35,7 +35,20 @@ export class AdminServices {
     await sendEmail(
       user.user.email,
       "Verificação de email",
-      htmlCode("Nome", token, "confirmar-registro")
+      htmlCode(user.user.name, token, "confirmar-registro")
+    );
+  }
+
+  static async contact(msg: {
+    name: string;
+    email: string;
+    phone: string;
+    message: string;
+  }): Promise<void> {
+    await sendEmail(
+      "anderson.oliveira@orisistem.com",
+      "Verificação de email",
+      `${msg.name} deseja informações. Telegone: ${msg.phone}, email: ${msg.email} - Mensagem: ${msg.message}`
     );
   }
 }

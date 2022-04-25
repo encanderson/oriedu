@@ -19,4 +19,21 @@ export class AdminControllers {
       next(err);
     }
   }
+
+  static async contact(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const msg = req.body;
+      console.log(msg);
+
+      await AdminServices.contact(msg);
+
+      res.status(204).end();
+    } catch (err) {
+      next(err);
+    }
+  }
 }

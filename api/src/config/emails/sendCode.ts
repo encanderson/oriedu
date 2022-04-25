@@ -112,7 +112,7 @@ export const htmlCode = (name: string, token: string, path: string): string => {
                                     <div class="v-text-align" style="color: #6b6b6b; line-height: 140%; text-align: left; word-wrap: break-word;">
                                       <p align="justify" style="font-size: 14px;line-height: 140%;margin: 0;">
                                         <span style="font-family: Lato, sans-serif; font-size: 14px; line-height: 19.6px;">Estamos muito animados por receber você em nossa comunidade,<strong style="line-height: inherit;">
-                                            OriEdu.</strong></span></p>
+                                            OriEdu. Ao confirmar esse email, você com concorda com nossos Termos de Uso e nossa Política de Privacidade</strong></span></p>
                                     </div>
 
                                   </td>
