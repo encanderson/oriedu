@@ -19,4 +19,5 @@ export interface User {
     email?: string;
     name?: string;
   };
+  modalities?: string[];
 }

@@ -51,15 +51,12 @@ export class SchoolRepository {
     }
   }
 
-  static async update(data: School): Promise<void> {
+  static async update(school_id: string, data: School): Promise<void> {
     await prisma.school.update({
       where: {
-        id: data.school_id,
+        id: school_id,
       },
-      data: {
-        address: data.address,
-        contacts: data.contacts,
-      },
+      data: data,
     });
   }
 }

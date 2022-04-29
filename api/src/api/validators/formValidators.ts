@@ -12,3 +12,17 @@ export const filterForm = (obj: unknown, fields: string[]): unknown => {
 
   return newObj;
 };
+
+export const validateSchoolUpdate = (obj: unknown): unknown => {
+  const fields = ["address", "contacts", "modalities"];
+
+  const newObj = {};
+
+  fields.map((item) => {
+    if (obj[item]) {
+      return (newObj[item] = obj[item]);
+    }
+  });
+
+  return newObj;
+};

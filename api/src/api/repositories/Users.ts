@@ -58,14 +58,6 @@ export class Users {
         consents: {},
       },
     });
-
-    // await prisma.profile.create({
-    //   data: {
-    //     user_id: hashFunction(this.user.cpf),
-    //     name: this.user.name,
-    //     job: this.user.job,
-    //   },
-    // });
   }
 
   static async confirmUser(user_id: string): Promise<void> {
@@ -112,12 +104,11 @@ export class Users {
             contacts: true,
             cnpj: true,
             fantasia: true,
+            modalities: true,
           },
         },
       },
     });
-
-    console.log(profile.school);
 
     const name = profile.name.split(" ");
 
@@ -129,6 +120,7 @@ export class Users {
       school_id: profile.school.id,
       address: profile.school?.address,
       contacts: profile.school?.contacts,
+      modalities: profile?.school.modalities,
       school: {
         cnpj: profile.school?.cnpj,
         fantasia: profile.school?.fantasia,
