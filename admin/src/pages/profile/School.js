@@ -31,13 +31,11 @@ const Company = () => {
   const [cities, setCities] = React.useState([]);
   const [isDisabled, setIsDisabled] = React.useState(true);
 
-  const handleSubmit = async (action) => {
+  const handleSubmit = async () => {
     const data = {
-      userId: user?.userId,
-      cnpj: user?.school?.cnpj,
       contacts: user?.contacts,
-      fantasia: user?.school?.fantasia,
       address: user?.address,
+      school_id: user?.school_id,
     };
 
     const response = await SchoolServices.update(data);
@@ -111,7 +109,7 @@ const Company = () => {
                 <TextField
                   id="fantasia"
                   fullWidth
-                  disabled={isDisabled}
+                  disabled={true}
                   autoComplete="none"
                   label="Nome da Escola"
                   variant="outlined"
@@ -137,7 +135,7 @@ const Company = () => {
                 <TextField
                   id="cnpj"
                   fullWidth
-                  disabled={isDisabled}
+                  disabled={true}
                   autoComplete="none"
                   label="CNPJ"
                   variant="outlined"
@@ -191,7 +189,6 @@ const Company = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={12} md={10}>
                       <TextField
-                        id="street"
                         fullWidth
                         disabled={isDisabled}
                         autoComplete="none"
@@ -216,7 +213,6 @@ const Company = () => {
                     </Grid>
                     <Grid item xs={12} md={2}>
                       <TextField
-                        id="number"
                         fullWidth
                         disabled={isDisabled}
                         autoComplete="none"
@@ -241,7 +237,6 @@ const Company = () => {
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <TextField
-                        id="complement"
                         fullWidth
                         disabled={isDisabled}
                         autoComplete="none"
@@ -266,7 +261,6 @@ const Company = () => {
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <TextField
-                        id="district"
                         fullWidth
                         disabled={isDisabled}
                         autoComplete="none"
@@ -291,7 +285,6 @@ const Company = () => {
                     </Grid>
                     <Grid item xs={12} md={4}>
                       <TextField
-                        id="zip"
                         disabled={isDisabled}
                         fullWidth
                         autoComplete="none"
@@ -337,7 +330,6 @@ const Company = () => {
                       <Autocomplete
                         autoSelect={true}
                         disabled={isDisabled}
-                        id="stateComnpany"
                         style={{ marginBottom: 8 }}
                         options={states}
                         getOptionLabel={(uf) => uf.label}
@@ -362,7 +354,6 @@ const Company = () => {
                       <Autocomplete
                         autoSelect={true}
                         disabled={isDisabled}
-                        id="cityCompany"
                         options={cities}
                         getOptionLabel={(value) => value}
                         getOptionSelected={(option, value) => option === value}

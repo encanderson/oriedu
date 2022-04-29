@@ -86,7 +86,7 @@ const ProfileData = () => {
       }
     } else {
       const response = await ProfileServices.updateProfile({
-        name: user?.name,
+        job: user?.job,
       });
 
       if (!response) {
@@ -171,7 +171,7 @@ const ProfileData = () => {
                   id="outlined-basic1"
                   autoComplete="none"
                   fullWidth
-                  disabled={isDisabled}
+                  disabled={true}
                   label="Nome"
                   variant="outlined"
                   value={user?.name || ""}
@@ -192,7 +192,7 @@ const ProfileData = () => {
                 <TextField
                   id="outlined-basic2"
                   fullWidth
-                  disabled={true}
+                  disabled={isDisabled}
                   autoComplete="none"
                   onChange={(event) =>
                     dispatch({

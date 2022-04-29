@@ -1,6 +1,14 @@
 import { userSignIn, getUser, logoutUser } from "@src/api";
 
-const items = ["id", "userId", "email", "app", "name", "picture", "job"];
+const items = [
+  "school_id",
+  "user_id",
+  "email",
+  "app",
+  "name",
+  "picture",
+  "job",
+];
 
 export class AuthServices {
   static async signIn(code, token) {
