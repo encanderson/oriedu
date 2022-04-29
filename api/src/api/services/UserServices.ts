@@ -3,6 +3,7 @@ import { Users } from "../repositories";
 import { User, Profile } from "@src/@types";
 
 import { filterProfile, comparePassword, hashPassword } from "../../utils";
+import { profileUpdate } from "../../config";
 
 export class UserServices {
   static async getUser(user_id: string): Promise<User> {
@@ -19,7 +20,8 @@ export class UserServices {
     actualPassword: string
   ): Promise<void> {
     if (!actualPassword) {
-      const obj = filterProfile(data);
+      const obj = filterProfile(data, profileUpdate);
+
       await Users.update(user_id, obj);
     } else {
       const { password } = await Users.getUser(user_id);

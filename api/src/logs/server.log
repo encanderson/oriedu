@@ -1,0 +1,314 @@
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T15:49:06.967Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T15:58:39.031Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:07:04.032Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:08:16.828Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:09:19.914Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:11:54.731Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:15:02.476Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:15:42.602Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:26:17.602Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:31:27.073Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:33:42.205Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:34:18.882Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:34:52.790Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:51:18.667Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:53:16.616Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T17:53:37.931Z'
+}
+{
+  message: 'Senha inválida.',
+  level: 'error',
+  timestamp: '2022-04-29T17:54:52.657Z'
+}
+{
+  message: 'Senha inválida.',
+  level: 'error',
+  timestamp: '2022-04-29T17:55:35.097Z'
+}
+{
+  message: 'services_1.SchoolServices.update is not a function',
+  level: 'error',
+  timestamp: '2022-04-29T18:03:29.559Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:04:18.660Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:08:13.521Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:09:13.681Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:12:35.476Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:12:51.791Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:16:44.096Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:17:20.991Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:17:27.668Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:17:42.170Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:18:10.429Z'
+}
+{
+  message: '\n' +
+    'Invalid `prisma.school.update()` invocation:\n' +
+    '\n' +
+    '{\n' +
+    '  where: {\n' +
+    '?   id?: String,\n' +
+    '?   cnpj?: String\n' +
+    '  },\n' +
+    '  data: {\n' +
+    '    address: {\n' +
+    "      street: 'Rua Ratisbona',\n" +
+    "      number: '38',\n" +
+    "      complemento: 'Apt 106',\n" +
+    "      district: 'Centro',\n" +
+    "      zip: '63.100-140',\n" +
+    "      state: 'CE',\n" +
+    "      city: 'Crato'\n" +
+    '    },\n' +
+    '    contacts: {\n' +
+    "      email: 'engc.anderson@gmail.com',\n" +
+    "      phone: '88 99288 8203'\n" +
+    '    }\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    'Argument where of type SchoolWhereUniqueInput needs at least one argument. Available args are listed in green.\n' +
+    '\n' +
+    'Note: Lines with ? are optional.\n',
+  level: 'error',
+  timestamp: '2022-04-29T18:18:18.585Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:19:36.893Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:22:04.111Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:22:28.478Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:23:32.099Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:31:51.445Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T18:53:44.356Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:33:55.344Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:35:46.595Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:35:55.231Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:36:05.629Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:36:30.621Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:37:13.300Z'
+}
+{
+  message: '\n' +
+    'Invalid `prisma.school.findUnique()` invocation:\n' +
+    '\n' +
+    '{\n' +
+    '  where: {\n' +
+    "    cnpj: '00.000.000/0001-00',\n" +
+    '    register: 927\n' +
+    '  }\n' +
+    '  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n' +
+    '}\n' +
+    '\n' +
+    'Argument where of type SchoolWhereUniqueInput needs exactly one argument, but you provided cnpj and register. Please choose one. Available args: \n' +
+    'type SchoolWhereUniqueInput {\n' +
+    '  id?: String\n' +
+    '  cnpj?: String\n' +
+    '  register?: Int\n' +
+    '}\n' +
+    '\n',
+  level: 'error',
+  timestamp: '2022-04-29T19:39:37.048Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:44:35.175Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:48:50.742Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T19:50:10.646Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T20:04:42.703Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T20:04:53.745Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T20:05:31.951Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-29T20:05:35.834Z'
+}
+{
+  message: 'URL: https://ethereal.email/message/YmxFFYSE1dEWw1-rYmxFGSZjgiXm7uGgAAAAAcALElnIOiOQgUayB3vytSI',
+  level: 'info',
+  timestamp: '2022-04-29T20:05:46.204Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-04-29T20:06:13.076Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-04-29T20:06:23.603Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-04-29T20:06:43.641Z'
+}

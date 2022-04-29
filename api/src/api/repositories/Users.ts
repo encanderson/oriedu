@@ -97,49 +97,55 @@ export class Users {
       },
     });
 
-    // const profile = await prisma.profile.findUnique({
-    //   where: {
-    //     user_id: user_id,
-    //   },
-    //   select: {
-    //     name: true,
-    //     job: true,
-    //     picture: true,
-    //     school: {
-    //       select: {
-    //         contacts: true,
-    //         address: true,
-    //         cnpj: true,
-    //         fantasia: true,
-    //       },
-    //     },
-    //   },
-    // });
+    const profile = await prisma.employee.findUnique({
+      where: {
+        user_id: user_id,
+      },
+      select: {
+        job: true,
+        picture: true,
+        name: true,
+        school: {
+          select: {
+            id: true,
+            address: true,
+            contacts: true,
+            cnpj: true,
+            fantasia: true,
+          },
+        },
+      },
+    });
+
+    console.log(profile.school);
+
+    const name = profile.name.split(" ");
 
     const data = {
       ...user,
-      // name: profile.name,
-      // job: profile.job,
-      // picture: profile.picture,
-      // address: profile.school?.address,
-      // contacts: profile.school?.contacts,
-      // school: {
-      //   cnpj: profile.school?.cnpj,
-      //   fantasia: profile.school?.fantasia,
-      // },
+      name: name[0] + " " + name[name.length - 1],
+      job: profile.job,
+      picture: profile.picture,
+      school_id: profile.school.id,
+      address: profile.school?.address,
+      contacts: profile.school?.contacts,
+      school: {
+        cnpj: profile.school?.cnpj,
+        fantasia: profile.school?.fantasia,
+      },
     };
 
     return data;
   }
 
-  // static async update(user_id: string, data: Profile): Promise<void> {
-  //   await prisma.profile.update({
-  //     where: {
-  //       user_id: user_id,
-  //     },
-  //     data: data,
-  //   });
-  // }
+  static async update(user_id: string, data: User): Promise<void> {
+    await prisma.employee.update({
+      where: {
+        user_id: user_id,
+      },
+      data: data,
+    });
+  }
 
   static async updatePassword(
     user_id: string,

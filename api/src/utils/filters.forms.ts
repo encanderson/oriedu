@@ -38,9 +38,7 @@ export const verifyRegister = (user: User): boolean => {
   throw new InvalidField("Verificar os campos não preenchidos.");
 };
 
-export const filterProfile = (data: Profile): Profile => {
-  const fields = ["id", "user_id", "name", "job", "picture", "contacts"];
-
+export const filterProfile = (data: Profile, fields: string[]): Profile => {
   const obj = {};
 
   Object.keys(data).forEach((key) => {

@@ -1,5 +1,5 @@
 export interface School {
-  id: string;
+  school_id: string;
   user_id: string;
   cnpj: string;
   fantasia: string;

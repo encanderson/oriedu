@@ -26,57 +26,40 @@ export class SchoolRepository {
     return new SchoolRepository(newSchool);
   }
 
-  async create(user: User): Promise<void> {
-    await prisma.employee.create({
-      data: {
-        user_id: user.user_id,
-        name: user.user.name,
-        school: {
-          create: {
-            address: this.school.address,
-            cnpj: this.school.cnpj,
-            fantasia: this.school.fantasia,
-            contacts: {
-              email: this.school.email,
-              phone: this.school.phone,
+  async create(user: User, register: number): Promise<void> {
+    try {
+      await prisma.employee.create({
+        data: {
+          user_id: user.user_id,
+          name: user.user.name,
+          school: {
+            create: {
+              register: register,
+              address: this.school.address,
+              cnpj: this.school.cnpj,
+              fantasia: this.school.fantasia,
+              contacts: {
+                email: this.school.email,
+                phone: this.school.phone,
+              },
             },
           },
         },
+      });
+    } catch (err) {
+      throw new UserExist("Escola já possui registro");
+    }
+  }
+
+  static async update(data: School): Promise<void> {
+    await prisma.school.update({
+      where: {
+        id: data.school_id,
+      },
+      data: {
+        address: data.address,
+        contacts: data.contacts,
       },
     });
-  }
-
-  static async isSchool(user_id: string): Promise<void> {
-    console.log(user_id);
-    // const isSchool = await prisma.profile.findUnique({
-    //   where: {
-    //     user_id: user_id,
-    //   },
-    //   select: {
-    //     school: true,
-    //   },
-    // });
-
-    // if (isSchool.school) {
-    //   return true;
-    // }
-    // return false;
-  }
-
-  static async update(user_id: string, data: School): Promise<void> {
-    console.log(user_id, data);
-    // await prisma.school.update({
-    //   where: {
-    //     user_id: user_id,
-    //   },
-    //   data: {
-    //     address: data.address,
-    //     city: data.address.city,
-    //     cnpj: data.cnpj,
-    //     fantasia: data.fantasia,
-    //     state: data.address.state,
-    //     contacts: data.contacts,
-    //   },
-    // });
   }
 }

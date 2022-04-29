@@ -9,11 +9,9 @@ export class SchoolControllers {
     next: NextFunction
   ): Promise<void> {
     try {
-      const { user_id } = req.user;
-
       const data = req.body;
 
-      await SchoolServices.update(user_id, data);
+      await SchoolServices.update(data);
 
       res.status(204).send();
     } catch (err) {
