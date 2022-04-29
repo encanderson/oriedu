@@ -19,6 +19,7 @@ import { EDIT_USER, SNACKBAR_OPEN } from "@src/store/actions";
 import { states } from "@src/store/constant";
 import TextMaskCExpDate from "@src/utils/Mask";
 import { SchoolServices } from "@src/services";
+import { schoolModalities } from "@src/store/constant";
 
 import useAuth from "@src/hooks/useAuth";
 
@@ -97,6 +98,21 @@ const Company = () => {
         },
       },
     });
+  };
+
+  const handleModalities = async (_, value) => {
+    if (!value.length) {
+      return;
+    }
+
+    const data = {
+      contacts: user?.contacts,
+      address: user?.address,
+      school_id: user?.school_id,
+      modalities: value,
+    };
+
+    await SchoolServices.update(data);
   };
 
   return (
@@ -451,6 +467,30 @@ const Company = () => {
                     </Grid>
                   </Grid>
                 </SubCard>
+              </Grid>
+
+              <Grid item xs={12} md={12} lg={6}>
+                <Autocomplete
+                  hidden={isDisabled}
+                  multiple
+                  disabled={isDisabled}
+                  options={schoolModalities}
+                  getOptionLabel={(option) => option}
+                  onChange={handleModalities}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label={
+                        "Quais as modalidades de ensino? * Pode escolher mais de uma"
+                      }
+                    />
+                  )}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      pr: "30px !important",
+                    },
+                  }}
+                />
               </Grid>
             </Grid>
             <Divider style={{ marginTop: "20px" }} />
