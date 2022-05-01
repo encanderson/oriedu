@@ -1,0 +1,300 @@
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-04-30T15:20:41.139Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T13:50:47.429Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T14:18:26.041Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T14:21:00.761Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T14:25:05.830Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T14:30:33.363Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:23:07.276Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:27:02.829Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:30:02.211Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:30:34.678Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:43:26.758Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:44:48.676Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:44:58.154Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:45:45.690Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T15:45:51.720Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:01:20.407Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:01:29.886Z'
+}
+{
+  message: "Cannot read property 'app' of undefined",
+  level: 'error',
+  timestamp: '2022-05-01T16:01:31.333Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:01:42.497Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:01:46.744Z'
+}
+{
+  message: '\n' +
+    'Invalid `prisma.class.create()` invocation:\n' +
+    '\n' +
+    '{\n' +
+    '  data: {\n' +
+    "    class: '1° ano',\n" +
+    '+   modality: String,\n' +
+    "    shift: 'Manhã',\n" +
+    "    school_id: 'fd9d41c2-70b4-43ff-ab55-0111ca0e877c',\n" +
+    '?   id?: String\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    'Argument modality for data.modality is missing.\n' +
+    '\n' +
+    'Note: Lines with + are required, lines with ? are optional.\n',
+  level: 'error',
+  timestamp: '2022-05-01T16:04:57.468Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:05:13.831Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:05:34.852Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:05:51.399Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:06:52.734Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:06:57.190Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:08:38.390Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:58:06.030Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:58:56.370Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:59:15.133Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:59:25.155Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T16:59:33.808Z'
+}
+{
+  message: '\n' +
+    'Invalid `prisma.class.create()` invocation:\n' +
+    '\n' +
+    '{\n' +
+    '  data: {\n' +
+    "    class: '1° ano',\n" +
+    '+   modality: String,\n' +
+    "    shift: 'Manhã',\n" +
+    "    school_id: 'fd9d41c2-70b4-43ff-ab55-0111ca0e877c',\n" +
+    '?   id?: String\n' +
+    '  }\n' +
+    '}\n' +
+    '\n' +
+    'Argument modality for data.modality is missing.\n' +
+    '\n' +
+    'Note: Lines with + are required, lines with ? are optional.\n',
+  level: 'error',
+  timestamp: '2022-05-01T16:59:36.117Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:02:00.301Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:02:05.972Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:05:15.449Z'
+}
+{
+  message: 'Preencher todos campos.',
+  level: 'error',
+  timestamp: '2022-05-01T17:05:37.301Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:06:07.298Z'
+}
+{
+  message: 'Todos os campos obrigatórios devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-01T17:06:11.997Z'
+}
+{
+  message: 'Todos os campos obrigatórios devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-01T17:06:21.773Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:07:43.302Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:07:53.671Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:08:42.563Z'
+}
+{
+  message: "Cannot read property 'app' of undefined",
+  level: 'error',
+  timestamp: '2022-05-01T17:08:44.211Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:08:59.216Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:10:25.121Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:10:32.876Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:10:38.473Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:11:42.520Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:12:32.720Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:12:39.782Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:13:14.775Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:14:05.981Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-01T17:14:14.313Z'
+}

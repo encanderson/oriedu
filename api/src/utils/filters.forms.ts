@@ -49,3 +49,19 @@ export const filterProfile = (data: Profile, fields: string[]): Profile => {
 
   return obj;
 };
+
+export const filterPayload = (payload: unknown, fields: string[]): Profile => {
+  const obj = {};
+
+  fields.forEach((key) => {
+    if (payload[key]) {
+      obj[key] = payload[key];
+    } else {
+      throw new InvalidField(
+        "Todos os campos obrigatórios devem ser preenchidos."
+      );
+    }
+  });
+
+  return obj;
+};

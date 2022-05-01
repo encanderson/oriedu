@@ -35,7 +35,7 @@ model School {
   modalities  String[]
   classes     String[]
   school      Employee[]
-  turmas      Classes[]
+  turmas      Class[]
   
   @@map("schools")
 }
@@ -62,10 +62,10 @@ model Employee {
   @@map("employees")
 }
 
-model Classes {
+model Class {
   id          String   @id @default(uuid())
   modality    String
-  classe      String
+  class       String
   shift       String
   school_id   String
   school      School   @relation(fields: [school_id], references: [id])
