@@ -10,6 +10,7 @@ export class ClassRepository {
         modality: form.modality,
         shift: form.shift,
         school_id: school_id,
+        subjects: form.subjects,
       },
     });
   }

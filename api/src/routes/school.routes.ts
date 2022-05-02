@@ -5,4 +5,4 @@ import { authMiddleware } from "../api/middlewares";
 
 export const router = express.Router();
 
-router.post("/school", authMiddleware, SchoolControllers.update);
+router.put("/school", authMiddleware, SchoolControllers.update);

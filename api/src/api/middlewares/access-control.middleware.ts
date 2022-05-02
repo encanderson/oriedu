@@ -10,11 +10,9 @@ export class AccessControlMiddleware {
     next: NextFunction
   ): Promise<void> {
     try {
-      const user = {
-        app: "admin",
-      };
-      // TODO req.user.app
-      const permissions = accessController.can(user.app).createAny("classes");
+      const permissions = accessController
+        .can(req.user.app)
+        .createAny("classes");
 
       if (permissions.granted === false) {
         next(new Forbidden());

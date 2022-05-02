@@ -67,6 +67,7 @@ model Class {
   modality    String
   class       String
   shift       String
+  subjects    String[]
   school_id   String
   school      School   @relation(fields: [school_id], references: [id])
 

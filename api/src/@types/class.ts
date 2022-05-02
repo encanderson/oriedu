@@ -4,4 +4,5 @@ export interface ClassForm {
   modality: string;
   shift: string;
   school_id: string;
+  subjects: string[];
 }
