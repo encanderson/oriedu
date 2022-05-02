@@ -3,7 +3,9 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 // Routes
 import LoginRoutes from "./LoginRoutes";
-import AppRoutes from "./AppRoutes";
+import DashboardRoutes from "./app/Dashboard";
+import ProfileRoutes from "./app/Profile";
+import ClassRoutes from "./app/Class";
 
 import config from "@src/config";
 
@@ -21,7 +23,9 @@ const Routes = () => {
       <Redirect exact path="/" to={`${config.defaultPath}`} />
       <React.Fragment>
         <LoginRoutes />
-        <AppRoutes />
+        <DashboardRoutes />
+        <ProfileRoutes />
+        <ClassRoutes />
       </React.Fragment>
     </Switch>
   );

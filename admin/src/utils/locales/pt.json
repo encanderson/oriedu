@@ -29,6 +29,9 @@
     "msg": "Mensagens",
     "provider": "Fornecedor",
     "contractor": "Empreenteiro",
+    "classes": "Turmas",
+    "class": "Turma",
+    "add": "Adicionar",
 
     "application": "Aplicação",
     "users": "Usuários",
@@ -37,7 +40,7 @@
     "account-profile": "Conta",
     "profile": "Perfil",
     "cards": "Cards",
-    "list": "List",
+    "list": "Lista",
     "style": "Style",
     "customer": "Customer",
     "customer-list": "Customer List",

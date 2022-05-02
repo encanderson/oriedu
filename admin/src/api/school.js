@@ -12,7 +12,7 @@ export const updateSchool = async (data) => {
 
   try {
     const response = await axios({
-      method: "POST",
+      method: "PUT",
       baseURL: createUrl(`/school`),
       data: data,
       ...options,

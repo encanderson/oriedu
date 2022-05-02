@@ -226,3 +226,26 @@ export const schoolModalities = [
   "Ensino Fundamental",
   "Ensino Médio",
 ];
+
+export const shifts = ["Manhã", "Tarde", "Noite"];
+
+export const kindergarten = [
+  "Conviver",
+  "Brincar",
+  "Participar",
+  "Explorar",
+  "Expressar",
+  "Conhecer-se",
+];
+
+export const elementary = [
+  "Língua Portuguesa",
+  "Arte",
+  "Educação Física",
+  "Língua Inglesa",
+  "Matemática",
+  "Ciências",
+  "Geografia",
+  "História",
+  "Ensino Religioso",
+];
