@@ -3,23 +3,18 @@ import { SchoolRepository, Users } from "../repositories";
 import { School, User } from "../../@types";
 
 import { filterForm } from "../validators";
-import { htmlCode } from "../../config";
+import { htmlCode, userForm, schoolForm } from "../../config";
 import { sendEmail } from "../subscribers";
 import { AccessToken } from "@src/utils";
 import { setRegisterNumber } from "../helpers";
 
 export class AdminServices {
   static async createSchoolAndAdminUser(data: School | User): Promise<void> {
-    const userData = filterForm(data, ["app", "cpf", "email", "name"]) as User;
+    const userData = filterForm(data, userForm) as User;
 
     const user = await Users.searchUser(userData);
 
-    const obj = filterForm(data, [
-      "cnpj",
-      "fantasia",
-      "email",
-      "phone",
-    ]) as School;
+    const obj = filterForm(data, schoolForm) as School;
 
     const register = setRegisterNumber(obj.fantasia);
 

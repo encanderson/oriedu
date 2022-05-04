@@ -53,11 +53,12 @@ model Employee {
   address     String?
   contract    Json?
   qualifications  Json?
-  salary      Float?
+  salary      String?
   bank        String?
   picture     String?
   school_id   String
   school      School   @relation(fields: [school_id], references: [id])
+  teacher     Teacher?
 
   @@map("employees")
 }
@@ -72,4 +73,13 @@ model Class {
   school      School   @relation(fields: [school_id], references: [id])
 
   @@map("classes")
+}
+
+model Teacher {
+  id          String   @id @default(uuid())
+  employee_id  String   @unique
+  classes      String[]
+  employee    Employee @relation(fields: [employee_id], references: [id])
+
+  @@map("teachers")
 }
