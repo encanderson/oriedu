@@ -32,6 +32,8 @@
     "classes": "Turmas",
     "class": "Turma",
     "add": "Adicionar",
+    "teachers": "Professores",
+    "employees": "Funcionários",
 
     "application": "Aplicação",
     "users": "Usuários",

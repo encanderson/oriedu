@@ -8,6 +8,7 @@ import {
   IconSquarePlus,
   IconClipboardList,
 } from "@tabler/icons";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 // constant
 const icons = {
@@ -15,6 +16,7 @@ const icons = {
   IconNotebook: IconNotebook,
   IconSquarePlus: IconSquarePlus,
   IconClipboardList: IconClipboardList,
+  BadgeIcon: BadgeIcon,
 };
 
 //-----------------------|| DASHBOARD MENU ITEMS ||-----------------------//
@@ -52,6 +54,30 @@ export const dashboard = {
           type: "item",
           icon: icons.IconClipboardList,
           url: "/turmas",
+          breadcrumbs: false,
+        },
+      ],
+    },
+    {
+      id: "employees",
+      title: <FormattedMessage id="employees" />,
+      type: "collapse",
+      icon: icons.BadgeIcon,
+      children: [
+        {
+          id: "add",
+          title: <FormattedMessage id="add" />,
+          type: "item",
+          icon: icons.IconSquarePlus,
+          url: "/adicionar-funcionario",
+          breadcrumbs: false,
+        },
+        {
+          id: "list",
+          title: <FormattedMessage id="list" />,
+          type: "item",
+          icon: icons.IconClipboardList,
+          url: "/funcionarios",
           breadcrumbs: false,
         },
       ],

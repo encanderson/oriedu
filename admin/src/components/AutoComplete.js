@@ -2,7 +2,7 @@ import React from "react";
 
 import { Autocomplete, TextField } from "@material-ui/core";
 
-const AutoComplete = ({ options, handleChange, label }) => {
+const AutoComplete = ({ options, handleChange, label, placeholder }) => {
   return (
     <Autocomplete
       autoSelect={true}
@@ -16,6 +16,7 @@ const AutoComplete = ({ options, handleChange, label }) => {
           {...params}
           variant="outlined"
           label={label}
+          placeholder={placeholder}
           inputProps={{
             ...params.inputProps,
             autoComplete: "new-password",

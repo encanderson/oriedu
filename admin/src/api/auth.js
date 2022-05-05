@@ -1,7 +1,6 @@
 import axios from "axios";
 
-import { createUrl, createUrlAuth } from "./baseUrl";
-import { verifyCredentials } from "./";
+import { createUrlAuth, getCredentialsOptions } from "./";
 
 export const userSignIn = async (data, token) => {
   try {
@@ -24,19 +23,17 @@ export const userSignIn = async (data, token) => {
 };
 
 export const logoutUser = async () => {
-  const serviceToken = window.localStorage.getItem("serviceToken");
-  const refreshToken = window.localStorage.getItem("refreshToken");
+  const options = await getCredentialsOptions();
+
+  if (!options) {
+    return { message: "Credenciais inválidas." };
+  }
 
   try {
     const response = await axios({
       method: "POST",
       baseURL: createUrlAuth(`/auth/logout`),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceToken}`,
-        "Refresh-Token": refreshToken,
-      },
+      ...options,
     });
 
     return response;
@@ -44,35 +41,5 @@ export const logoutUser = async () => {
     const { response } = err;
 
     return response.data;
-  }
-};
-
-export const getUser = async () => {
-  const isValid = await verifyCredentials();
-
-  if (!isValid) {
-    return { message: "Credenciais inválidas." };
-  }
-
-  const serviceToken = window.localStorage.getItem("serviceToken");
-  const refreshToken = window.localStorage.getItem("refreshToken");
-
-  try {
-    const response = await axios({
-      method: "GET",
-      baseURL: createUrl(`/user`),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceToken}`,
-        "Refresh-Token": refreshToken,
-      },
-    });
-
-    return response;
-  } catch (err) {
-    const { response } = err;
-
-    return response;
   }
 };

@@ -249,3 +249,7 @@ export const elementary = [
   "História",
   "Ensino Religioso",
 ];
+
+export const ethnic = ["Amarela", "Branca", "Indígena", "Parda", "Preta"];
+
+export const gender = ["Feminino", "Masculino", "Outro"];
