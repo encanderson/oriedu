@@ -1,6 +1,6 @@
 import { prisma } from "../database";
 
-import { Employee } from "../../@types";
+import { Employee, EmployeeArray } from "../../@types";
 
 export class EmployeeRepository {
   static async create(school_id: string, employee: Employee): Promise<void> {
@@ -45,5 +45,42 @@ export class EmployeeRepository {
         },
       });
     }
+  }
+
+  static async getAll(school_id: string): Promise<EmployeeArray[]> {
+    const employees = await prisma.employee.findMany({
+      where: {
+        school_id: school_id,
+      },
+      select: {
+        id: true,
+        name: true,
+        job: true,
+        birthday: true,
+      },
+    });
+
+    return employees;
+  }
+
+  static async get(employee_id: string): Promise<EmployeeArray> {
+    const employee = await prisma.employee.findUnique({
+      where: {
+        id: employee_id,
+      },
+      select: {
+        id: true,
+        name: true,
+        job: true,
+        birthday: true,
+        teacher: {
+          select: {
+            classes: true,
+          },
+        },
+      },
+    });
+
+    return employee;
   }
 }

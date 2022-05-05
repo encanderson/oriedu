@@ -31,3 +31,9 @@ export interface Employee {
   app?: string;
   qualifications?: string;
 }
+
+export interface EmployeeArray {
+  id: string;
+  name: string;
+  job: string;
+}

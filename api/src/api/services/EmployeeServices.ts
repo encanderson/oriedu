@@ -1,9 +1,9 @@
 import { Users } from "../repositories";
 
-import { Employee, User } from "../../@types";
+import { Employee, User, EmployeeArray } from "../../@types";
 import { filterForm } from "../validators";
 import { userForm, employeeForm } from "../../config";
-import { encryptEmployee, hashFunction } from "../../utils";
+import { encryptEmployee, hashFunction, sorterObj } from "../../utils";
 import { EmployeeRepository } from "../repositories/Employee";
 
 async function filterAndCreateNewUser(data: Employee) {
@@ -59,5 +59,19 @@ export class EmployeeServices {
 
       await EmployeeRepository.create(school_id, employee);
     }
+  }
+
+  static async getAll(school_id: string): Promise<EmployeeArray[]> {
+    const employees = await EmployeeRepository.getAll(school_id);
+
+    const obj = sorterObj(employees, "name") as EmployeeArray[];
+
+    return obj.reverse();
+  }
+
+  static async get(employee_id: string): Promise<EmployeeArray> {
+    const employee = await EmployeeRepository.get(employee_id);
+
+    return employee;
   }
 }
