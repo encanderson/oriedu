@@ -4,3 +4,4 @@ export * from "./UsersServices";
 export * from "./SchoolServices";
 export * from "./AdminServices";
 export * from "./ClassServices";
+export * from "./EmployeeServices";

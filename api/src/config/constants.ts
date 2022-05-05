@@ -14,7 +14,6 @@ export const employeeForm = [
   "birthday",
   "contacts",
   "hired_at",
-  "fired_at",
   "docs",
   "ethnic",
   "gender",

@@ -15,18 +15,18 @@ async function filterAndCreateNewUser(data: Employee) {
   return { user_id, user };
 }
 
-function filterAndCreateNewEmployee(
+async function filterAndCreateNewEmployee(
   data: Employee,
   user_id: string,
   form: string[]
 ) {
   const employee = filterForm(data, form) as Employee;
 
-  encryptEmployee(employee);
+  const encrypted = await encryptEmployee(employee);
 
-  employee.user_id = user_id;
+  encrypted.user_id = user_id;
 
-  return employee;
+  return encrypted;
 }
 
 export class EmployeeServices {
@@ -38,19 +38,24 @@ export class EmployeeServices {
 
       const { user_id, user } = await filterAndCreateNewUser(data);
 
-      const employee = filterAndCreateNewEmployee(data, user_id, [
+      const employee = await filterAndCreateNewEmployee(data, user_id, [
         ...employeeForm,
         "classes",
         "qualifications",
       ]);
 
       user.create();
+      employee.birthday = new Date();
 
       await EmployeeRepository.create(school_id, employee);
     } else {
       const user_id = hashFunction(data.cpf);
 
-      const employee = filterAndCreateNewEmployee(data, user_id, employeeForm);
+      const employee = await filterAndCreateNewEmployee(
+        data,
+        user_id,
+        employeeForm
+      );
 
       await EmployeeRepository.create(school_id, employee);
     }

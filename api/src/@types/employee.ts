@@ -29,4 +29,5 @@ export interface Employee {
   classes: string[];
   email?: string;
   app?: string;
+  qualifications?: string;
 }

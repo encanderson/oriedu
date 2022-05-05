@@ -68,3 +68,431 @@
   level: 'info',
   timestamp: '2022-05-03T23:53:56.957Z'
 }
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:05:03.956Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:06:54.885Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:10:25.791Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:12:46.837Z'
+}
+{
+  message: "Cannot read property 'toLowerCase' of undefined",
+  level: 'error',
+  timestamp: '2022-05-05T15:15:23.033Z'
+}
+{
+  message: 'Todos os campos devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-05T15:17:41.571Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-05-05T15:19:15.359Z'
+}
+{
+  message: 'Todos os campos devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-05T15:19:46.686Z'
+}
+{
+  message: 'Todos os campos devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-05T15:25:39.421Z'
+}
+{
+  message: 'Todos os campos devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-05T15:25:56.298Z'
+}
+{
+  message: 'Todos os campos devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-05T15:27:12.680Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:27:43.952Z'
+}
+{
+  message: 'Todos os campos devem ser preenchidos.',
+  level: 'error',
+  timestamp: '2022-05-05T15:27:49.403Z'
+}
+{
+  message: '\n' +
+    'Invalid `EmployeeServices.create()` invocation in\n' +
+    '/home/enganderson/OneDrive/oriedu/api/src/api/controllers/EmployeeControllers.ts:16:7\n' +
+    '\n' +
+    '  13 \n' +
+    '  14 const payload = req.body;\n' +
+    '  15 \n' +
+    '→ 16 await EmployeeServices.create(school_id, payload){\n' +
+    '       data: {\n' +
+    "         user_id: '70601ec4abd36e052ff5a57f85d11849641d1caebe88135025067808c5a5d6d4',\n" +
+    "         name: 'Newton Jr.',\n" +
+    "         school_id: 'fd9d41c2-70b4-43ff-ab55-0111ca0e877c',\n" +
+    "         job: 'Professor',\n" +
+    '         address: {},\n' +
+    '         ~~~~~~~\n' +
+    '         bank: {},\n' +
+    '         ~~~~\n' +
+    "         birthday: '03/08/1981',\n" +
+    '                   ~~~~~~~~~~~~\n' +
+    '         contacts: {},\n' +
+    '         ~~~~~~~~\n' +
+    '         contract: {\n' +
+    "           hired_at: '10/02/2020'\n" +
+    '         },\n' +
+    '         docs: {},\n' +
+    '         ~~~~\n' +
+    '         ethnic: {},\n' +
+    '         ~~~~~~\n' +
+    "         gender: 'Masculino',\n" +
+    '         salary: {},\n' +
+    '         ~~~~~~\n' +
+    '         qualifications: {\n' +
+    '           course: undefined,\n' +
+    '           completed_at: undefined,\n' +
+    '           forecasted_at: undefined\n' +
+    '         }\n' +
+    '       }\n' +
+    '     })\n' +
+    '\n' +
+    'Argument address: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument bank: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    "Argument birthday: Got invalid value '03/08/1981' on prisma.createOneEmployee. Provided String, expected DateTime or Null.\n" +
+    'Argument contacts: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument docs: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument ethnic: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument salary: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    '\n',
+  level: 'error',
+  timestamp: '2022-05-05T15:31:30.013Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:34:18.103Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-05-05T15:34:26.463Z'
+}
+{
+  message: '\n' +
+    'Invalid `EmployeeServices.create()` invocation in\n' +
+    '/home/enganderson/OneDrive/oriedu/api/src/api/controllers/EmployeeControllers.ts:16:7\n' +
+    '\n' +
+    '  13 \n' +
+    '  14 const payload = req.body;\n' +
+    '  15 \n' +
+    '→ 16 await EmployeeServices.create(school_id, payload){\n' +
+    '       data: {\n' +
+    "         user_id: '70601ec4abd36e052ff5a57f85d11849641d1caebe88135025067808c5a5d6d4',\n" +
+    "         name: 'Newton Jr.',\n" +
+    "         school_id: 'fd9d41c2-70b4-43ff-ab55-0111ca0e877c',\n" +
+    "         job: 'Professor',\n" +
+    '         address: {},\n' +
+    '         ~~~~~~~\n' +
+    '         bank: {},\n' +
+    '         ~~~~\n' +
+    "         birthday: '03/08/1981',\n" +
+    '                   ~~~~~~~~~~~~\n' +
+    '         contacts: {},\n' +
+    '         ~~~~~~~~\n' +
+    '         contract: {\n' +
+    "           hired_at: '10/02/2020'\n" +
+    '         },\n' +
+    '         docs: {},\n' +
+    '         ~~~~\n' +
+    '         ethnic: {},\n' +
+    '         ~~~~~~\n' +
+    "         gender: 'Masculino',\n" +
+    '         salary: {},\n' +
+    '         ~~~~~~\n' +
+    '         qualifications: {\n' +
+    '           course: undefined,\n' +
+    '           completed_at: undefined,\n' +
+    '           forecasted_at: undefined\n' +
+    '         }\n' +
+    '       }\n' +
+    '     })\n' +
+    '\n' +
+    'Argument address: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument bank: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    "Argument birthday: Got invalid value '03/08/1981' on prisma.createOneEmployee. Provided String, expected DateTime or Null.\n" +
+    'Argument contacts: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument docs: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument ethnic: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument salary: Got invalid value {} on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    '\n',
+  level: 'error',
+  timestamp: '2022-05-05T15:34:56.739Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:37:34.266Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:38:47.476Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:39:30.395Z'
+}
+{
+  message: '\n' +
+    'Invalid `EmployeeServices.create()` invocation in\n' +
+    '/home/enganderson/OneDrive/oriedu/api/src/api/controllers/EmployeeControllers.ts:16:7\n' +
+    '\n' +
+    '  13 \n' +
+    '  14 const payload = req.body;\n' +
+    '  15 \n' +
+    '→ 16 await EmployeeServices.create(school_id, payload){\n' +
+    '       data: {\n' +
+    "         user_id: '70601ec4abd36e052ff5a57f85d11849641d1caebe88135025067808c5a5d6d4',\n" +
+    "         name: 'Newton Jr.',\n" +
+    "         school_id: 'fd9d41c2-70b4-43ff-ab55-0111ca0e877c',\n" +
+    "         job: 'Professor',\n" +
+    '         address: {\n' +
+    "           street: 'Rua Francisco',\n" +
+    '           number: 40,\n' +
+    "           zip: '63160-000',\n" +
+    "           district: 'Centro',\n" +
+    "           city: 'Potengi',\n" +
+    "           state: 'Ceará'\n" +
+    '         },\n' +
+    '         ~~~~~~~~~~~~~~~~~~~~~~~~~~\n' +
+    '         bank: {\n' +
+    "           name: 'Banco do Brasil',\n" +
+    "           agency: '2701-01',\n" +
+    "           count: '7899-6'\n" +
+    '         },\n' +
+    '         ~~~~~~~~~~~~~~~~~~~~~~~~~~\n' +
+    "         birthday: '03/08/1981',\n" +
+    '                   ~~~~~~~~~~~~\n' +
+    '         contacts: {\n' +
+    "           email: 'and.orisistem@gmail.com',\n" +
+    "           phone: '992888203'\n" +
+    '         },\n' +
+    '         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n' +
+    '         contract: {\n' +
+    "           hired_at: '10/02/2020'\n" +
+    '         },\n' +
+    '         docs: {\n' +
+    "           cpf: '111.111.111-11',\n" +
+    "           rg: '200100200200200'\n" +
+    '         },\n' +
+    '         ~~~~~~~~~~~~~~~~~~~~~~~~\n' +
+    "         ethnic: 'Branco',\n" +
+    "         gender: 'Masculino',\n" +
+    '         salary: 1200,\n' +
+    '                 ~~~~\n' +
+    '         qualifications: {\n' +
+    '           course: undefined,\n' +
+    '           completed_at: undefined,\n' +
+    '           forecasted_at: undefined\n' +
+    '         }\n' +
+    '       }\n' +
+    '     })\n' +
+    '\n' +
+    'Argument address: Got invalid value \n' +
+    '{\n' +
+    "  street: 'Rua Francisco',\n" +
+    '  number: 40,\n' +
+    "  zip: '63160-000',\n" +
+    "  district: 'Centro',\n" +
+    "  city: 'Potengi',\n" +
+    "  state: 'Ceará'\n" +
+    '}\n' +
+    'on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument bank: Got invalid value \n' +
+    '{\n' +
+    "  name: 'Banco do Brasil',\n" +
+    "  agency: '2701-01',\n" +
+    "  count: '7899-6'\n" +
+    '}\n' +
+    'on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    "Argument birthday: Got invalid value '03/08/1981' on prisma.createOneEmployee. Provided String, expected DateTime or Null.\n" +
+    'Argument contacts: Got invalid value \n' +
+    '{\n' +
+    "  email: 'and.orisistem@gmail.com',\n" +
+    "  phone: '992888203'\n" +
+    '}\n' +
+    'on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument docs: Got invalid value \n' +
+    '{\n' +
+    "  cpf: '111.111.111-11',\n" +
+    "  rg: '200100200200200'\n" +
+    '}\n' +
+    'on prisma.createOneEmployee. Provided Json, expected String or Null.\n' +
+    'Argument salary: Got invalid value 1200 on prisma.createOneEmployee. Provided Int, expected String or Null.\n' +
+    '\n',
+  level: 'error',
+  timestamp: '2022-05-05T15:39:42.055Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:40:23.438Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-05-05T15:40:28.273Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:41:47.767Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:41:53.395Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:42:16.623Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:42:30.062Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:43:13.271Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:43:19.341Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:44:23.329Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:44:36.619Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:45:28.859Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:45:53.620Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:47:26.235Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:47:29.314Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:48:18.750Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:49:27.484Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:49:49.312Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:55:43.271Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:56:11.385Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:56:24.426Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:57:36.347Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:58:27.354Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:58:43.629Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:58:59.734Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T15:59:49.183Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T16:01:04.838Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T16:01:51.026Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-05T16:03:49.351Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-05-05T16:03:52.083Z'
+}
