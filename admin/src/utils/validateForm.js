@@ -16,13 +16,13 @@ export const validateForm = (payload, fields) => {
   if (payload) {
     Object.keys(payload).map((item) => {
       if (fields.indexOf(item) === -1) {
-        console.log(item);
         return false;
       }
 
-      return payload;
+      return true;
     });
+    return payload;
+  } else {
+    return false;
   }
-
-  return true;
 };

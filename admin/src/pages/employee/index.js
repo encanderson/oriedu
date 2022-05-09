@@ -8,10 +8,9 @@ import { Box, Tab, Tabs } from "@material-ui/core";
 import MainCard from "@src/components/cards/MainCard";
 import Identification from "./Identification";
 import { validateForm } from "@src/utils";
-// import { gridSpacing } from "@src/store/constant";
-// import AutoComplete from "@src/components/AutoComplete";
-import useAuth from "@src/hooks/useAuth";
+// import useAuth from "@src/hooks/useAuth";
 import { dispatchMessage } from "@src/utils";
+import Contacts from "./Contacts";
 
 // import { SchoolServices } from "@src/services";
 
@@ -63,62 +62,35 @@ const EmployeeRegister = () => {
 
   const [value, setValue] = React.useState(0);
 
-  const { user } = useAuth();
-
-  const [employee, setEmployee] = React.useState({
-    school_id: user?.school_id,
-    job: "",
-    cpf: "",
-    email: "",
-    name: "",
-    address: {
-      street: "",
-      number: "",
-      complemento: "",
-      zip: "",
-      city: "",
-      state: "",
-    },
-    bank: {
-      name: "",
-      agency: "",
-      count: "",
-    },
-    birthday: "",
-    contacts: {
-      email: "",
-      phone: "",
-    },
-    hired_at: "",
-    ethnic: "",
-    gender: "",
-    docs: {
-      cpf: "",
-      rg: "",
-    },
-    salary: "",
-    classes: [],
-    qualifications: {
-      course: "",
-      finished: "",
-      date: "",
-    },
-  });
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  //   bank: {
+  //     name: "",
+  //     agency: "",
+  //     count: "",
+  //   },
+  //   hired_at: "",
+  //   salary: "",
+  //   classes: [],
+  //   qualifications: {
+  //     course: "",
+  //     finished: "",
+  //     date: "",
+  //   },
+  // });
 
   const handleForms = (form, fields) => {
     const obj = validateForm(form, fields);
 
     if (!obj) {
-      dispatch(dispatchMessage("Preencha todos os campos", "warning"));
+      dispatch(dispatchMessage("Preencha todos os campos", "error"));
     } else {
       setValue(value + 1);
 
       console.log(data);
     }
+  };
+
+  const handleBack = () => {
+    setValue(value - 1);
   };
 
   return (
@@ -127,7 +99,7 @@ const EmployeeRegister = () => {
         <Tabs
           value={value}
           indicatorColor="primary"
-          onChange={handleChange}
+          // onChange={handleChange}
           className={classes.accountTab}
           aria-label="simple tabs example"
           variant="scrollable"
@@ -155,7 +127,7 @@ const EmployeeRegister = () => {
           <Identification handleForms={handleForms} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          {/* <School /> */}
+          <Contacts handleForms={handleForms} handleBack={handleBack} />
         </TabPanel>
         <TabPanel value={value} index={2}>
           {/* <Security /> */}
