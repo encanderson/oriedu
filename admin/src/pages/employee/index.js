@@ -10,10 +10,11 @@ import Identification from "./Identification";
 import Contacts from "./Contacts";
 import WorkInfo from "./Work";
 import { validateForm } from "@src/utils";
-// import useAuth from "@src/hooks/useAuth";
+import useAuth from "@src/hooks/useAuth";
 import { dispatchMessage } from "@src/utils";
+import { REMOVE_EMPLOYEE } from "@src/store/actions";
 
-// import { SchoolServices } from "@src/services";
+import { employeeServices } from "@src/services";
 
 const useStyles = makeStyles((theme) => ({
   accountTab: {
@@ -60,10 +61,11 @@ const EmployeeRegister = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.employee.employee);
+  const { user } = useAuth();
 
   const [value, setValue] = React.useState(0);
 
-  const handleForms = (form, fields) => {
+  const handleForms = async (form, fields) => {
     const obj = validateForm(form, fields);
 
     if (value !== 2) {
@@ -73,7 +75,21 @@ const EmployeeRegister = () => {
         setValue(value + 1);
       }
     } else {
-      console.log(data);
+      if (!obj) {
+        dispatch(dispatchMessage("Preencha todos os campos", "error"));
+      } else {
+        const response = await employeeServices(
+          `/${user.school_id}/employees`,
+          "POST",
+          data
+        );
+        if (response.status === 204) {
+          dispatch({
+            type: REMOVE_EMPLOYEE,
+          });
+          setValue(0);
+        }
+      }
     }
   };
 

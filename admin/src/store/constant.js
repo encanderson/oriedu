@@ -247,4 +247,4 @@ export const ethnic = ["Amarela", "Branca", "Indígena", "Parda", "Preta"];
 
 export const gender = ["Feminino", "Masculino", "Outro"];
 
-export const jobs = ["Secretaria(o)", "Professor(a)", "Serviços Gerais"];
+export const jobs = ["Secretaria", "Professor", "Serviços Gerais"];

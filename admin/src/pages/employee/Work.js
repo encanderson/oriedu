@@ -70,13 +70,13 @@ const WorkInfo = ({ handleForms, handleBack }) => {
       payload: {
         forms: {
           ...employee,
-          class: data,
+          classes: data,
         },
       },
     });
     setForm({
       ...form,
-      class: data,
+      classes: data,
     });
   };
 
@@ -196,7 +196,7 @@ const WorkInfo = ({ handleForms, handleBack }) => {
                   placeholder={employee?.job}
                 />
               </Grid>
-              {job === "Professor(a)" ? (
+              {job === "Professor" ? (
                 <>
                   <Grid item xs={12} md={4}>
                     <AutoCompleteClasses
@@ -282,6 +282,49 @@ const WorkInfo = ({ handleForms, handleBack }) => {
               ) : (
                 <div></div>
               )}
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  autoComplete="none"
+                  label="Data de contratação"
+                  variant="outlined"
+                  value={employee?.hired || ""}
+                  onChange={(event) => {
+                    dispatch({
+                      type: ADD_EMPLOYEE,
+                      payload: {
+                        forms: {
+                          ...employee,
+                          hired: event.target.value,
+                        },
+                      },
+                    });
+                    setForm({
+                      ...form,
+                      hired: event.target.value,
+                    });
+                  }}
+                  inputProps={{
+                    mask: [
+                      /[0-9]/,
+                      /[0-9]/,
+                      "-",
+                      /[0-9]/,
+                      /[0-9]/,
+                      "-",
+                      /[0-9]/,
+                      /[0-9]/,
+                      /[0-9]/,
+                      /[0-9]/,
+                    ],
+                    showMask: false,
+                  }}
+                  InputProps={{
+                    defaultValue: "",
+                    inputComponent: TextMaskCExpDate,
+                  }}
+                />{" "}
+              </Grid>
             </Grid>
           </SubCard>
         </Grid>
@@ -311,6 +354,7 @@ const WorkInfo = ({ handleForms, handleBack }) => {
                     "classes",
                     "course",
                     "finished",
+                    "hired",
                   ]);
                 }}
               >
