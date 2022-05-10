@@ -7,10 +7,11 @@ import { Box, Tab, Tabs } from "@material-ui/core";
 
 import MainCard from "@src/components/cards/MainCard";
 import Identification from "./Identification";
+import Contacts from "./Contacts";
+import WorkInfo from "./Work";
 import { validateForm } from "@src/utils";
 // import useAuth from "@src/hooks/useAuth";
 import { dispatchMessage } from "@src/utils";
-import Contacts from "./Contacts";
 
 // import { SchoolServices } from "@src/services";
 
@@ -62,29 +63,16 @@ const EmployeeRegister = () => {
 
   const [value, setValue] = React.useState(0);
 
-  //   bank: {
-  //     name: "",
-  //     agency: "",
-  //     count: "",
-  //   },
-  //   hired_at: "",
-  //   salary: "",
-  //   classes: [],
-  //   qualifications: {
-  //     course: "",
-  //     finished: "",
-  //     date: "",
-  //   },
-  // });
-
   const handleForms = (form, fields) => {
     const obj = validateForm(form, fields);
 
-    if (!obj) {
-      dispatch(dispatchMessage("Preencha todos os campos", "error"));
+    if (value !== 2) {
+      if (!obj) {
+        dispatch(dispatchMessage("Preencha todos os campos", "error"));
+      } else {
+        setValue(value + 1);
+      }
     } else {
-      setValue(value + 1);
-
       console.log(data);
     }
   };
@@ -130,7 +118,7 @@ const EmployeeRegister = () => {
           <Contacts handleForms={handleForms} handleBack={handleBack} />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          {/* <Security /> */}
+          <WorkInfo handleForms={handleForms} handleBack={handleBack} />
         </TabPanel>
       </div>
     </MainCard>

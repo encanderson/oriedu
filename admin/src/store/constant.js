@@ -214,13 +214,6 @@ export const logradouros = [
   { value: "Zigue-Zague" },
 ];
 
-export const activities = [
-  { value: "Construção", label: "Construção" },
-  { value: "Materiais de Construção", label: "Materiais de Construção" },
-  { value: "Serviços de Arquitetura", label: "Serviços de Arquitetura" },
-  { value: "Serviços de Engenharia", label: "Serviços de Engenharia" },
-];
-
 export const schoolModalities = [
   "Ensino Infantil",
   "Ensino Fundamental",
@@ -253,3 +246,5 @@ export const elementary = [
 export const ethnic = ["Amarela", "Branca", "Indígena", "Parda", "Preta"];
 
 export const gender = ["Feminino", "Masculino", "Outro"];
+
+export const jobs = ["Secretaria(o)", "Professor(a)", "Serviços Gerais"];

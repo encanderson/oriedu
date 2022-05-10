@@ -76,7 +76,6 @@ const Contacts = ({ handleForms, handleBack }) => {
             <Grid container spacing={2}>
               <Grid item xs={12} md={10}>
                 <TextField
-                  id="street"
                   fullWidth
                   autoComplete="none"
                   label="Endereço"
@@ -101,7 +100,6 @@ const Contacts = ({ handleForms, handleBack }) => {
               </Grid>
               <Grid item xs={12} md={2}>
                 <TextField
-                  id="number"
                   fullWidth
                   autoComplete="none"
                   label="Número"
@@ -126,7 +124,6 @@ const Contacts = ({ handleForms, handleBack }) => {
               </Grid>
               <Grid item xs={12} md={6}>
                 <TextField
-                  id="complement"
                   fullWidth
                   autoComplete="none"
                   label="Complemento"
@@ -151,7 +148,6 @@ const Contacts = ({ handleForms, handleBack }) => {
               </Grid>
               <Grid item xs={12} md={6}>
                 <TextField
-                  id="district"
                   fullWidth
                   autoComplete="none"
                   label="Bairro"
@@ -176,7 +172,6 @@ const Contacts = ({ handleForms, handleBack }) => {
               </Grid>
               <Grid item xs={12} md={4}>
                 <TextField
-                  id="zip"
                   fullWidth
                   autoComplete="none"
                   label="Cep"
