@@ -60,13 +60,14 @@ export class EmployeeRepository {
         name: true,
         job: true,
         birthday: true,
+        user_id: true,
       },
     });
 
     return employees;
   }
 
-  static async get(employee_id: string): Promise<EmployeeArray> {
+  static async get(employee_id: string): Promise<unknown> {
     const employee = await prisma.employee.findUnique({
       where: {
         id: employee_id,
@@ -76,6 +77,15 @@ export class EmployeeRepository {
         name: true,
         job: true,
         birthday: true,
+        address: true,
+        bank: true,
+        contacts: true,
+        contract: true,
+        docs: true,
+        ethnic: true,
+        gender: true,
+        qualifications: true,
+        salary: true,
         teacher: {
           select: {
             classes: true,

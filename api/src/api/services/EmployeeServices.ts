@@ -3,7 +3,13 @@ import { Users } from "../repositories";
 import { Employee, User, EmployeeArray } from "../../@types";
 import { filterForm } from "../validators";
 import { userForm, employeeForm } from "../../config";
-import { encryptEmployee, hashFunction, sorterObj } from "../../utils";
+import {
+  encryptEmployee,
+  hashFunction,
+  sorterObj,
+  decryptEmployee,
+} from "../../utils";
+import { removeObject } from "../helpers";
 import { EmployeeRepository } from "../repositories/Employee";
 
 async function filterAndCreateNewUser(data: Employee) {
@@ -97,16 +103,23 @@ export class EmployeeServices {
     }
   }
 
-  static async getAll(school_id: string): Promise<EmployeeArray[]> {
+  static async getAll(
+    user_id: string,
+    school_id: string
+  ): Promise<EmployeeArray[]> {
     const employees = await EmployeeRepository.getAll(school_id);
 
     const obj = sorterObj(employees, "name") as EmployeeArray[];
 
+    removeObject(obj, user_id);
+
     return obj.reverse();
   }
 
-  static async get(employee_id: string): Promise<EmployeeArray> {
-    const employee = await EmployeeRepository.get(employee_id);
+  static async get(employee_id: string): Promise<Employee> {
+    const employee = (await EmployeeRepository.get(employee_id)) as Employee;
+
+    await decryptEmployee(employee);
 
     return employee;
   }

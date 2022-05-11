@@ -36,4 +36,5 @@ export interface EmployeeArray {
   id: string;
   name: string;
   job: string;
+  user_id: string;
 }

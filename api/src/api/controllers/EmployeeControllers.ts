@@ -27,8 +27,9 @@ export class EmployeeControllers {
   ): Promise<void> {
     try {
       const school_id = req.params.id;
+      const user_id = req.user.user_id;
 
-      const employees = await EmployeeServices.getAll(school_id);
+      const employees = await EmployeeServices.getAll(user_id, school_id);
 
       res.status(200).send(employees);
     } catch (err) {
