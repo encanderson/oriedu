@@ -6,11 +6,11 @@ import { Grid, TextField, Button } from "@material-ui/core";
 import MainCard from "@src/components/cards/MainCard";
 import { gridSpacing } from "@src/store/constant";
 import AutoComplete from "@src/components/AutoComplete";
-import { SNACKBAR_OPEN } from "@src/store/actions";
 import useAuth from "@src/hooks/useAuth";
 import { shifts, elementary, kindergarten } from "@src/store/constant";
 
-import { SchoolServices } from "@src/services";
+import { initClassService } from "../services";
+import { dispatchMessage } from "@src/utils";
 
 const ClassRegister = () => {
   const dispatch = useDispatch();
@@ -62,23 +62,20 @@ const ClassRegister = () => {
     let verify = true;
     Object.keys(data).forEach((key) => {
       if (!data[key]) {
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message: "Por favor, verifique todos os dados",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "error",
-          close: false,
-        });
+        dispatch(
+          dispatchMessage("Por favor, verifique todos os dados", "error")
+        );
 
         verify = false;
       }
     });
 
     if (verify) {
-      const resp = await SchoolServices.createClass(data);
-      if (resp) {
+      const { service } = await initClassService(null, "POST");
+
+      const response = await service.create(data);
+
+      if (response.status === 204) {
         setClasses({
           modality: "",
           shift: "",
@@ -86,15 +83,9 @@ const ClassRegister = () => {
           school_id: user?.school_id,
           subjects: [],
         });
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message: "Turma adicionada",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "success",
-          close: false,
-        });
+        dispatch(dispatchMessage("Turma adicionada", "success"));
+      } else {
+        dispatch(dispatchMessage(response.data.message), "error");
       }
     }
   };

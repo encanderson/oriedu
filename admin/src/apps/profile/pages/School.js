@@ -18,8 +18,8 @@ import { getCities } from "@src/api/getCities";
 import { EDIT_USER, SNACKBAR_OPEN } from "@src/store/actions";
 import { states } from "@src/store/constant";
 import TextMaskCExpDate from "@src/utils/Mask";
-import { SchoolServices } from "@src/services";
 import { schoolModalities } from "@src/store/constant";
+import { initSchoolService } from "../../services/SchoolServices";
 
 import useAuth from "@src/hooks/useAuth";
 
@@ -39,7 +39,9 @@ const Company = () => {
       school_id: user?.school_id,
     };
 
-    const response = await SchoolServices.update(data);
+    const { service } = await initSchoolService(null, "PUT");
+
+    const response = await service.update(data);
 
     if (response) {
       dispatch({
@@ -112,7 +114,9 @@ const Company = () => {
       modalities: value,
     };
 
-    await SchoolServices.update(data);
+    const { service } = await initSchoolService(null, "PUT");
+
+    await service.update(data);
   };
 
   return (

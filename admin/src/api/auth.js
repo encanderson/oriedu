@@ -1,6 +1,7 @@
 import axios from "axios";
 
-import { createUrlAuth, getCredentialsOptions } from "./";
+import { createUrlAuth } from "../config/baseUrl";
+import { getCredentialsOptions } from "./";
 
 export const userSignIn = async (data, token) => {
   try {

@@ -83,3 +83,28 @@ export const getCredentialsOptions = async () => {
     };
   }
 };
+
+export const verifyCredentials = async () => {
+  const serviceToken = window.localStorage.getItem("serviceToken");
+  if (!serviceToken) {
+    return false;
+  }
+  const decoded = jwtDecode(serviceToken);
+
+  if (decoded.exp < Date.now() / 1000) {
+    const refreshToken = window.localStorage.getItem("refreshToken");
+
+    const response = await refreshAccessToken(serviceToken, refreshToken);
+
+    if (response.status === 204) {
+      localStorage.setItem("serviceToken", response.headers["access-token"]);
+
+      localStorage.setItem("refreshToken", response.headers["refresh-token"]);
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return true;
+  }
+};

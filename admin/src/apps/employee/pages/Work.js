@@ -13,7 +13,7 @@ import { ADD_EMPLOYEE } from "@src/store/actions";
 import { jobs } from "@src/store/constant";
 
 import useAuth from "@src/hooks/useAuth";
-import { SchoolServices } from "@src/services";
+import { initClassService } from "../../class/services";
 
 //-----------------------|| PROFILE 3 - PROFILE ||-----------------------//
 
@@ -30,7 +30,8 @@ const WorkInfo = ({ handleForms, handleBack }) => {
   React.useEffect(() => {
     (async () => {
       if (user?.school_id) {
-        const response = await SchoolServices.getClasses(user.school_id);
+        const { service } = await initClassService(user.school_id, "GET");
+        const response = await service.getClasses();
 
         if (response.status === 200) {
           setTurmas(response.data);

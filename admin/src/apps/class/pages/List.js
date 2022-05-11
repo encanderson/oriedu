@@ -17,12 +17,10 @@ import AddIcon from "@material-ui/icons/AddTwoTone";
 
 import { gridSpacing } from "@src/store/constant";
 import MainCard from "@src/components/cards/MainCard";
-// import DeleteComponent from "@src/components/Delete";
-// import SearchHeader from "@src/components/cards/CardHeader";
 
 import useAuth from "@src/hooks/useAuth";
 
-import { SchoolServices } from "@src/services";
+import { initClassService } from "../services";
 
 const useStyles = makeStyles({
   table: {
@@ -40,7 +38,9 @@ const ClassList = () => {
   React.useEffect(() => {
     (async () => {
       if (user?.school_id) {
-        const response = await SchoolServices.getClasses(user.school_id);
+        const { service } = await initClassService(user.school_id, "GET");
+
+        const response = await service.getClasses();
 
         if (response.status === 200) {
           setTurmas(response.data);
