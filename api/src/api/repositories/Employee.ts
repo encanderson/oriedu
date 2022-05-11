@@ -16,7 +16,7 @@ export class EmployeeRepository {
       birthday: employee.birthday,
       contacts: employee.contacts,
       contract: {
-        hired_at: employee.hired_at,
+        hired: employee.hired,
       },
       docs: employee.docs,
       ethnic: employee.ethnic,
@@ -32,7 +32,10 @@ export class EmployeeRepository {
       const teacher = await prisma.employee.create({
         data: {
           ...data,
-          qualifications: employee.qualifications,
+          qualifications: {
+            course: employee.course,
+            finished: employee.finished,
+          },
         },
       });
 

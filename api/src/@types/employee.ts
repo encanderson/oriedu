@@ -15,11 +15,10 @@ export interface Employee {
   job?: string;
   contacts?: string;
   address?: string;
-  hired_at?: string;
-  fired_at?: string;
+  hired?: string;
   contract?: JsonValue;
   course: string;
-  completed_at?: string;
+  finished?: string;
   forecast_completed?: string;
   comments?: string;
   salary?: string;
@@ -30,6 +29,7 @@ export interface Employee {
   email?: string;
   app?: string;
   qualifications?: string;
+  complemento?: string;
 }
 
 export interface EmployeeArray {

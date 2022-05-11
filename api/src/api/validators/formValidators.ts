@@ -6,7 +6,7 @@ export const filterForm = (obj: unknown, fields: string[]): unknown => {
     if (obj[item]) {
       return (newObj[item] = obj[item]);
     } else {
-      throw new InvalidField("Todos os campos devem ser preenchidos.");
+      throw new InvalidField(`Todos os campos devem ser preenchidos: ${item}`);
     }
   });
 

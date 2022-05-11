@@ -14,7 +14,7 @@ export class EmployeeControllers {
       const payload = req.body;
 
       await EmployeeServices.create(school_id, payload);
-      res.status(200).send();
+      res.status(204).send();
     } catch (err) {
       next(err);
     }

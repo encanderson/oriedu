@@ -26,4 +26,27 @@ export class AccessControlMiddleware {
       next(err);
     }
   }
+
+  static async employees(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const permissions = accessController
+        .can(req.user.app)
+        .createAny("employees");
+
+      if (permissions.granted === false) {
+        next(new Forbidden());
+      }
+
+      req.access = {
+        permissions: permissions,
+      };
+      next();
+    } catch (err) {
+      next(err);
+    }
+  }
 }

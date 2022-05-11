@@ -8,6 +8,12 @@ const grants = {
       "update:any": ["*"],
       "delete:any": ["*"],
     },
+    employees: {
+      "create:any": ["*"],
+      "read:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"],
+    },
   },
 };
 

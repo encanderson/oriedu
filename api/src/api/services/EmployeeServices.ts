@@ -16,7 +16,7 @@ async function filterAndCreateNewUser(data: Employee) {
 }
 
 async function filterAndCreateNewEmployee(
-  data: Employee,
+  data: Employee | unknown,
   user_id: string,
   form: string[]
 ) {
@@ -33,26 +33,62 @@ export class EmployeeServices {
   static async create(school_id: string, data: Employee): Promise<void> {
     const job = data.job;
 
+    const address = filterForm(data, [
+      "street",
+      "number",
+      "zip",
+      "district",
+      "city",
+      "state",
+    ]);
+
+    address["complemento"] = data?.complemento;
+
+    const bank = filterForm(data, ["bank", "agency", "count", "salary"]);
+    const contacts = filterForm(data, ["email", "phone"]);
+    const docs = filterForm(data, ["cpf", "rg"]);
+
+    const obj = {
+      address: address,
+      bank: bank,
+      name: data.name,
+      job: job,
+      birthday: data.birthday,
+      contacts: contacts,
+      hired: data.hired,
+      docs: docs,
+      ethnic: data.ethnic,
+      gender: data.gender,
+      salary: data.salary,
+    };
+
     if (job !== "Serviços Gerais") {
       data.app = job.toLowerCase();
 
       const { user_id, user } = await filterAndCreateNewUser(data);
 
-      const employee = await filterAndCreateNewEmployee(data, user_id, [
-        ...employeeForm,
-        "classes",
-        "qualifications",
-      ]);
+      let employee;
+      if (job === "Professor") {
+        employee = await filterAndCreateNewEmployee(
+          {
+            ...obj,
+            classes: data.classes,
+          },
+          user_id,
+          [...employeeForm, "classes"]
+        );
+      } else {
+        employee = await filterAndCreateNewEmployee(obj, user_id, employeeForm);
+      }
 
       user.create();
-      employee.birthday = new Date();
 
       await EmployeeRepository.create(school_id, employee);
     } else {
       const user_id = hashFunction(data.cpf);
 
       const employee = await filterAndCreateNewEmployee(
-        data,
+        obj,
         user_id,
         employeeForm
       );
