@@ -6,19 +6,16 @@ import MainLayout from "@src/layout/MainLayout";
 
 import AuthGuard from "@src/utils/route-guard/AuthGuard";
 
-const ClassRegister = Loadable(lazy(() => import("@src/pages/class")));
+const Profile = Loadable(lazy(() => import("./pages")));
 
-const ClassList = Loadable(lazy(() => import("@src/pages/class/List")));
-
-const ClassRoutes = () => {
+const ProfileRoutes = () => {
   const location = useLocation();
   return (
-    <Route path={["/adicionar-turma", "/turmas", "/turma/:id"]}>
+    <Route path={["/perfil"]}>
       <MainLayout>
         <Switch location={location} key={location.pathname}>
           <AuthGuard>
-            <Route exact path="/adicionar-turma" component={ClassRegister} />
-            <Route exact path="/turmas" component={ClassList} />
+            <Route exact path="/perfil" component={Profile} />
           </AuthGuard>
         </Switch>
       </MainLayout>
@@ -26,4 +23,4 @@ const ClassRoutes = () => {
   );
 };
 
-export default ClassRoutes;
+export default ProfileRoutes;

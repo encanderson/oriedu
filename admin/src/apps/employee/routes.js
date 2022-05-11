@@ -6,10 +6,10 @@ import MainLayout from "@src/layout/MainLayout";
 
 import AuthGuard from "@src/utils/route-guard/AuthGuard";
 
-const EmployeeRegister = Loadable(lazy(() => import("@src/pages/employee")));
+const EmployeeRegister = Loadable(lazy(() => import("./pages")));
 
-const EmployeeList = Loadable(lazy(() => import("@src/pages/employee/List")));
-const Employee = Loadable(lazy(() => import("@src/pages/employee/Employee")));
+const EmployeeList = Loadable(lazy(() => import("./pages/List")));
+const Employee = Loadable(lazy(() => import("./pages/Employee")));
 
 const EmployeesRoutes = () => {
   const location = useLocation();

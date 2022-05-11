@@ -3,11 +3,11 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 // Routes
 import LoginRoutes from "./LoginRoutes";
-import DashboardRoutes from "./app/Dashboard";
-import ProfileRoutes from "./app/Profile";
-import ClassRoutes from "./app/Class";
-import EmployeesRoutes from "./app/Employees";
-import TeacherRoutes from "./app/Teacher";
+import DashboardRoutes from "../apps/dashboard/routes";
+import ProfileRoutes from "../apps/profile/routes";
+import ClassRoutes from "../apps/class/routes";
+import EmployeesRoutes from "../apps/employee/routes";
+import StudentsRoutes from "../apps/students/routes";
 
 import config from "@src/config";
 
@@ -29,7 +29,7 @@ const Routes = () => {
         <ProfileRoutes />
         <ClassRoutes />
         <EmployeesRoutes />
-        <TeacherRoutes />
+        <StudentsRoutes />
       </React.Fragment>
     </Switch>
   );
