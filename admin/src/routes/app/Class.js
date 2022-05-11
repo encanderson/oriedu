@@ -13,7 +13,7 @@ const ClassList = Loadable(lazy(() => import("@src/pages/class/List")));
 const ClassRoutes = () => {
   const location = useLocation();
   return (
-    <Route path={["/adicionar-turma", "/turmas"]}>
+    <Route path={["/adicionar-turma", "/turmas", "/turma/:id"]}>
       <MainLayout>
         <Switch location={location} key={location.pathname}>
           <AuthGuard>

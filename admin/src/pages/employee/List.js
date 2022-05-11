@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -21,7 +22,8 @@ import MainCard from "@src/components/cards/MainCard";
 
 import useAuth from "@src/hooks/useAuth";
 
-import { SchoolServices } from "@src/services";
+import { employeeServices } from "@src/services";
+import { formatDate } from "@src/utils";
 
 const useStyles = makeStyles({
   table: {
@@ -31,17 +33,21 @@ const useStyles = makeStyles({
 
 const EmployeeList = () => {
   const classes = useStyles();
+  const history = useHistory();
   const { user } = useAuth();
 
-  const [turmas, setTurmas] = React.useState([]);
+  const [employees, setEmployees] = React.useState([]);
 
   React.useEffect(() => {
     (async () => {
       if (user?.school_id) {
-        const response = await SchoolServices.getClasses(user.school_id);
+        const response = await employeeServices(
+          `/${user.school_id}/employees`,
+          "GET"
+        );
 
         if (response.status === 200) {
-          setTurmas(response.data);
+          setEmployees(response.data);
         }
       }
     })();
@@ -56,27 +62,29 @@ const EmployeeList = () => {
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">Série/Turma</TableCell>
-                  <TableCell align="center">Modalidade</TableCell>
-                  <TableCell align="center">Turno</TableCell>
+                  <TableCell align="left">Funcionário(a)</TableCell>
+                  <TableCell align="center">Cargo</TableCell>
+                  <TableCell align="center">Aniversário</TableCell>
                   <TableCell align="right">Ações</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {turmas.length ? (
-                  turmas.map((item, index) => {
+                {employees.length ? (
+                  employees.map((item, index) => {
                     return (
                       <TableRow key={index}>
-                        <TableCell align="left">{item.class}</TableCell>
-                        <TableCell align="center">{item.modality}</TableCell>
-                        <TableCell align="center">{item.shift}</TableCell>
+                        <TableCell align="left">{item.name}</TableCell>
+                        <TableCell align="center">{item.job}</TableCell>
+                        <TableCell align="center">
+                          {formatDate(item.birthday)}
+                        </TableCell>
                         <TableCell align="right">
                           <Tooltip title="Detalhes - Em construção">
                             <Fab
                               color="primary"
                               size="small"
                               onClick={() => {
-                                // handleRemove(item.id);
+                                history.push(`/funcionario/${item.id}`);
                               }}
                               sx={{
                                 boxShadow: "none",

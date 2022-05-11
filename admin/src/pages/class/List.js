@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -31,6 +32,7 @@ const useStyles = makeStyles({
 
 const ClassList = () => {
   const classes = useStyles();
+  const history = useHistory();
   const { user } = useAuth();
 
   const [turmas, setTurmas] = React.useState([]);
@@ -76,7 +78,7 @@ const ClassList = () => {
                               color="primary"
                               size="small"
                               onClick={() => {
-                                // handleRemove(item.id);
+                                history.push(`/turma/${item.id}`);
                               }}
                               sx={{
                                 boxShadow: "none",

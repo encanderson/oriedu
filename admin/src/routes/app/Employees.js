@@ -9,11 +9,14 @@ import AuthGuard from "@src/utils/route-guard/AuthGuard";
 const EmployeeRegister = Loadable(lazy(() => import("@src/pages/employee")));
 
 const EmployeeList = Loadable(lazy(() => import("@src/pages/employee/List")));
+const Employee = Loadable(lazy(() => import("@src/pages/employee/Employee")));
 
 const EmployeesRoutes = () => {
   const location = useLocation();
   return (
-    <Route path={["/adicionar-funcionario", "/funcionarios"]}>
+    <Route
+      path={["/adicionar-funcionario", "/funcionarios", "/funcionario/:id"]}
+    >
       <MainLayout>
         <Switch location={location} key={location.pathname}>
           <AuthGuard>
@@ -23,6 +26,7 @@ const EmployeesRoutes = () => {
               component={EmployeeRegister}
             />
             <Route exact path="/funcionarios" component={EmployeeList} />
+            <Route exact path="/funcionario/:id" component={Employee} />
           </AuthGuard>
         </Switch>
       </MainLayout>
