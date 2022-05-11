@@ -13,8 +13,7 @@ import { validateForm } from "@src/utils";
 import useAuth from "@src/hooks/useAuth";
 import { dispatchMessage } from "@src/utils";
 import { REMOVE_EMPLOYEE } from "@src/store/actions";
-
-import { employeeServices } from "@src/services";
+import { initEmployeeService } from "../services";
 
 const useStyles = makeStyles((theme) => ({
   accountTab: {
@@ -78,11 +77,13 @@ const EmployeeRegister = () => {
       if (!obj) {
         dispatch(dispatchMessage("Preencha todos os campos", "error"));
       } else {
-        const response = await employeeServices(
-          `/${user.school_id}/employees`,
-          "POST",
-          data
+        const { service } = await initEmployeeService(
+          `${user.school_id}/employees`,
+          "POST"
         );
+
+        const response = await service.request(data);
+
         if (response.status === 204) {
           dispatch({
             type: REMOVE_EMPLOYEE,

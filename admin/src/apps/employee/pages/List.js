@@ -17,12 +17,10 @@ import AddIcon from "@material-ui/icons/AddTwoTone";
 
 import { gridSpacing } from "@src/store/constant";
 import MainCard from "@src/components/cards/MainCard";
-// import DeleteComponent from "@src/components/Delete";
-// import SearchHeader from "@src/components/cards/CardHeader";
 
 import useAuth from "@src/hooks/useAuth";
 
-import { employeeServices } from "@src/services";
+import { initEmployeeService } from "../services";
 import { formatDate } from "@src/utils";
 
 const useStyles = makeStyles({
@@ -41,10 +39,12 @@ const EmployeeList = () => {
   React.useEffect(() => {
     (async () => {
       if (user?.school_id) {
-        const response = await employeeServices(
-          `/${user.school_id}/employees`,
+        const { service } = await initEmployeeService(
+          `${user.school_id}/employees`,
           "GET"
         );
+
+        const response = await service.request(null);
 
         if (response.status === 200) {
           setEmployees(response.data);

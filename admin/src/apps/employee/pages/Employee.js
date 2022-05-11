@@ -6,8 +6,8 @@ import { Grid, Typography, Button } from "@material-ui/core";
 import MainCard from "@src/components/cards/MainCard";
 import { gridSpacing } from "@src/store/constant";
 
-import { employeeServices } from "@src/services";
 import useAuth from "@src/hooks/useAuth";
+import { initEmployeeService } from "../services";
 
 const EmployeeDetail = () => {
   const history = useHistory();
@@ -18,18 +18,21 @@ const EmployeeDetail = () => {
 
   React.useEffect(() => {
     (async () => {
-      const response = await employeeServices(
-        `/${user.school_id}/employees/${id}`,
+      const { service } = await initEmployeeService(
+        `${user.school_id}/employees/${id}`,
         "GET"
       );
+
+      const response = await service.request(null);
 
       if (response.status === 200) {
         setEmployee(response.data);
 
-        setClasses(response.data?.teacher?.classes);
+        if (response.data?.teacher) {
+          setClasses(response.data?.teacher?.classes);
+        }
       }
     })();
-    console.log(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 

@@ -2,12 +2,12 @@ import axios from "axios";
 
 import { createUrl, verifyCredentials } from "@src/api";
 
-class ClassServices {
+class EmployeeServices {
   constructor(path, method) {
     if (path) {
-      this.path = createUrl(`/class/${path}`);
+      this.path = createUrl(`/school/${path}`);
     } else {
-      this.path = createUrl(`/class`);
+      this.path = createUrl(`/school`);
     }
     this.method = method;
   }
@@ -36,7 +36,7 @@ class ClassServices {
     return true;
   }
 
-  async create(data) {
+  async request(data) {
     try {
       const isValid = await this.credentials();
 
@@ -53,28 +53,10 @@ class ClassServices {
       return response;
     }
   }
-
-  async getClasses() {
-    try {
-      const isValid = await this.credentials();
-
-      if (!isValid) {
-        return false;
-      }
-
-      const response = await axios(this.options);
-
-      return response;
-    } catch (err) {
-      const { response } = err;
-
-      return response;
-    }
-  }
 }
 
-export const initClassService = async (path, method) => {
-  const service = new ClassServices(path, method);
+export const initEmployeeService = async (path, method) => {
+  const service = new EmployeeServices(path, method);
 
   return { service };
 };
