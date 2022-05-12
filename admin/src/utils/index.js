@@ -5,3 +5,4 @@ export * from "./createUser";
 export * from "./password-strength";
 export * from "./validateForm";
 export * from "./dispatch";
+export * from "./searchTable";
