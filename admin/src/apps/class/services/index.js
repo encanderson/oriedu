@@ -1,6 +1,7 @@
 import axios from "axios";
 
-import { createUrl, verifyCredentials } from "@src/api";
+import { createUrl } from "@src/api";
+import { getCredentials } from "@src/apps/services/credentials";
 
 class ClassServices {
   constructor(path, method) {
@@ -12,33 +13,9 @@ class ClassServices {
     this.method = method;
   }
 
-  async credentials() {
-    const isValid = await verifyCredentials();
-
-    if (!isValid) {
-      return false;
-    }
-
-    const serviceToken = window.localStorage.getItem("serviceToken");
-    const refreshToken = window.localStorage.getItem("refreshToken");
-
-    this.options = {
-      method: this.method,
-      baseURL: this.path,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceToken}`,
-        "Refresh-Token": refreshToken,
-      },
-    };
-
-    return true;
-  }
-
   async create(data) {
     try {
-      const isValid = await this.credentials();
+      const isValid = await getCredentials(this);
 
       if (!isValid) {
         return false;
@@ -56,7 +33,7 @@ class ClassServices {
 
   async getClasses() {
     try {
-      const isValid = await this.credentials();
+      const isValid = await getCredentials(this);
 
       if (!isValid) {
         return false;

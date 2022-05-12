@@ -79,7 +79,7 @@ const EmployeeList = () => {
                           {formatDate(item.birthday)}
                         </TableCell>
                         <TableCell align="right">
-                          <Tooltip title="Detalhes - Em construção">
+                          <Tooltip title="Detalhes">
                             <Fab
                               color="primary"
                               size="small"
