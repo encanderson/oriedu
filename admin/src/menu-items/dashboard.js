@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 // assets
 import { IconDeviceAnalytics } from "@tabler/icons";
 
-import { classes, employees, student } from "../apps";
+import { classes, employees, student, section } from "../apps";
 
 // constant
 const icons = {
@@ -26,6 +26,7 @@ export const dashboard = {
       icon: icons.IconDeviceAnalytics,
       breadcrumbs: false,
     },
+    section,
     classes,
     employees,
     student,

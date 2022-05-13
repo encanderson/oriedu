@@ -35,6 +35,9 @@
     "teachers": "Professores",
     "employees": "Funcionários",
     "students": "Estudantes",
+    "new": "Novo",
+    "employee": "Funcionário",
+    "student": "Estudante",
 
     "application": "Aplicação",
     "users": "Usuários",
