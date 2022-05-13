@@ -99,7 +99,7 @@ const EmployeeRegister = () => {
   };
 
   return (
-    <MainCard>
+    <MainCard title={"Funcionário"}>
       <div className={classes.root}>
         <Tabs
           value={value}
