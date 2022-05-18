@@ -7,12 +7,10 @@ import accountReducer from "./accountReducer";
 import employeeReducer from "./employeeReducer";
 import studentReducer from "./studentReducer";
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   customization: customizationReducer,
   snackbar: snackbarReducer,
   accounts: accountReducer,
   employee: employeeReducer,
   student: studentReducer,
 });
-
-export default reducer;

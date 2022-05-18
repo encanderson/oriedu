@@ -248,3 +248,14 @@ export const ethnic = ["Amarela", "Branca", "Indígena", "Parda", "Preta"];
 export const gender = ["Feminino", "Masculino", "Outro"];
 
 export const jobs = ["Secretaria", "Professor", "Serviços Gerais"];
+
+export const schooling = [
+  "Analfabeto",
+  "Fundamental",
+  "Médio",
+  "Superior",
+  "Mestrado",
+  "Doutorado",
+];
+
+export const bloodType = ["A", "B", "O", "AB"];

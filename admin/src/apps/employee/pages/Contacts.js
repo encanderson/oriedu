@@ -311,7 +311,7 @@ const Contacts = ({ handleForms, handleBack }) => {
             <Grid item>
               <Button
                 variant="contained"
-                color="orange"
+                color="theme.palette.buttonColor"
                 onClick={() => {
                   handleBack();
                 }}

@@ -1,14 +1,17 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Tab, Tabs } from "@material-ui/core";
+import { Tab, Tabs } from "@material-ui/core";
 
 import MainCard from "@src/components/cards/MainCard";
-
-import { validateForm } from "@src/utils";
-import { dispatchMessage } from "@src/utils";
+import { TabPanel, a11yProps } from "./components/TabPanel";
+import Identification from "./Identification";
+import Docs from "./Docs";
+import Parents from "./Parents";
+import Emergency from "./Emergency";
+import YearSituation from "./YearSituation";
+import SchoolHistory from "./SchoolHistory";
 
 const useStyles = makeStyles((theme) => ({
   accountTab: {
@@ -29,68 +32,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box p={0}>{children}</Box>}
-    </div>
-  );
-}
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 const AddStudent = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const [value, setValue] = React.useState(0);
-
-  const student = useSelector((state) => state.student.student);
 
   const handleBack = () => {
     setValue(value - 1);
   };
 
-  const handleForms = async (form, fields) => {
-    const obj = validateForm(form, fields);
-
-    if (value !== 2) {
-      if (!obj) {
-        dispatch(dispatchMessage("Preencha todos os campos", "error"));
-      } else {
-        setValue(value + 1);
-      }
-    }
-    // else {
-    //   if (!obj) {
-    //     dispatch(dispatchMessage("Preencha todos os campos", "error"));
-    //   } else {
-    //     const { service } = await initEmployeeService(
-    //       `${user.school_id}/employees`,
-    //       "POST"
-    //     );
-
-    //     const response = await service.request(data);
-
-    //     if (response.status === 204) {
-    //       dispatch({
-    //         type: REMOVE_EMPLOYEE,
-    //       });
-    //       setValue(0);
-    //     }
-    //   }
-    // }
+  const handleForms = async () => {
+    setValue(value + 1);
   };
 
   return (
@@ -137,13 +88,22 @@ const AddStudent = () => {
           />
         </Tabs>
         <TabPanel value={value} index={0}>
-          {/* <Identification handleForms={handleForms} /> */}
+          <Identification handleForms={handleForms} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          {/* <Contacts handleForms={handleForms} handleBack={handleBack} /> */}
+          <Docs handleForms={handleForms} handleBack={handleBack} />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          {/* <WorkInfo handleForms={handleForms} handleBack={handleBack} /> */}
+          <Parents handleForms={handleForms} handleBack={handleBack} />
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <Emergency handleForms={handleForms} handleBack={handleBack} />
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <YearSituation handleForms={handleForms} handleBack={handleBack} />
+        </TabPanel>
+        <TabPanel value={value} index={0}>
+          <SchoolHistory handleForms={handleForms} handleBack={handleBack} />
         </TabPanel>
       </div>
     </MainCard>

@@ -12,13 +12,13 @@ const studentReducer = (state = initialState, action) => {
       const { forms } = action.payload;
       return {
         ...state,
-        employee: forms,
+        student: forms,
       };
     }
     case REMOVE_STUDENT: {
       return {
         ...state,
-        employee: null,
+        student: null,
       };
     }
     default: {

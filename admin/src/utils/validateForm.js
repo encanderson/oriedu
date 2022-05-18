@@ -26,3 +26,17 @@ export const validateForm = (payload, fields) => {
     return false;
   }
 };
+
+export const validateNext = (form, fields) => {
+  if (!form) {
+    return false;
+  }
+
+  for (let i = 0; i < fields.length; i += 1) {
+    if (!form[fields[i]]) {
+      return false;
+    }
+  }
+
+  return true;
+};

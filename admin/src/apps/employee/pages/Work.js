@@ -8,6 +8,7 @@ import SubCard from "@src/components/cards/SubCard";
 import { gridSpacing } from "@src/store/constant";
 import AutoCompleteClasses from "./AutoCompleteClasses";
 import AutoComplete from "@src/components/AutoComplete";
+import ButtonSecondary from "@src/components/buttons/ButtonSecondary";
 import TextMaskCExpDate from "@src/utils/Mask";
 import { ADD_EMPLOYEE } from "@src/store/actions";
 import { jobs } from "@src/store/constant";
@@ -332,15 +333,12 @@ const WorkInfo = ({ handleForms, handleBack }) => {
         <Grid item xs={12}>
           <Grid container justifyContent={"space-between"}>
             <Grid item>
-              <Button
-                variant="contained"
-                color="orange"
+              <ButtonSecondary
                 onClick={() => {
                   handleBack();
                 }}
-              >
-                Voltar
-              </Button>
+                title={"Voltar"}
+              />
             </Grid>
             <Grid item>
               <Button
