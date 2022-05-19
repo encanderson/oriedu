@@ -19,8 +19,6 @@ const Emergency = ({ handleForms, handleBack }) => {
   const handleNext = () => {
     const obj = validateNext(student, [
       "security",
-      "food",
-      "medicine",
       "blood",
       "rhFactor",
       "goHomeAlone",

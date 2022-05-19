@@ -12,6 +12,7 @@ import Parents from "./Parents";
 import Emergency from "./Emergency";
 import YearSituation from "./YearSituation";
 import SchoolHistory from "./SchoolHistory";
+import Review from "./Review";
 
 const useStyles = makeStyles((theme) => ({
   accountTab: {
@@ -86,6 +87,12 @@ const AddStudent = () => {
             label="Histórico Escolar"
             {...a11yProps(5)}
           />
+          <Tab
+            component={RouterLink}
+            to="#"
+            label="Revisão"
+            {...a11yProps(6)}
+          />
         </Tabs>
         <TabPanel value={value} index={0}>
           <Identification handleForms={handleForms} />
@@ -102,8 +109,11 @@ const AddStudent = () => {
         <TabPanel value={value} index={4}>
           <YearSituation handleForms={handleForms} handleBack={handleBack} />
         </TabPanel>
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={5}>
           <SchoolHistory handleForms={handleForms} handleBack={handleBack} />
+        </TabPanel>
+        <TabPanel value={value} index={6}>
+          <Review handleBack={handleBack} />
         </TabPanel>
       </div>
     </MainCard>

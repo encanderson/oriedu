@@ -6,7 +6,7 @@ import MainLayout from "@src/layout/MainLayout";
 
 import AuthGuard from "@src/utils/route-guard/AuthGuard";
 
-const StudentRegister = Loadable(lazy(() => import("./pages/Add")));
+const StudentRegister = Loadable(lazy(() => import("./pages")));
 
 const StudentsList = Loadable(lazy(() => import("./pages/List")));
 const StudentDetails = Loadable(lazy(() => import("./pages/Details")));

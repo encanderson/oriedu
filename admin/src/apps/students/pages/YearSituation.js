@@ -7,6 +7,7 @@ import { gridSpacing, ADD_STUDENT } from "@src/store";
 import SubCard from "@src/components/cards/SubCard";
 import AutoCompleteClass from "./components/ClassesComponent";
 import ButtonSecondary from "@src/components/buttons/ButtonSecondary";
+import AutoComplete from "@src/components/AutoComplete";
 
 import useAuth from "@src/hooks/useAuth";
 import { initClassService } from "@src/apps/class/services";
@@ -122,6 +123,23 @@ const YearSituation = ({ handleForms, handleBack }) => {
                 <Typography variant="subtitle2">
                   Modalidade de Ensino
                 </Typography>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <AutoComplete
+                  options={["Manhã", "Tarde"]}
+                  handleChange={(_, value) => {
+                    dispatch({
+                      type: ADD_STUDENT,
+                      payload: {
+                        forms: {
+                          ...student,
+                          shift: value,
+                        },
+                      },
+                    });
+                  }}
+                  placeholder={student?.shift || "Turno"}
+                />
               </Grid>
             </Grid>
           </SubCard>

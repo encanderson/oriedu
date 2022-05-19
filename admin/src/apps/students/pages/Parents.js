@@ -104,7 +104,6 @@ const Parents = ({ handleForms, handleBack }) => {
       "schooling",
       "cpf",
       "rg",
-      "contract",
     ]);
 
     if (obj) {
@@ -261,7 +260,7 @@ const Parents = ({ handleForms, handleBack }) => {
                   <AutoComplete
                     options={schooling}
                     handleChange={handleSchooling}
-                    label={"Escolaridade"}
+                    placeholder={parent?.schooling || "Escolaridade"}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
