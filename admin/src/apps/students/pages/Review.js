@@ -5,7 +5,7 @@ import { Button, Grid } from "@material-ui/core";
 
 import SubCard from "@src/components/cards/SubCard";
 import ButtonSecondary from "@src/components/buttons/ButtonSecondary";
-import InformationComponent from "./components/InformationComponent";
+import InformationComponent from "@src/components/InformationComponent";
 import HistoryReview from "./components/HistoryReview";
 
 import { formatDate } from "@src/utils";
@@ -18,6 +18,7 @@ const Review = ({ handleBack }) => {
     (() => {
       setHistory(student?.history);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async () => {

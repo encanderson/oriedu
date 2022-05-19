@@ -5,6 +5,7 @@ import { Grid, Typography, Button } from "@material-ui/core";
 
 import MainCard from "@src/components/cards/MainCard";
 import { gridSpacing } from "@src/store/constant";
+import InformationComponent from "@src/components/InformationComponent";
 
 import useAuth from "@src/hooks/useAuth";
 import { initEmployeeService } from "../services";
@@ -41,86 +42,71 @@ const EmployeeDetail = () => {
       <Grid container direction="column" spacing={gridSpacing}>
         <Grid item xs={12} sm={6}>
           <Grid container>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">{employee?.job}</Typography>
-              <Typography variant="subtitle2">Cargo</Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">
-                {employee?.qualifications?.course}
-              </Typography>
-              <Typography variant="subtitle2">Qualificação</Typography>
-            </Grid>
+            <InformationComponent primary={employee?.job} secondary={"Cargo"} />
+            <InformationComponent
+              primary={employee?.qualifications?.course}
+              secondary={"Qualificação"}
+            />
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Grid container>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">
-                {employee?.contract?.hired}
-              </Typography>
-              <Typography variant="subtitle2">Desde</Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">{employee?.salary}</Typography>
-              <Typography variant="subtitle2">Salário</Typography>
-            </Grid>
+            <InformationComponent
+              primary={employee?.contract?.hired}
+              secondary={"Desde"}
+            />
+            <InformationComponent
+              primary={employee?.salary}
+              secondary={"Salário"}
+            />
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Grid container>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">{employee?.gender}</Typography>
-              <Typography variant="subtitle2">Gênero</Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">{employee?.ethnic}</Typography>
-              <Typography variant="subtitle2">Raça/Cor</Typography>
-            </Grid>
+            <InformationComponent
+              primary={employee?.gender}
+              secondary={"Gênero"}
+            />
+            <InformationComponent
+              primary={employee?.ethnic}
+              secondary={"Raça/Cor"}
+            />
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Grid container>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">{employee?.docs?.cpf}</Typography>
-              <Typography variant="subtitle2">CPF</Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">{employee?.docs?.rg}</Typography>
-              <Typography variant="subtitle2">RG</Typography>
-            </Grid>
+            <InformationComponent
+              primary={employee?.docs?.cpf}
+              secondary={"CPF"}
+            />
+            <InformationComponent
+              primary={employee?.docs?.rg}
+              secondary={"RG"}
+            />
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Grid container>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">
-                {employee?.contacts?.email}
-              </Typography>
-              <Typography variant="subtitle2">Email</Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle1">
-                {employee?.contacts?.phone}
-              </Typography>
-              <Typography variant="subtitle2">Telefone</Typography>
-            </Grid>
+            <InformationComponent
+              primary={employee?.contacts?.email}
+              secondary={"Email"}
+            />
+            <InformationComponent
+              primary={employee?.contacts?.phone}
+              secondary={"Telefone"}
+            />
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Grid container>
-            <Grid item xs={12} sm={4}>
-              <Typography variant="subtitle1">
-                {employee?.bank?.bank}
-              </Typography>
-              <Typography variant="subtitle2">Banco</Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Typography variant="subtitle1">
-                {employee?.bank?.agency}
-              </Typography>
-              <Typography variant="subtitle2">Agência</Typography>
-            </Grid>
+            <InformationComponent
+              primary={employee?.bank?.bank}
+              secondary={"Banco"}
+            />
+            <InformationComponent
+              primary={employee?.contacts?.phone}
+              secondary={"Agência"}
+            />
             <Grid item xs={12} sm={4}>
               <Typography variant="subtitle1">
                 {employee?.bank?.count}
@@ -161,8 +147,8 @@ const EmployeeDetail = () => {
           {classes.length ? (
             classes.map((id, index) => {
               return (
-                <Grid container>
-                  <Grid key={index} xs={12} sm={4}>
+                <Grid container key={index}>
+                  <Grid item xs={12} sm={4}>
                     <Grid item xs={6}>
                       <Button
                         variant="contained"
