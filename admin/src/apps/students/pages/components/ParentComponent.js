@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 // material-ui
@@ -124,15 +123,6 @@ const UserDetailsCard = ({ item, index, array, setState }) => {
       </Grid>
     </Card>
   );
-};
-
-UserDetailsCard.propTypes = {
-  about: PropTypes.string,
-  contact: PropTypes.string,
-  email: PropTypes.string,
-  location: PropTypes.string,
-  name: PropTypes.string,
-  role: PropTypes.string,
 };
 
 export default UserDetailsCard;
