@@ -30,6 +30,24 @@ class StudentServices {
       return response;
     }
   }
+
+  async get() {
+    try {
+      const isValid = await getCredentials(this);
+
+      if (!isValid) {
+        return false;
+      }
+
+      const response = await axios(this.options);
+
+      return response;
+    } catch (err) {
+      const { response } = err;
+
+      return response;
+    }
+  }
 }
 
 export const initStudentService = async (path, method) => {

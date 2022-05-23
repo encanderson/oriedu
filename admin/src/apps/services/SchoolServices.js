@@ -30,6 +30,24 @@ class SchoolServices {
       return response;
     }
   }
+
+  async getStudents() {
+    try {
+      const isValid = await getCredentials(this);
+
+      if (!isValid) {
+        return false;
+      }
+
+      const response = await axios(this.options);
+
+      return response;
+    } catch (err) {
+      const { response } = err;
+
+      return response;
+    }
+  }
 }
 
 export const initSchoolService = async (path, method) => {
