@@ -49,4 +49,27 @@ export class AccessControlMiddleware {
       next(err);
     }
   }
+
+  static async students(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const permissions = accessController
+        .can(req.user.app)
+        .createAny("students");
+
+      if (permissions.granted === false) {
+        next(new Forbidden());
+      }
+
+      req.access = {
+        permissions: permissions,
+      };
+      next();
+    } catch (err) {
+      next(err);
+    }
+  }
 }

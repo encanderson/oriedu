@@ -1,3 +1,5 @@
+import { generateCode } from "../../utils";
+
 export const setRegisterNumber = (fantasia: string): number => {
   const array = fantasia.replace(/ /g, "").split("");
 
@@ -8,4 +10,10 @@ export const setRegisterNumber = (fantasia: string): number => {
   });
 
   return value;
+};
+
+export const setStudentNumber = (register: number): string => {
+  const number = generateCode();
+
+  return register + "-" + number;
 };

@@ -32,3 +32,42 @@ export const decryptEmployee = async (data: Employee): Promise<Employee> => {
 
   return data;
 };
+
+export const encryptData = async (
+  data: unknown,
+  fields: string[]
+): Promise<string> => {
+  const encryption = new Crypto();
+  const obj = {};
+  for (let i = 0; i < fields.length; i += 1) {
+    obj[fields[i]] = data[fields[i]];
+  }
+
+  const string = await encryption.encrypt(JSON.stringify(obj));
+
+  return string;
+};
+
+export const decryptData = async (data: string): Promise<unknown> => {
+  const encryption = new Crypto();
+
+  const string = await encryption.decrypt(data);
+
+  return JSON.parse(string);
+};
+
+export const encryptString = async (data: string): Promise<string> => {
+  const encryption = new Crypto();
+
+  const string = await encryption.encrypt(data);
+
+  return string;
+};
+
+export const decryptString = async (data: string): Promise<string> => {
+  const encryption = new Crypto();
+
+  const string = await encryption.decrypt(data);
+
+  return string;
+};

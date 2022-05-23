@@ -1,1 +1,549 @@
-
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-20T12:16:27.911Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-20T12:24:36.996Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T13:59:45.994Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T14:22:29.179Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T14:29:47.715Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T14:33:28.442Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T14:34:18.814Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T14:52:42.068Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T14:59:55.374Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T15:08:06.531Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T15:38:03.612Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T15:53:18.830Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T15:53:55.225Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:19:18.120Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:20:52.490Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:23:49.179Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:27:18.280Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:27:48.333Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:28:22.040Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:28:56.055Z'
+}
+{
+  message: '\n' +
+    'Invalid `StudentServices.create()` invocation in\n' +
+    '/home/enganderson/OneDrive/oriedu/api/src/api/controllers/StudentControllers.ts:14:7\n' +
+    '\n' +
+    '  11 try {\n' +
+    '  12   const form = req.body;\n' +
+    '  13 \n' +
+    '→ 14   await StudentServices.create(form){\n' +
+    '         data: {\n' +
+    "           birthday: '1981-08-03T03:00:00.000Z',\n" +
+    '           birthplace: {\n' +
+    "             nationality: 'Brasileiro',\n" +
+    "             naturalness: 'São Paulo'\n" +
+    '           },\n' +
+    "           docs: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgFwvHDV0B8Ie0wO9jQk502DAAAA2DCB1QYJKoZIhvcNAQcGoIHHMIHEAgEAMIG+BgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOCOkLZDJifPnaUSOQIBEICBkIAH2V38q77KzXPi898sj5UV+JelyQM9DTtn56pp6/YZ4AcQjcV3cfGwzLQIpQZpt6fMYszPr54lFHV7nO2GAEr7VBvsr/0JADa1GdZPBcukGofhoPtFH+DxtUaDTYnhuv9KpxdQg4uMH7qBQgE5afPC2uzfG0W5XHfR/NWG5fuEeJ4mKrp4VtpN10LIDnfTLA==',\n" +
+    "           emergency: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgGuj0l2vGpleXKXTOe3pigwAAAArzCBrAYJKoZIhvcNAQcGoIGeMIGbAgEAMIGVBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDE3hjUR0V5AXCebQ/wIBEIBoRoL5SQJB2y2rYUNCJXtCmUblbeAMvaTyVaR88uJ1PIqrHJDAEuxOUoW3vNBJmDO7F4hIy6TVV5p2sofjBdJL/XE7micl5fOCNb31J33iETj61CQGjIET1d3OzJ+kxtEgXw36G83VnAg=',\n" +
+    "           ethnic: 'Branca',\n" +
+    "           gender: 'Masculino',\n" +
+    "           name: 'Anderson Oliveira',\n" +
+    '       +   number: String,\n' +
+    "           parents: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgF1DKKeP5/0hZ+ANwI8ffsYAAAB4TCCAd0GCSqGSIb3DQEHBqCCAc4wggHKAgEAMIIBwwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAy2XH/6zC/lMwGbx/MCARCAggGUcTKogzxmys+CnqnT5b85UU96rc389rpE/zflv327jRsKlpouiWcUm2wIoJdQvo1PtvIuej2F3PeX/48uhe4hhWBM+o2L5bKJWGY2/zCCTLazNyg4+/a6aFCgoNK7D1hGvwZSAjYRc/FWxjq2Zssy+sNMl4eObmuudfpsXdB04c0wvvmTN7DIA/f7loW6wVmMwuG4g9sfdG7vKTQDQlGArHRkoDLWzYwjGMdvk+KRgwnrUmX9wWOvL7pKq4rH/lhoAg6g0Bgekl91Pf7MLgoM3wSJZbX4zzkqhn5gnvLLv0JIsWGHdFiAnedW5ZW4geAOlM/c6ayX7w/Uc9g0k+TRDZwJH8IufoFqUnNBalv9woGBuoQVJxmZny7AC1lBhXOYOtnj84DiBeCgRQn9TnszNfCbbDskvlM5suicpKl4Sk7wBs5tN84NNi1+PAYpAq+vxZn435ITqPZRZCk0kKbIDKcli/86lDpfON1pZTVYIxoZIfRyPiL4ez/41CHCtMVb/q9nMj4ZPvvwf9Bd/8pvx6lN534=',\n" +
+    '           social_program: false,\n' +
+    '           year_situation: {\n' +
+    "             modality: 'Ensino Infantil',\n" +
+    "             shift: 'Manhã'\n" +
+    '           },\n' +
+    "           class_id: '6d3c4490-ecdc-43a9-8cbc-1ae4f643e0b7',\n" +
+    '           history: [\n' +
+    '             {\n' +
+    "               school: 'Grupão',\n" +
+    "               year: '2010',\n" +
+    "               class: '1',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'Matemática',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Português',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             },\n' +
+    '             {\n' +
+    "               school: 'Ginásio',\n" +
+    "               year: '2011',\n" +
+    "               class: '2',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'História',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Geografia',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             }\n' +
+    '           ],\n' +
+    "           fee: '450.00',\n" +
+    '                ~~~~~~~~\n' +
+    '       ?   id?: String,\n' +
+    '       ?   defaulting?: Boolean | null\n' +
+    '         }\n' +
+    '       })\n' +
+    '\n' +
+    "Argument fee: Got invalid value '450.00' on prisma.createOneStudent. Provided String, expected Float.\n" +
+    'Argument number for data.number is missing.\n' +
+    '\n' +
+    'Note: Lines with + are required, lines with ? are optional.\n',
+  level: 'error',
+  timestamp: '2022-05-23T20:53:53.741Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:54:57.955Z'
+}
+{
+  message: '\n' +
+    'Invalid `StudentServices.create()` invocation in\n' +
+    '/home/enganderson/OneDrive/oriedu/api/src/api/controllers/StudentControllers.ts:14:7\n' +
+    '\n' +
+    '  11 try {\n' +
+    '  12   const form = req.body;\n' +
+    '  13 \n' +
+    '→ 14   await StudentServices.create(form){\n' +
+    '         data: {\n' +
+    "           birthday: '1981-08-03T03:00:00.000Z',\n" +
+    '           birthplace: {\n' +
+    "             nationality: 'Brasileiro',\n" +
+    "             naturalness: 'São Paulo'\n" +
+    '           },\n' +
+    "           docs: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgEiXnOy0gvWl+PHGTLinuSeAAAA2DCB1QYJKoZIhvcNAQcGoIHHMIHEAgEAMIG+BgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDO6xgzBcWZ8TTTmXAQIBEICBkP4tem1vr2SVM7MuQDI2fttIG7rFEVu/6MQrcCCqPxSnip7YYXZPhfPu9Tq+PM7HMY01V3xMBB3CL5kEKjdSHecmk9dBeEiB0dkoYHq+cFbWDz8RwE9lFetQZQNCHMkPRAz9RSGULqtk0auRjc1B/o6lQqMAUssx8AzZdE4s++ihgNy+iwxoEqANFEWJz1Uugg==',\n" +
+    "           emergency: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgGuTrAQrOnLppTTDD+hCEDoAAAArzCBrAYJKoZIhvcNAQcGoIGeMIGbAgEAMIGVBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJm85j/itJLpO3TY5AIBEIBo7w+eGf4/dSRKhddxnZXK3YOloa0LC7shBlGXYI1OyraLBEmmzk8rmRa/tJGHs2d1h++55Tk9MPj08E277eXkNx6PhH7fLW7wDTkmX6U98l60VUMm9WyRQJ1P7bs0oRozXcWoPnsLWMc=',\n" +
+    "           ethnic: 'Branca',\n" +
+    "           gender: 'Masculino',\n" +
+    "           name: 'Anderson Oliveira',\n" +
+    '       +   number: String,\n' +
+    "           parents: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgHRExC89yCqhWGBNqvgBxHiAAAB4TCCAd0GCSqGSIb3DQEHBqCCAc4wggHKAgEAMIIBwwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAzY8VmIsi0pmuS8NAsCARCAggGUqIaICXn5WFaRstOm0oPs0FchzSsv6qt1H0NWzWH9aLdVIDRSttTu1C0Zt0CGbXdenrsA3HtcVzgks8URb54IXhtq6EeNzJBA8kBSy6OY9ZZAyVNAwpEMiOO+PsH9WePUUbQ1YII1l52WsCcAC2aVaJL3fl7g4mu2QagSF54f5RHV9AxC5r86ktgI9fO2cw/QHWmD0K1MNQxAgD1YRXzSDn77tDD3lkoilWAfY5MaGecikyIMqDxhFoocY7rEoJB21X9+S4GZ7vm9bHYoG/RNt0XpuEFP9lbOiZehUAhaXyGDNwYz52vj3gLTevSR1jGatUxlzCJDM5hlDN4l9Rbdxybr39HdgojTzECKFK0H6k/zXAuJQXyfL5wh/J/DS+RxbHclcA2DADkum5nXc4SPaLtohdsAiX7+mSkhdOl+uMArOYDtVi3Mnj2ZVBAyryMcjXmhlEG2wW9qmCj7MVBuZFGPG7hY4BdFHtkAw3l2Gkl1egj2ADP9W4KCvYuCzOWWHxsWf9MwIxT96m/NtAr48XSWlds=',\n" +
+    '           social_program: false,\n' +
+    '           year_situation: {\n' +
+    "             modality: 'Ensino Infantil',\n" +
+    "             shift: 'Manhã'\n" +
+    '           },\n' +
+    "           class_id: '6d3c4490-ecdc-43a9-8cbc-1ae4f643e0b7',\n" +
+    '           history: [\n' +
+    '             {\n' +
+    "               school: 'Grupão',\n" +
+    "               year: '2010',\n" +
+    "               class: '1',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'Matemática',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Português',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             },\n' +
+    '             {\n' +
+    "               school: 'Ginásio',\n" +
+    "               year: '2011',\n" +
+    "               class: '2',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'História',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Geografia',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             }\n' +
+    '           ],\n' +
+    '           fee: 450,\n' +
+    '       ?   id?: String,\n' +
+    '       ?   defaulting?: Boolean | null\n' +
+    '         }\n' +
+    '       })\n' +
+    '\n' +
+    'Argument number for data.number is missing.\n' +
+    '\n' +
+    'Note: Lines with + are required, lines with ? are optional.\n',
+  level: 'error',
+  timestamp: '2022-05-23T20:55:06.209Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T20:56:15.315Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:00:18.993Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:04:58.000Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:05:56.011Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:06:01.723Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:08:08.431Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:08:29.834Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:12:39.463Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:18:01.558Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:19:24.913Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:20:00.414Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:20:40.884Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:21:48.921Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:22:07.740Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:22:35.553Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:23:06.345Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:24:01.586Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:25:04.853Z'
+}
+{
+  message: '\n' +
+    'Invalid `StudentServices.create()` invocation in\n' +
+    '/home/enganderson/OneDrive/oriedu/api/src/api/controllers/StudentControllers.ts:14:7\n' +
+    '\n' +
+    '  11 try {\n' +
+    '  12   const form = req.body;\n' +
+    '  13 \n' +
+    '→ 14   await StudentServices.create(form){\n' +
+    '         data: {\n' +
+    "           birthday: '1981-08-03T03:00:00.000Z',\n" +
+    '           birthplace: {\n' +
+    "             nationality: 'Brasileiro',\n" +
+    "             naturalness: 'São Paulo'\n" +
+    '           },\n' +
+    "           docs: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgF2VPU/K85Va9bai3pbhxScAAAA2DCB1QYJKoZIhvcNAQcGoIHHMIHEAgEAMIG+BgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOrgWhmYQCwJZ45OoAIBEICBkPCDeaCXWgDBVBCBKyRcFi4F+27yHKc/cD15Kyd4dzb4MBIsTJZhdGuZN/2q1bHC9TBWTHot6MW4zXdMeyQn0yAXMT21/LbxsHulrirRwLE4WeogdLvX12gxiVN2ysufc6FQfJGvHn1AWDchwq4kcZevDVEHGSfVXTuBXjxRLXZGUpl2K7NFOelKbvyj5sHffg==',\n" +
+    "           emergency: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgEIub7vQkmtEoF0XhRs3sQ0AAAArzCBrAYJKoZIhvcNAQcGoIGeMIGbAgEAMIGVBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDLR2omnkyBh/5MxOYwIBEIBoSiPzHdJtpB28AJ4rpveNUd9QJqneOfhs/tml7pkqN78AptnoLqZo4/2HNpbN3RHL55vgcFrYkCoKrQjQn2tA5NBAWfmNljB+rRQe1fIaTsmR39+I6gduK5V01NyMPWJAGUtlUHZtEWI=',\n" +
+    "           ethnic: 'Branca',\n" +
+    "           gender: 'Masculino',\n" +
+    "           name: 'Anderson Oliveira',\n" +
+    "           number: '927-698352',\n" +
+    "           parents: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgEXHCGXHx54BEz/3F+/bY4GAAAB4TCCAd0GCSqGSIb3DQEHBqCCAc4wggHKAgEAMIIBwwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAynOabyaG7wWmyP9XoCARCAggGU59K4xSksMDrFSzzNBdCBlSCGWFHqMU0ieiTE0Nvm1rbeTaAoMJyQt6Yje8sOqabb11uncPgr7X/NLyy/Egzmt6wWUlpRbQPlB865Ye5xl2wVNtfGt0edUfuzl/yX3G58mX06CxzBkhKKe57koUXqDnIkyTkORs6D7zvSmEFYiTdNNOrqxioBu/jOLyc6yLAEMQj9UQtHv52pqLtBdCLVSXAOolVVlfOlDNTnVOc/Sgxaqt4TPuU9Hn4b/9ZlaODZOpelTE3NIMp0HZjLMkMTLoME7+L10djX8r2B2GZGykB/yh7uxyUTvHqW4BBSAxCDwiLz5iMUc+a/hlpDJpjZZ7UHsW0iX331ZVbncbwIheNTRnaAG5VedfuHVM0fks0rDXZPTxtjuZarPWtoqpHYhpjhr2MsLfTRgtM1tuHdPX5nwArWd4oUuca28pBgUjweQUW/EVbkOHDpyEHeQtqrrmiOt6WmfEunBDWkDYwNfhxm2YRB4//aF3RL7Sv37ELZA7jO5qtsOpErVGsmABNhby0VgEg=',\n" +
+    '           social_program: false,\n' +
+    "           class_id: '6d3c4490-ecdc-43a9-8cbc-1ae4f643e0b7',\n" +
+    '           history: [\n' +
+    '             {\n' +
+    "               school: 'Grupão',\n" +
+    "               year: '2010',\n" +
+    "               class: '1',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'Matemática',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Português',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             },\n' +
+    '             {\n' +
+    "               school: 'Ginásio',\n" +
+    "               year: '2011',\n" +
+    "               class: '2',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'História',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Geografia',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             }\n' +
+    '           ],\n' +
+    '           fee: 450,\n' +
+    "           go_home_alone: 'Não',\n" +
+    '       +   school_id: String,\n' +
+    '       ?   id?: String,\n' +
+    '       ?   defaulting?: Boolean | null\n' +
+    '         }\n' +
+    '       })\n' +
+    '\n' +
+    'Argument school_id for data.school_id is missing.\n' +
+    '\n' +
+    'Note: Lines with + are required, lines with ? are optional.\n',
+  level: 'error',
+  timestamp: '2022-05-23T21:25:35.942Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:28:36.564Z'
+}
+{
+  message: '\n' +
+    'Invalid `StudentServices.create()` invocation in\n' +
+    '/home/enganderson/OneDrive/oriedu/api/src/api/controllers/StudentControllers.ts:14:7\n' +
+    '\n' +
+    '  11 try {\n' +
+    '  12   const form = req.body;\n' +
+    '  13 \n' +
+    '→ 14   await StudentServices.create(form){\n' +
+    '         data: {\n' +
+    "           birthday: '1981-08-03T03:00:00.000Z',\n" +
+    '           birthplace: {\n' +
+    "             nationality: 'Brasileiro',\n" +
+    "             naturalness: 'São Paulo'\n" +
+    '           },\n' +
+    "           docs: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgElnNngr/dYh5rMPq1fAmifAAAA2DCB1QYJKoZIhvcNAQcGoIHHMIHEAgEAMIG+BgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJrZjTGJ2RQMbpeGSQIBEICBkG4wUDLGZWB/KX6L8r3QsxsEHxud2deeylEe3+PElwqHOjDkrMDXukP7ylQvYuqXlQ75QjpEgXCTbopeOPS4pyy+TL/2+1quWqhCVBuMoeuOWCFkeYUm9PdUDS3CQ7OQqgmfRVskRF917bY/DdnAKNPqZzvttEWUyueH2ZWmnSES0ZEr5R2JmoaYpe7hUk3aUQ==',\n" +
+    "           emergency: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgET/jdI4uxS0Cy4efOCBYnOAAAArzCBrAYJKoZIhvcNAQcGoIGeMIGbAgEAMIGVBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDAFxEr+V+famcFZ4wQIBEIBo1Rf2a3GaHAWxT3bwfQnwPkAFP5C2iDQhgdel+b8nyhkHd5uRlQHDhwAq0fPtKcOi060mxoc8Kf1h6JT7b/TMMA8Mj/YfMfoCd7yPnezJXCq6xHgHanEqxX4Y4V9PLkMWFyE0P6RLh1Q=',\n" +
+    "           ethnic: 'Branca',\n" +
+    "           gender: 'Masculino',\n" +
+    "           name: 'Anderson Oliveira',\n" +
+    "           number: '927-244931',\n" +
+    "           parents: 'AQICAHg9hM87b7nCuSM8gM23kCif0qbrCA5ymdXEoATVfcb9lgFcb0z+CR0+EMJrwBoEExanAAAB4TCCAd0GCSqGSIb3DQEHBqCCAc4wggHKAgEAMIIBwwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAzhyq6c4GcABqAGnbgCARCAggGUrTwnRKsQVomtSFS1tPZFqoDIQg05fDdJk/d+38AdYN9gLKrzAOTkJlDJJDb/8yT8x5DP1nVbNYDofp68BI1NH7TA4gu7jlswR3+0yEs5T9d+BfaijNJCsBmXRej6jcL9JDzbFmbOZrzxWNIeWVT4llRycP1FHXVEAEF+WWrXgw3wWeNuYaUdOh898tqWQ81Ra/uCuROm4UasoqhwOMwK3fGA8cL93lvPeF05G0MvKtN5ihujeUW1z8RfxNnHehp8oZdxeWlbYlLK32OeogKtgg06d6Te3qoT2747CT0g67dmA2EDCC9IVOt0AjES6oZHZRNoHf4gjbsD5oEY4Tj8sdC0KnF2c6isIBNe5pgMd+Cmj9aLE8EyCETs1iYyS5IKgy0Qtjzq34uEvKxHafBTLWS+4Bo47L0N/e+yUJq1CSvZX374tnmQ0eDa8gwYWTygisO8UsT1L07PK0DGobPfiJ5a6VCKZ5clyWJWMqa6yqTHo44zh71+QmfbdD6IDVpdqK6kMALQPvg/Un/EVHKa80MTifY=',\n" +
+    '           social_program: false,\n' +
+    "           class_id: '6d3c4490-ecdc-43a9-8cbc-1ae4f643e0b7',\n" +
+    '           history: [\n' +
+    '             {\n' +
+    "               school: 'Grupão',\n" +
+    "               year: '2010',\n" +
+    "               class: '1',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'Matemática',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Português',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             },\n' +
+    '             {\n' +
+    "               school: 'Ginásio',\n" +
+    "               year: '2011',\n" +
+    "               class: '2',\n" +
+    "               situation: 'Aprovado',\n" +
+    '               disciplines: [\n' +
+    '                 {\n' +
+    "                   name: 'História',\n" +
+    "                   score: '10'\n" +
+    '                 },\n' +
+    '                 {\n' +
+    "                   name: 'Geografia',\n" +
+    "                   score: '8'\n" +
+    '                 }\n' +
+    '               ]\n' +
+    '             }\n' +
+    '           ],\n' +
+    '           fee: 450,\n' +
+    "           go_home_alone: 'Não',\n" +
+    '       +   school_id: String,\n' +
+    '       ?   id?: String,\n' +
+    '       ?   defaulting?: Boolean | null\n' +
+    '         }\n' +
+    '       })\n' +
+    '\n' +
+    'Argument school_id for data.school_id is missing.\n' +
+    '\n' +
+    'Note: Lines with + are required, lines with ? are optional.\n',
+  level: 'error',
+  timestamp: '2022-05-23T21:30:35.738Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:31:42.679Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:33:26.821Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:34:20.735Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:36:51.806Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:38:44.821Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:40:11.627Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:42:49.466Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:44:05.309Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:44:08.759Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:44:26.531Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-23T21:45:01.697Z'
+}

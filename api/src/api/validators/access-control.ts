@@ -14,6 +14,20 @@ const grants = {
       "update:any": ["*"],
       "delete:any": ["*"],
     },
+    students: {
+      "create:any": ["*"],
+      "read:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"],
+    },
+  },
+  secretaria: {
+    students: {
+      "create:any": ["*"],
+      "read:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"],
+    },
   },
 };
 

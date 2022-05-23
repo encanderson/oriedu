@@ -7,6 +7,7 @@ import { router as userRouter } from "./user.routes";
 import { router as schoolRouter } from "./school.routes";
 import { router as classRouter } from "./class.routes";
 import { router as employeeRouter } from "./employee.routes";
+import { router as studentRouter } from "./student.routes";
 
 const routes = (app: express.Application): void => {
   app.use("/docs", docsRouter);
@@ -16,6 +17,7 @@ const routes = (app: express.Application): void => {
   app.use("/api/v1", schoolRouter);
   app.use("/api/v1", classRouter);
   app.use("/api/v1", employeeRouter);
+  app.use("/api/v1", studentRouter);
 };
 
 export default routes;

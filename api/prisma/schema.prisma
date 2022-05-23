@@ -36,6 +36,7 @@ model School {
   classes     String[]
   school      Employee[]
   turmas      Class[]
+  students    Student[]
   
   @@map("schools")
 }
@@ -71,6 +72,7 @@ model Class {
   subjects    String[]
   school_id   String
   school      School   @relation(fields: [school_id], references: [id])
+  students    Student[]
 
   @@map("classes")
 }
@@ -82,4 +84,28 @@ model Teacher {
   employee    Employee @relation(fields: [employee_id], references: [id])
 
   @@map("teachers")
+}
+
+model Student {
+  id              String   @id @default(uuid())
+  number          String
+  name            String
+  birthday        DateTime
+  gender          String
+  ethnic          String
+  birthplace      Json
+  docs            String
+  emergency       String
+  go_home_alone   String
+  parents         String
+  social_program  Boolean
+  fee             Float
+  defaulting      Boolean?
+  history         Json[]
+  school_id       String
+  class_id        String
+  school          School @relation(fields: [school_id], references: [id])
+  class           Class   @relation(fields: [class_id], references: [id])
+
+  @@map("students")
 }

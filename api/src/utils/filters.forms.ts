@@ -65,3 +65,14 @@ export const filterPayload = (payload: unknown, fields: string[]): Profile => {
 
   return obj;
 };
+
+export const filterOptions = (payload: unknown, fields: string[]): unknown => {
+  const obj = {};
+
+  for (let i = 0; i < fields.length; i += 1) {
+    if (payload[fields[i]]) {
+      obj[fields[i]] = payload[fields[i]];
+    }
+  }
+  return obj;
+};

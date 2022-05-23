@@ -6,3 +6,4 @@ export * from "./school";
 export * from "./profile";
 export * from "./class";
 export * from "./employee";
+export * from "./student";
