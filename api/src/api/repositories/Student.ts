@@ -33,17 +33,12 @@ export class StudentRepository {
       select: {
         id: true,
         name: true,
-        go_home_alone: true,
-        fee: true,
         number: true,
         birthday: true,
-        gender: true,
-        defaulting: true,
         class: {
           select: {
             id: true,
             class: true,
-            modality: true,
             shift: true,
           },
         },

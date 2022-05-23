@@ -24,7 +24,8 @@ export class StudentControllers {
     next: NextFunction
   ): Promise<void> {
     try {
-      const school_id = req.params.school_id;
+      const school_id = req.query.school_id as string;
+
       const students = await StudentServices.getAll(school_id);
 
       res.status(200).send(students);
