@@ -18,7 +18,7 @@ const Emergency = ({ handleForms, handleBack }) => {
 
   const handleNext = () => {
     const obj = validateNext(student, [
-      "security",
+      "securityHealth",
       "blood",
       "rhFactor",
       "goHomeAlone",
@@ -29,31 +29,35 @@ const Emergency = ({ handleForms, handleBack }) => {
     if (!obj) {
       dispatch(dispatchMessage("Preencha todos os campos", "error"));
     } else {
-      if (typeof student.food === "string") {
-        const foods = student.food.split(",").map((item) => {
-          return item.trim();
-        });
+      if (typeof student.dietaryRestrictions === "string") {
+        const dietaryRestrictions = student.dietaryRestrictions
+          .split(",")
+          .map((item) => {
+            return item.trim();
+          });
         dispatch({
           type: ADD_STUDENT,
           payload: {
             forms: {
               ...student,
-              food: foods,
+              dietaryRestrictions: dietaryRestrictions,
             },
           },
         });
       }
 
-      if (typeof student.medicine === "string") {
-        const medicines = student.medicine.split(",").map((item) => {
-          return item.trim();
-        });
+      if (typeof student.medicationRestrictions === "string") {
+        const medicationRestrictions = student.medicationRestrictions
+          .split(",")
+          .map((item) => {
+            return item.trim();
+          });
         dispatch({
           type: ADD_STUDENT,
           payload: {
             forms: {
               ...student,
-              medicine: medicines,
+              medicationRestrictions: medicationRestrictions,
             },
           },
         });
@@ -87,14 +91,14 @@ const Emergency = ({ handleForms, handleBack }) => {
                   fullWidth
                   label="Seguro de Saúde"
                   variant="outlined"
-                  value={student?.security || ""}
+                  value={student?.securityHealth || ""}
                   onChange={(event) => {
                     dispatch({
                       type: ADD_STUDENT,
                       payload: {
                         forms: {
                           ...student,
-                          security: event.target.value,
+                          securityHealth: event.target.value,
                         },
                       },
                     });
@@ -107,14 +111,14 @@ const Emergency = ({ handleForms, handleBack }) => {
                   fullWidth
                   label="Restrinções Alimentares *"
                   variant="outlined"
-                  value={student?.food || ""}
+                  value={student?.dietaryRestrictions || ""}
                   onChange={(event) => {
                     dispatch({
                       type: ADD_STUDENT,
                       payload: {
                         forms: {
                           ...student,
-                          food: event.target.value,
+                          dietaryRestrictions: event.target.value,
                         },
                       },
                     });
@@ -127,14 +131,14 @@ const Emergency = ({ handleForms, handleBack }) => {
                   fullWidth
                   label="Restrinções Medicamentosa *"
                   variant="outlined"
-                  value={student?.medicine || ""}
+                  value={student?.medicationRestrictions || ""}
                   onChange={(event) => {
                     dispatch({
                       type: ADD_STUDENT,
                       payload: {
                         forms: {
                           ...student,
-                          medicine: event.target.value,
+                          medicationRestrictions: event.target.value,
                         },
                       },
                     });

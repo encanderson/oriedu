@@ -23,9 +23,7 @@ const Docs = ({ handleForms, handleBack }) => {
 
   const handleNext = () => {
     const obj = validateNext(student, [
-      "page",
-      "term",
-      "number",
+      "registerNumber",
       "registry",
       "dateRegister",
       "cpf",
@@ -49,56 +47,16 @@ const Docs = ({ handleForms, handleBack }) => {
                 <TextField
                   autoComplete="none"
                   fullWidth
-                  label="Número da Folha"
+                  label="Número da Registro"
                   variant="outlined"
-                  value={student?.page || ""}
+                  value={student?.registerNumber || ""}
                   onChange={(event) => {
                     dispatch({
                       type: ADD_STUDENT,
                       payload: {
                         forms: {
                           ...student,
-                          page: event.target.value,
-                        },
-                      },
-                    });
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <TextField
-                  autoComplete="none"
-                  fullWidth
-                  label="Termo"
-                  variant="outlined"
-                  value={student?.term || ""}
-                  onChange={(event) => {
-                    dispatch({
-                      type: ADD_STUDENT,
-                      payload: {
-                        forms: {
-                          ...student,
-                          term: event.target.value,
-                        },
-                      },
-                    });
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <TextField
-                  autoComplete="none"
-                  fullWidth
-                  label="Número do Livro"
-                  variant="outlined"
-                  value={student?.number || ""}
-                  onChange={(event) => {
-                    dispatch({
-                      type: ADD_STUDENT,
-                      payload: {
-                        forms: {
-                          ...student,
-                          number: event.target.value,
+                          registerNumber: event.target.value,
                         },
                       },
                     });

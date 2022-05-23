@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Button, Grid } from "@material-ui/core";
 
@@ -9,8 +9,11 @@ import InformationComponent from "@src/components/InformationComponent";
 import HistoryReview from "./components/HistoryReview";
 
 import { formatDate } from "@src/utils";
+import { initStudentService } from "../services";
+import { REMOVE_STUDENT } from "@src/store";
 
 const Review = ({ handleBack }) => {
+  const dispatch = useDispatch();
   const student = useSelector((state) => state.student.student);
   const [history, setHistory] = React.useState([]);
 
@@ -22,8 +25,17 @@ const Review = ({ handleBack }) => {
   }, []);
 
   const handleSubmit = async () => {
-    console.log(student);
+    const { service } = await initStudentService(null, "POST");
+
+    const response = await service.create(student);
+
+    if (response.status === 204) {
+      dispatch({
+        type: REMOVE_STUDENT,
+      });
+    }
   };
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -89,8 +101,8 @@ const Review = ({ handleBack }) => {
         </SubCard>
         {student?.parents.map((item, index) => {
           return (
-            <SubCard>
-              <Grid container key={index} spacing={2}>
+            <SubCard key={index}>
+              <Grid container spacing={2}>
                 <InformationComponent primary={item.name} secondary={"Nome"} />
                 <InformationComponent
                   primary={item.job}
@@ -143,6 +155,10 @@ const Review = ({ handleBack }) => {
             <InformationComponent
               primary={student?.security}
               secondary={"Convênio de Saúde"}
+            />
+            <InformationComponent
+              primary={student?.goHomeAlone}
+              secondary={"Autorizado(a) sair sozinho(a)"}
             />
           </Grid>
         </SubCard>

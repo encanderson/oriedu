@@ -52,6 +52,8 @@ const YearSituation = ({ handleForms, handleBack }) => {
             modality: classes[index].modality,
             class: value.class,
             classId: classes[index].id,
+            schoolNumber: user.register,
+            school_id: user.school_id,
           },
         },
       });
