@@ -47,4 +47,39 @@ export class StudentRepository {
 
     return students;
   }
+
+  static async get(student_id: string): Promise<unknown> {
+    const student = await prisma.student.findUnique({
+      where: {
+        id: student_id,
+      },
+      select: {
+        id: true,
+        name: true,
+        birthday: true,
+        gender: true,
+        ethnic: true,
+        birthplace: true,
+        fee: true,
+        defaulting: true,
+        go_home_alone: true,
+        number: true,
+        social_program: true,
+        history: true,
+        parents: true,
+        emergency: true,
+        docs: true,
+        class: {
+          select: {
+            id: true,
+            modality: true,
+            shift: true,
+            class: true,
+          },
+        },
+      },
+    });
+
+    return student;
+  }
 }

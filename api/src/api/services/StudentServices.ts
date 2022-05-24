@@ -3,7 +3,7 @@ import { Prisma } from "@prisma/client";
 import { StudentRepository } from "../repositories";
 
 import { Student, Docs } from "../../@types";
-import { encryptString, filterOptions } from "../../utils";
+import { encryptString, filterOptions, decryptString } from "../../utils";
 import { setStudentNumber } from "../helpers";
 
 export class StudentServices {
@@ -34,6 +34,7 @@ export class StudentServices {
       "securityHealth",
       "dietaryRestrictions",
       "medicationRestrictions",
+      "responsible",
     ]);
 
     const parents = form.parents as Prisma.JsonArray;
@@ -66,5 +67,23 @@ export class StudentServices {
     const students = await StudentRepository.getAll(school_id);
 
     return students;
+  }
+
+  static async get(student_id: string): Promise<unknown> {
+    const student = (await StudentRepository.get(student_id)) as Student;
+
+    const parents = student.parents as string;
+
+    student.parents = JSON.parse(await decryptString(parents));
+
+    const emergency = student.emergency as string;
+
+    student.emergency = JSON.parse(await decryptString(emergency));
+
+    const docs = student.docs as string;
+
+    student.docs = JSON.parse(await decryptString(docs));
+
+    return student;
   }
 }

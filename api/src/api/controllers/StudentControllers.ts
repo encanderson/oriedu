@@ -33,4 +33,19 @@ export class StudentControllers {
       next(err);
     }
   }
+
+  static async get(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const student_id = req.params.student_id;
+
+      const student = await StudentServices.get(student_id);
+      res.status(200).send(student);
+    } catch (err) {
+      next(err);
+    }
+  }
 }

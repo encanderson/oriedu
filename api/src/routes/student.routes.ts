@@ -11,3 +11,8 @@ router.post(
   [authMiddleware, AccessControlMiddleware.students],
   StudentControllers.create
 );
+router.get(
+  "/students/:student_id",
+  [authMiddleware, AccessControlMiddleware.students],
+  StudentControllers.get
+);
