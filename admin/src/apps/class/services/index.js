@@ -6,7 +6,7 @@ import { getCredentials } from "@src/apps/services/credentials";
 class ClassServices {
   constructor(path, method) {
     if (path) {
-      this.path = createUrl(`/class/${path}`);
+      this.path = createUrl(`/school/class/${path}`);
     } else {
       this.path = createUrl(`/class`);
     }
