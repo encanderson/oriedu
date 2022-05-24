@@ -154,7 +154,7 @@ const Emergency = ({ handleForms, handleBack }) => {
               </Grid>
               <Grid item xs={12} md={6}>
                 <AutoComplete
-                  options={["-", "+"]}
+                  options={["Negativo", "Positivo"]}
                   handleChange={(_, value) =>
                     dispatch({
                       type: ADD_STUDENT,

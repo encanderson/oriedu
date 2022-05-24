@@ -33,11 +33,15 @@ const HistoryReview = ({ item }) => {
   return (
     <Card className={classes.followerBlock}>
       <Grid container spacing={gridSpacing}>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6}>
           <Typography variant="h3" component="div">
             {item.school}
           </Typography>
           <Typography variant="caption">Escola</Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h6">{item.year}</Typography>
+          <Typography variant="caption">Ano</Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="h6">{item.class}</Typography>

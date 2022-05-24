@@ -57,7 +57,7 @@ const StudentsList = () => {
         handleSearch={handleSearch}
       />
       <TableComponent
-        title={"Funcionários"}
+        title={"Estudantes"}
         rows={students}
         rowsPerPage={rowsPerPage}
         setRowsPerPage={setRowsPerPage}
