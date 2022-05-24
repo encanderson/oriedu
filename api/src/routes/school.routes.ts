@@ -1,6 +1,10 @@
 import express from "express";
 
-import { SchoolControllers, StudentControllers } from "../api/controllers";
+import {
+  SchoolControllers,
+  StudentControllers,
+  ClassControllers,
+} from "../api/controllers";
 import { authMiddleware, AccessControlMiddleware } from "../api/middlewares";
 
 export const router = express.Router();
@@ -11,3 +15,4 @@ router.get(
   [authMiddleware, AccessControlMiddleware.students],
   StudentControllers.getAll
 );
+router.get("/school/class/:id", authMiddleware, ClassControllers.get);

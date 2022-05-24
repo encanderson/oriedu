@@ -21,4 +21,10 @@ export class ClassServices {
 
     return obj.reverse();
   }
+
+  static async getClass(class_id: string): Promise<unknown> {
+    const turma = await ClassRepository.getClass(class_id);
+
+    return turma;
+  }
 }

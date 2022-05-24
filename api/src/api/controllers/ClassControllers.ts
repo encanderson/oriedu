@@ -36,4 +36,20 @@ export class ClassControllers {
       next(err);
     }
   }
+
+  static async getClass(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const class_id = req.params.id;
+
+      const turma = await ClassServices.getClass(class_id);
+
+      res.status(200).send(turma);
+    } catch (err) {
+      next(err);
+    }
+  }
 }

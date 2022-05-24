@@ -12,4 +12,4 @@ router.post(
   ClassControllers.create
 );
 
-router.get("/class/:id", authMiddleware, ClassControllers.get);
+router.get("/class/:id", ClassControllers.getClass);
