@@ -48,6 +48,25 @@ class ClassServices {
       return response;
     }
   }
+
+  async getClass(path) {
+    try {
+      this.path = createUrl(path);
+      const isValid = await getCredentials(this);
+
+      if (!isValid) {
+        return false;
+      }
+
+      const response = await axios(this.options);
+
+      return response;
+    } catch (err) {
+      const { response } = err;
+
+      return response;
+    }
+  }
 }
 
 export const initClassService = async (path, method) => {

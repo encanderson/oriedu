@@ -61,7 +61,7 @@ const ClassList = () => {
                     <TableCell align="center">{item.modality}</TableCell>
                     <TableCell align="center">{item.shift}</TableCell>
                     <TableCell align="right">
-                      <Tooltip title="Detalhes - Em construção">
+                      <Tooltip title="Detalhes">
                         <Fab
                           color="primary"
                           size="small"

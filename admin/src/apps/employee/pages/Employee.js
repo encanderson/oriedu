@@ -104,7 +104,7 @@ const EmployeeDetail = () => {
               secondary={"Banco"}
             />
             <InformationComponent
-              primary={employee?.contacts?.phone}
+              primary={employee?.contacts?.agency}
               secondary={"Agência"}
             />
             <Grid item xs={12} sm={4}>
@@ -143,30 +143,28 @@ const EmployeeDetail = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          {classes.length ? (
-            classes.map((id, index) => {
-              return (
-                <Grid container key={index}>
-                  <Grid item xs={12} sm={4}>
-                    <Grid item xs={6}>
-                      <Button
-                        variant="contained"
-                        onClick={() => {
-                          history.push(`/turma/${id}`);
-                        }}
-                        color="primary"
-                      >
-                        Turma
-                      </Button>
-                    </Grid>
+        <Grid item xs={12}>
+          <Grid container spacing={2}>
+            {classes.length ? (
+              classes.map((id, index) => {
+                return (
+                  <Grid item key={index} xs={12}>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        history.push(`/turma/${id}`);
+                      }}
+                      color="primary"
+                    >
+                      {"Turma " + parseInt(index + 1)}
+                    </Button>
                   </Grid>
-                </Grid>
-              );
-            })
-          ) : (
-            <div></div>
-          )}
+                );
+              })
+            ) : (
+              <div></div>
+            )}
+          </Grid>
         </Grid>
       </Grid>
     </MainCard>
