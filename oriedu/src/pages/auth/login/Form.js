@@ -89,13 +89,6 @@ const LoginForm = (props, { ...others }) => {
       if (response) {
         dispatch(dispatchMessage(response.data.message, "error"));
         setInitialized(false);
-      } else {
-        dispatch(
-          dispatchMessage(
-            "Ocorreu um erro, por favor tente novamente!",
-            "error"
-          )
-        );
       }
     } else {
       dispatch(
