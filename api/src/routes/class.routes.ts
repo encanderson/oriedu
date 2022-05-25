@@ -12,4 +12,8 @@ router.post(
   ClassControllers.create
 );
 
-router.get("/class/:id", ClassControllers.getClass);
+router.get(
+  "/class/:id",
+  [authMiddleware, AccessControlMiddleware.students],
+  ClassControllers.getClass
+);
