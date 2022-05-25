@@ -27,13 +27,14 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import * as Yup from "yup";
 import { Formik } from "formik";
 
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 // project imports
 import useScriptRef from "@src/hooks/useScriptRef";
 import Mask from "@src/utils/Mask";
 import Loader from "@src/components/Loader";
 import { AuthServices } from "@src/services";
-
-import { SNACKBAR_OPEN } from "@src/store/actions";
+import { dispatchMessage } from "@src/utils";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,9 @@ const LoginForm = (props, { ...others }) => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [isInitialized, setInitialized] = React.useState(false);
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [recaptchaToken, setRecaptchaToken] = React.useState("");
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -61,22 +65,42 @@ const LoginForm = (props, { ...others }) => {
     event.preventDefault();
   };
 
+  const handleReCaptchaVerify = React.useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
+
+    const token = await executeRecaptcha();
+
+    setRecaptchaToken(token);
+  }, [executeRecaptcha]);
+
+  React.useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
+
   const handleSignIn = async (cpf, password) => {
     setInitialized(true);
 
-    const response = await AuthServices.signIn(cpf, password);
+    if (recaptchaToken) {
+      const response = await AuthServices.signIn(cpf, password);
 
-    if (response) {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: response.data.message,
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "error",
-        close: false,
-      });
-      setInitialized(false);
+      if (response) {
+        dispatch(dispatchMessage(response.data.message, "error"));
+        setInitialized(false);
+      } else {
+        dispatch(
+          dispatchMessage(
+            "Ocorreu um erro, por favor tente novamente!",
+            "error"
+          )
+        );
+      }
+    } else {
+      dispatch(
+        dispatchMessage("Erro de verificação, tente mais tarde!", "error")
+      );
     }
   };
 
