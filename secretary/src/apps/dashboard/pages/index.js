@@ -3,7 +3,6 @@ import React from "react";
 // material-ui
 import { Grid } from "@material-ui/core";
 
-// projexts import
 import { gridSpacing } from "@src/store/constant";
 import UnderConstruction from "@src/pages/underConstruction";
 

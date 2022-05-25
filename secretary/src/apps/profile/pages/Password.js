@@ -28,8 +28,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import useScriptRef from "@src/hooks/useScriptRef";
 import { gridSpacing } from "@src/store/constant";
 import { strengthColor, strengthIndicator } from "@src/utils/password-strength";
-import { ProfileServices } from "@src/services";
-import { SNACKBAR_OPEN } from "@src/store/actions";
+import { initUserService } from "../services";
+import { dispatchMessage } from "@src/utils";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -61,29 +61,18 @@ const Security = ({ ...others }) => {
         password: values.password,
         newPassword: values.newPassword,
       };
-      const response = await ProfileServices.updateProfile(data);
-      if (!response) {
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message:
-            "Algo de errado aconteceu, por favor, volte tente mais tarde.",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "error",
-          close: true,
-        });
+      const { service } = await initUserService(null, "PUT");
+      const response = await service.update(data);
+      if (response.status !== 204) {
+        dispatch(
+          dispatchMessage(
+            "Algo de errado aconteceu, por favor, volte tente mais tarde",
+            "error"
+          )
+        );
       }
     } else {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "O valor da nova senha não coincide",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "error",
-        close: false,
-      });
+      dispatch(dispatchMessage("O valor da nova senha não coincide", "error"));
     }
   };
 

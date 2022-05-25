@@ -8,17 +8,14 @@ import AuthGuard from "@src/utils/route-guard/AuthGuard";
 
 const Dashboard = Loadable(lazy(() => import("@src/pages/underConstruction")));
 
-const Profile = Loadable(lazy(() => import("@src/pages/profile")));
-
-const AppRoutes = () => {
+const DashboardRoutes = () => {
   const location = useLocation();
   return (
-    <Route path={["/dashboard", "/perfil"]}>
+    <Route path={["/dashboard"]}>
       <MainLayout>
         <Switch location={location} key={location.pathname}>
           <AuthGuard>
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/perfil" component={Profile} />
           </AuthGuard>
         </Switch>
       </MainLayout>
@@ -26,4 +23,4 @@ const AppRoutes = () => {
   );
 };
 
-export default AppRoutes;
+export default DashboardRoutes;

@@ -1,5 +1,5 @@
 {
-    "dashboard": "Painel",
+    "dashboard": "Menu",
     "default": "Padrão",
     "analytics": "Analítico",
 
@@ -29,6 +29,15 @@
     "msg": "Mensagens",
     "provider": "Fornecedor",
     "contractor": "Empreenteiro",
+    "classes": "Turmas",
+    "class": "Turma",
+    "add": "Adicionar",
+    "teachers": "Professores",
+    "employees": "Funcionários",
+    "students": "Estudantes",
+    "new": "Novo",
+    "employee": "Funcionário",
+    "student": "Estudante",
 
     "application": "Aplicação",
     "users": "Usuários",
@@ -37,7 +46,7 @@
     "account-profile": "Conta",
     "profile": "Perfil",
     "cards": "Cards",
-    "list": "List",
+    "list": "Lista",
     "style": "Style",
     "customer": "Customer",
     "customer-list": "Customer List",

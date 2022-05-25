@@ -214,89 +214,48 @@ export const logradouros = [
   { value: "Zigue-Zague" },
 ];
 
-export const activities = [
-  { value: "Construção", label: "Construção" },
-  { value: "Materiais de Construção", label: "Materiais de Construção" },
-  { value: "Serviços de Arquitetura", label: "Serviços de Arquitetura" },
-  { value: "Serviços de Engenharia", label: "Serviços de Engenharia" },
+export const schoolModalities = [
+  "Ensino Infantil",
+  "Ensino Fundamental",
+  "Ensino Médio",
 ];
 
-export const categories = [
-  "acabamentos",
-  "areia, pedra e cal",
-  "aços para construção",
-  "blocos e tijolos",
-  "caixas d'água e reservatórios",
-  "cercas e alambrados",
-  "churrasqueiras e fornos",
-  "cimentos, argamassas e concretos",
-  "colas e adesivos",
-  "decoração",
-  "esquadrias",
-  "ferragens",
-  "fixação e montagem",
-  "forros e gessos",
-  "instalações elétricas",
-  "isolamentos",
-  "limpeza e manutenção",
-  "lona, papelão e plástico bolha",
-  "madeiras",
-  "madeiras e estruturas",
-  "pisos e revestimentos",
-  "portas e janelas",
-  "pré-moldados e drywall",
-  "telhas e calhas",
-  "tintas e químicos",
-  "tintas e texturas",
-  "tubos e conexões",
-  "vedações e impermeabilizantes",
-  "vidros",
+export const shifts = ["Manhã", "Tarde", "Noite"];
+
+export const kindergarten = [
+  "Conviver",
+  "Brincar",
+  "Participar",
+  "Explorar",
+  "Expressar",
+  "Conhecer-se",
 ];
 
-export const profiles = [
-  "agrimensor(a)",
-  "antenista",
-  "arquiteto(a)",
-  "automação residencial",
-  "carpinteiro(a)",
-  "chaveiro(a)",
-  "climatização",
-  "decoradores",
-  "dedetizador",
-  "demolição",
-  "eletricista",
-  "empreiteiro(a)",
-  "encanador(a)",
-  "energia solar",
-  "engenheiro(a)",
-  "escavação",
-  "estudante",
-  "fornecedor",
-  "gesso e drywall",
-  "impermeabilizador(a)",
-  "instalador de papel de parede",
-  "instalador de tv digital",
-  "instalação de eletrônicos",
-  "isolamento térmico acústico",
-  "jardinagem",
-  "marceneiro(a)",
-  "marmoraria e granitos",
-  "montador(a) de móveis",
-  "paisagista",
-  "pavimentação",
-  "pedreiro(a)",
-  "pintor(a)",
-  "reciclagem",
-  "restauração e polimento de pisos",
-  "segurança eletrônica",
-  "serralheria e solda",
-  "servente",
-  "terraplenagem",
-  "topografia",
-  "vidraceiro(a)",
+export const elementary = [
+  "Língua Portuguesa",
+  "Arte",
+  "Educação Física",
+  "Língua Inglesa",
+  "Matemática",
+  "Ciências",
+  "Geografia",
+  "História",
+  "Ensino Religioso",
 ];
 
-export const workers = [
-  "MAO DE OBRA (C/ ENCARGOS)",
-  "ADMINISTRAÇÃO LOCAL DE OBRA (C/ ENCARGOS)",
+export const ethnic = ["Amarela", "Branca", "Indígena", "Parda", "Preta"];
+
+export const gender = ["Feminino", "Masculino", "Outro"];
+
+export const jobs = ["Secretaria", "Professor", "Serviços Gerais"];
+
+export const schooling = [
+  "Analfabeto",
+  "Fundamental",
+  "Médio",
+  "Superior",
+  "Mestrado",
+  "Doutorado",
 ];
+
+export const bloodType = ["A", "B", "O", "AB"];

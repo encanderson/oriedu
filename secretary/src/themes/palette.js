@@ -102,5 +102,7 @@ export function themePalette(theme) {
       paper: theme.paper,
       default: theme.backgroundDefault,
     },
+    buttonColor:
+      theme.customization.navType === "dark" ? "secondary" : "orange",
   };
 }

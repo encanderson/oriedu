@@ -20,3 +20,11 @@ export const SINGIN = "SINGIN";
 export const SNACKBAR_OPEN = "@snackbar/SNACKBAR_OPEN";
 
 export const ADD_ITEM = "ADD_ITEM";
+
+// employee
+export const ADD_EMPLOYEE = "ADD_EMPLOYEE";
+export const REMOVE_EMPLOYEE = "REMOVE_EMPLOYEE";
+
+// student
+export const ADD_STUDENT = "ADD_STUDENT";
+export const REMOVE_STUDENT = "REMOVE_STUDENT";

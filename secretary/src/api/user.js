@@ -1,28 +1,20 @@
 import axios from "axios";
 
 import { createUrl } from "./baseUrl";
-import { verifyCredentials } from "./";
+import { getCredentialsOptions } from "./";
 
 export const getProfile = async () => {
-  const isValid = await verifyCredentials();
+  const options = await getCredentialsOptions();
 
-  if (!isValid) {
+  if (!options) {
     return { message: "Credenciais inválidas." };
   }
-
-  const serviceToken = window.localStorage.getItem("serviceToken");
-  const refreshToken = window.localStorage.getItem("refreshToken");
 
   try {
     const response = await axios({
       method: "GET",
       baseURL: createUrl(`/user`),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceToken}`,
-        "Refresh-Token": refreshToken,
-      },
+      ...options,
     });
 
     return response;
@@ -34,26 +26,18 @@ export const getProfile = async () => {
 };
 
 export const updateProfile = async (data) => {
-  const isValid = await verifyCredentials();
+  const options = await getCredentialsOptions();
 
-  if (!isValid) {
+  if (!options) {
     return { message: "Credenciais inválidas." };
   }
-
-  const serviceToken = window.localStorage.getItem("serviceToken");
-  const refreshToken = window.localStorage.getItem("refreshToken");
 
   try {
     const response = await axios({
       method: "PUT",
       baseURL: createUrl(`/user`),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${serviceToken}`,
-        "Refresh-Token": refreshToken,
-      },
       data: data,
+      ...options,
     });
 
     return response;

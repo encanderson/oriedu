@@ -10,9 +10,10 @@ import { Avatar, Button, Grid, TextField, Typography } from "@material-ui/core";
 import SubCard from "@src/components/cards/SubCard";
 import { gridSpacing } from "@src/store/constant";
 import { saveImage } from "@src/utils/Images";
-import { EDIT_USER, SNACKBAR_OPEN } from "@src/store/actions";
-import { ProfileServices } from "@src/services";
+import { EDIT_USER } from "@src/store/actions";
 import useAuth from "@src/hooks/useAuth";
+import { initUserService } from "../services";
+import { dispatchMessage } from "@src/utils";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -69,36 +70,28 @@ const ProfileData = () => {
 
   const handleSubmit = async (action) => {
     if (action === "picture") {
-      const response = await ProfileServices.updateProfile({
-        picture: user.picture,
-      });
+      const { service } = await initUserService(null, "PUT");
+      const response = await service.update({ picture: user.picture });
 
-      if (!response) {
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message: "Atualização falhou, por favor tente mais tarde.",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "error",
-          close: true,
-        });
+      if (response.status !== 204) {
+        dispatch(
+          dispatchMessage(
+            "Atualização falhou, por favor tente mais tarde.",
+            "error"
+          )
+        );
       }
     } else {
-      const response = await ProfileServices.updateProfile({
-        name: user?.name,
-      });
+      const { service } = await initUserService(null, "PUT");
+      const response = await service.update({ job: user?.job });
 
-      if (!response) {
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message: "Atualização falhou, por favor tente mais tarde.",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "error",
-          close: true,
-        });
+      if (response.status !== 204) {
+        dispatch(
+          dispatchMessage(
+            "Atualização falhou, por favor tente mais tarde.",
+            "error"
+          )
+        );
       }
     }
   };
@@ -171,7 +164,7 @@ const ProfileData = () => {
                   id="outlined-basic1"
                   autoComplete="none"
                   fullWidth
-                  disabled={isDisabled}
+                  disabled={true}
                   label="Nome"
                   variant="outlined"
                   value={user?.name || ""}
@@ -192,7 +185,7 @@ const ProfileData = () => {
                 <TextField
                   id="outlined-basic2"
                   fullWidth
-                  disabled={true}
+                  disabled={isDisabled}
                   autoComplete="none"
                   onChange={(event) =>
                     dispatch({

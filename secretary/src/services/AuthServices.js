@@ -1,6 +1,4 @@
-import { userSignIn, getUser, logoutUser } from "@src/api";
-
-const items = ["id", "userId", "email", "app", "name", "picture", "job"];
+import { userSignIn, logoutUser, getProfile } from "@src/api";
 
 export class AuthServices {
   static async signIn(code, token) {
@@ -17,14 +15,10 @@ export class AuthServices {
   }
 
   static async getUser() {
-    const response = await getUser();
+    const response = await getProfile();
 
     if (response.status === 200) {
-      const user = {};
-
-      items.forEach((item) => (user[item] = response.data[item]));
-
-      return user;
+      return response.data;
     } else {
       return false;
     }
