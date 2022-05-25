@@ -2,3 +2,8 @@
 .env
 ansible/
 main.py
+dist/
+build/
+student.md
+school.md
+node_modules/
