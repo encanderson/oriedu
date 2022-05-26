@@ -193,8 +193,7 @@ const WorkInfo = ({ handleForms, handleBack }) => {
               <Grid item xs={12} md={4}>
                 <AutoComplete
                   options={jobs}
-                  label={"Cargo"}
-                  handleChange={handleJob}
+                  handleChange={handleJob || "Cargo"}
                   placeholder={employee?.job}
                 />
               </Grid>

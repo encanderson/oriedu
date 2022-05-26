@@ -9,6 +9,7 @@ import { gridSpacing } from "@src/store/constant";
 import TextMaskCExpDate from "@src/utils/Mask";
 import AutoComplete from "@src/components/AutoComplete";
 import AutoCompleteOptions from "@src/components/AuCompleteOptions";
+import ButtonSecondary from "@src/components/buttons/ButtonSecondary";
 import { ADD_EMPLOYEE } from "@src/store/actions";
 import { states } from "@src/store/constant";
 
@@ -217,7 +218,7 @@ const Contacts = ({ handleForms, handleBack }) => {
                 <AutoCompleteOptions
                   handleChange={handleState}
                   options={states}
-                  placeholder={"Estado"}
+                  placeholder={employee?.state || "Estado"}
                 />
               </Grid>
               <Grid item xs={12} md={4}>
@@ -225,6 +226,7 @@ const Contacts = ({ handleForms, handleBack }) => {
                   handleChange={handleCity}
                   options={cities}
                   value={city}
+                  placeholder={employee?.city || "Cidade"}
                 />
               </Grid>
             </Grid>
@@ -309,15 +311,12 @@ const Contacts = ({ handleForms, handleBack }) => {
         <Grid item xs={12}>
           <Grid container justifyContent={"space-between"}>
             <Grid item>
-              <Button
-                variant="contained"
-                color="theme.palette.buttonColor"
+              <ButtonSecondary
                 onClick={() => {
                   handleBack();
                 }}
-              >
-                Voltar
-              </Button>
+                title={"Voltar"}
+              />
             </Grid>
             <Grid item>
               <Button

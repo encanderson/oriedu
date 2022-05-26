@@ -27,9 +27,10 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 
 // project imports
 import MainCard from "@src/components/cards/MainCard";
+import ModeComponent from "@src/layout/Customization/ModeComponent";
 
 // assets
-import { IconLogout, IconSettings } from "@tabler/icons";
+import { IconLogout, IconSettings, IconFlare, IconMoon } from "@tabler/icons";
 import useAuth from "@src/hooks/useAuth";
 
 // style const
@@ -258,6 +259,24 @@ const ProfileSection = () => {
                               </Link>
                             }
                           />
+                        </ListItem>
+                        <ListItem
+                          className={classes.listItem}
+                          sx={{
+                            borderRadius: customization.borderRadius + "px",
+                          }}
+                          button
+                          selected={selectedIndex === 3}
+                        >
+                          <ListItemIcon>
+                            {customization.navType === "dark" ? (
+                              <IconMoon stroke={1.5} size="1.3rem" />
+                            ) : (
+                              <IconFlare stroke={1.5} size="1.3rem" />
+                            )}
+                          </ListItemIcon>
+
+                          <ModeComponent />
                         </ListItem>
                         <ListItem
                           className={classes.listItem}
