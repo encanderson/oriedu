@@ -3,10 +3,11 @@ const environment = "development";
 let api;
 let oriedu;
 let auth;
+const orisistem = "https://orisistem.com";
 
 if (environment === "development") {
   api = "http://localhost:4000/api/v1";
-  oriedu = "http://oriedu.orianderson.com";
+  oriedu = "http://localhost:3000";
   auth = "http://auth.orianderson.com/api/v1";
 } else {
   api = "https://api.tiadidi.com.br/api/v1";
@@ -26,6 +27,7 @@ const config = {
   oriedu: oriedu,
   api: api,
   auth: auth,
+  orisistem: orisistem,
 };
 
 export default config;

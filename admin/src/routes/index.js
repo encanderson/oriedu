@@ -8,6 +8,7 @@ import ProfileRoutes from "../apps/profile/routes";
 import ClassRoutes from "../apps/class/routes";
 import EmployeesRoutes from "../apps/employee/routes";
 import StudentsRoutes from "../apps/students/routes";
+import QuestionsRoutes from "../apps/questions/routes";
 
 import config from "@src/config";
 
@@ -30,6 +31,7 @@ const Routes = () => {
         <ClassRoutes />
         <EmployeesRoutes />
         <StudentsRoutes />
+        <QuestionsRoutes />
       </React.Fragment>
     </Switch>
   );
