@@ -54,7 +54,7 @@ model Employee {
   address     String?
   contract    Json?
   qualifications  Json?
-  salary      String?
+  salary      Float?
   bank        String?
   picture     String?
   school_id   String
@@ -108,4 +108,12 @@ model Student {
   class           Class   @relation(fields: [class_id], references: [id])
 
   @@map("students")
+}
+
+model Admin {
+  id              String   @id @default(uuid())
+  user_id         String   @unique
+  password        String
+
+  @@map("admin")
 }

@@ -50,7 +50,7 @@ export class EmployeeServices {
 
     address["complemento"] = data?.complemento;
 
-    const bank = filterForm(data, ["bank", "agency", "count", "salary"]);
+    const bank = filterForm(data, ["bank", "agency", "count"]);
     const contacts = filterForm(data, ["email", "phone"]);
     const docs = filterForm(data, ["cpf", "rg"]);
 
@@ -65,7 +65,7 @@ export class EmployeeServices {
       docs: docs,
       ethnic: data.ethnic,
       gender: data.gender,
-      salary: data.salary,
+      salary: Number(data.salary),
     };
 
     if (job !== "Serviços Gerais") {

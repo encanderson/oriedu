@@ -20,13 +20,22 @@ const grants = {
       "update:any": ["*"],
       "delete:any": ["*"],
     },
-  },
-  secretaria: {
-    students: {
+    schools: {
       "create:any": ["*"],
       "read:any": ["*"],
       "update:any": ["*"],
       "delete:any": ["*"],
+    },
+    teachers: {
+      "create:any": ["*"],
+      "read:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"],
+    },
+    users: {
+      "create:any": ["*"],
+      "read:any": ["*"],
+      "update:any": ["*"],
     },
   },
 };

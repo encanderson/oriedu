@@ -1,14 +1,27 @@
-import { SchoolRepository, Users } from "../repositories";
+import { SchoolRepository, Users, AdminRepository } from "../repositories";
 
 import { School, User } from "../../@types";
 
 import { filterForm } from "../validators";
 import { htmlCode, userForm, schoolForm } from "../../config";
 import { sendEmail } from "../subscribers";
-import { AccessToken } from "@src/utils";
+import { AccessToken, hashFunction, hashPassword } from "@src/utils";
 import { setRegisterNumber } from "../helpers";
+import { UserExist } from "../../errors";
 
 export class AdminServices {
+  static async create(cpf: string, password: string): Promise<void> {
+    try {
+      const user_id = hashFunction(cpf);
+
+      const hash = await hashPassword(password);
+
+      await AdminRepository.create(user_id, hash);
+    } catch (err) {
+      throw new UserExist("Usuário já existe");
+    }
+  }
+
   static async createSchoolAndAdminUser(data: School | User): Promise<void> {
     const userData = filterForm(data, userForm) as User;
 

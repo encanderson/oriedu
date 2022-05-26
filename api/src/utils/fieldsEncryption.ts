@@ -3,7 +3,7 @@ import { Employee } from "../@types";
 import { Crypto } from "../api/database";
 import { InvalidField } from "../errors";
 
-const fields = ["ethnic", "docs", "contacts", "address", "salary", "bank"];
+const fields = ["ethnic", "docs", "contacts", "address", "bank"];
 
 export const encryptEmployee = async (
   employee: Employee

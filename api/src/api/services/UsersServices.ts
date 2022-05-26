@@ -23,6 +23,6 @@ export class UsersServices {
       htmlCode("Nome", token, "confirmar-registro")
     );
 
-    user.createUser();
+    user.create();
   }
 }
