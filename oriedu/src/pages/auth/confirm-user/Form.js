@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // material-ui
 import { makeStyles } from "@material-ui/core/styles";
@@ -31,7 +31,7 @@ const FormVerification = () => {
   const classes = useStyles();
   const { token } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useHistory();
 
   const [code, setCode] = React.useState({
     code1: "",

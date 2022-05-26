@@ -1,11 +1,12 @@
 import React from "react";
 import { lazy } from "react";
-import { Route, Routes as Router } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
 // Routes
 import MinimalLayout from "@src/layout/MinimalLayout";
 import Loadable from "@src/components/Loadable";
 
+const Home = Loadable(lazy(() => import("@src/pages/underConstruction")));
 const ContactUsPage = Loadable(lazy(() => import("@src/pages/contact")));
 
 const ConfirmUser = Loadable(
@@ -28,19 +29,48 @@ const UserVerification = Loadable(
 
 const ErrorPage = Loadable(lazy(() => import("@src/pages/NotFound")));
 
+const routes = [
+  "/",
+  "/contato",
+  "/confirmar-registro/:token",
+  "/login",
+  "/recuperar-senha",
+  "/recuperar-senha/:token",
+  "/atualizar-senha/:token",
+];
+
 const Routes = () => {
+  const location = useLocation();
+
   return (
     <MinimalLayout>
-      <Router>
-        <Route path="/" element={<Login />} />
-        <Route path="/contato" element={<ContactUsPage />} />
-        <Route path="/confirmar-registro/:token" element={<ConfirmUser />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/recuperar-senha" element={<ForgotPassword />} />
-        <Route path="/recuperar-senha/:token" element={<UserVerification />} />
-        <Route path="/atualizar-senha/:token" element={<ResetPassword />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Router>
+      <Switch location={location} key={location.pathname}>
+        {routes.includes(location.pathname) ? (
+          <>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/contato" component={ContactUsPage} />
+            <Route
+              exact
+              path="/confirmar-registro/:token"
+              component={ConfirmUser}
+            />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/recuperar-senha" component={ForgotPassword} />
+            <Route
+              exact
+              path="/recuperar-senha/:token"
+              component={UserVerification}
+            />
+            <Route
+              exact
+              path="/atualizar-senha/:token"
+              component={ResetPassword}
+            />
+          </>
+        ) : (
+          <Route component={ErrorPage} />
+        )}
+      </Switch>
     </MinimalLayout>
   );
 };

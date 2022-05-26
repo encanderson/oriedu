@@ -26,7 +26,7 @@ export class AuthServices {
     if (response.status === 200) {
       const { token } = response.data;
 
-      navigate(`/recuperar-senha/${token}`);
+      navigate.push(`/recuperar-senha/${token}`);
     } else {
       return response;
     }
@@ -40,7 +40,7 @@ export class AuthServices {
 
     if (response.status === 200) {
       const { token } = response.data;
-      navigate(`/atualizar-senha/${token}`);
+      navigate.push(`/atualizar-senha/${token}`);
     } else {
       return response;
     }

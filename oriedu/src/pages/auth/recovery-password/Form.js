@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // material-ui
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,7 +39,7 @@ const ForgotPasswordForm = ({ ...others }) => {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+  const navigate = useHistory();
 
   async function handlerSend(cpf) {
     const response = await AuthServices.recoveryPassword(cpf, navigate);

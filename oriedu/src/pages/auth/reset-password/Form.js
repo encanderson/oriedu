@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 // material-ui
 import { makeStyles } from "@material-ui/core/styles";
@@ -51,7 +51,7 @@ const FormResetPassword = ({ ...others }) => {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+  const navigate = useHistory();
   const { token } = useParams();
 
   const handleClickShowPassword = () => {
@@ -76,7 +76,7 @@ const FormResetPassword = ({ ...others }) => {
     if (response.status === 204) {
       await confirmRegister(token);
 
-      navigate("/login");
+      navigate.push("/login");
     } else {
       dispatch({
         type: SNACKBAR_OPEN,

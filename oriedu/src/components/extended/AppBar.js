@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 // material-ui
 import { useTheme } from "@material-ui/core";
@@ -17,11 +18,14 @@ import {
   Toolbar,
   Typography,
   useScrollTrigger,
+  Stack,
 } from "@material-ui/core";
 
 // assets
-import { IconHome2 } from "@tabler/icons"; // IconBoxMultiple
+import { IconHome2, IconLogin, IconFlare, IconMoon } from "@tabler/icons"; // IconBoxMultiple
 import { Menu } from "@material-ui/icons";
+
+import { MENU_TYPE } from "@src/store/actions";
 
 // elevation scroll
 function ElevationScroll(props) {
@@ -62,6 +66,21 @@ const AppBar = ({ ...others }) => {
     setDrawerToggle(open);
   };
 
+  const dispatch = useDispatch();
+  const customization = useSelector((state) => state.customization);
+
+  const [navType, setNavType] = React.useState(customization.navType);
+
+  const handleMode = () => {
+    if (navType === "dark") {
+      setNavType("light");
+      dispatch({ type: MENU_TYPE, navType: "light" });
+    } else {
+      setNavType("dark");
+      dispatch({ type: MENU_TYPE, navType: "dark" });
+    }
+  };
+
   return (
     <ElevationScroll {...others}>
       <MuiAppBar>
@@ -77,6 +96,31 @@ const AppBar = ({ ...others }) => {
                 OriEdu
               </Button>
             </Typography>
+            <Stack
+              direction="row"
+              sx={{ display: { xs: "none", sm: "block" } }}
+              spacing={2}
+            >
+              <Button
+                color="inherit"
+                style={{ fontSize: 18 }}
+                onClick={handleMode}
+              >
+                {navType === "dark" ? (
+                  <IconMoon sx={{ fontSize: "1.3rem", mr: 0.75 }} />
+                ) : (
+                  <IconFlare sx={{ fontSize: "1.3rem", mr: 0.75 }} />
+                )}
+              </Button>
+              <Button
+                component={RouterLink}
+                to={"/login"}
+                variant="contained"
+                color="secondary"
+              >
+                Entrar
+              </Button>
+            </Stack>
             <Box sx={{ display: { xs: "block", sm: "none" } }}>
               <IconButton color="inherit" onClick={drawerToggler(true)}>
                 <Menu />
@@ -100,6 +144,22 @@ const AppBar = ({ ...others }) => {
                         <IconHome2 />
                       </ListItemIcon>
                       <ListItemText primary="OriEdu" />
+                    </ListItem>
+                    <ListItem button onClick={handleMode}>
+                      <ListItemIcon>
+                        {navType === "dark" ? (
+                          <IconMoon sx={{ fontSize: "1.3rem", mr: 0.75 }} />
+                        ) : (
+                          <IconFlare sx={{ fontSize: "1.3rem", mr: 0.75 }} />
+                        )}
+                      </ListItemIcon>
+                      <ListItemText primary="Mode" />
+                    </ListItem>
+                    <ListItem button component={RouterLink} to={"/login"}>
+                      <ListItemIcon>
+                        <IconLogin />
+                      </ListItemIcon>
+                      <ListItemText primary="Entrar" />
                     </ListItem>
                   </List>
                 </div>
