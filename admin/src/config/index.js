@@ -7,7 +7,7 @@ const orisistem = "https://orisistem.com";
 
 if (environment === "development") {
   api = "http://localhost:4000/api/v1";
-  oriedu = "http://localhost:3000";
+  oriedu = "http://oriedu.orianderson.com";
   auth = "http://auth.orianderson.com/api/v1";
 } else {
   api = "https://api.tiadidi.com.br/api/v1";

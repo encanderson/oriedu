@@ -15,18 +15,20 @@ import {
 import SubCard from "@src/components/cards/SubCard";
 import { gridSpacing } from "@src/store/constant";
 import { getCities } from "@src/api/getCities";
-import { EDIT_USER, SNACKBAR_OPEN } from "@src/store/actions";
+import { EDIT_USER } from "@src/store/actions";
 import { states } from "@src/store/constant";
 import TextMaskCExpDate from "@src/utils/Mask";
 import { schoolModalities } from "@src/store/constant";
 import { initSchoolService } from "../../services/SchoolServices";
+import { dispatchMessage } from "@src/utils";
 
-import useAuth from "@src/hooks/useAuth";
+import { useAuth, useApp } from "@src/hooks";
 
 const Company = () => {
   const dispatch = useDispatch();
 
   const { user } = useAuth();
+  const { handleSetProfile } = useApp();
 
   const [city, setCity] = React.useState(null);
   const [cities, setCities] = React.useState([]);
@@ -44,25 +46,15 @@ const Company = () => {
     const response = await service.update(data);
 
     if (response) {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "Atualização realizada com sucesso!",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "success",
-        close: true,
-      });
+      dispatch(
+        dispatchMessage("Atualização realizada com sucesso!", "success")
+      );
+      window.localStorage.setItem("profile", true);
+      handleSetProfile();
     } else {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "Ocorreu um erro, por favor, tente mais tarde",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "error",
-        close: true,
-      });
+      dispatch(
+        dispatchMessage("Ocorreu um erro, por favor, tente mais tarde", "error")
+      );
     }
   };
 
