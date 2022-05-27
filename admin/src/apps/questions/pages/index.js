@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import {
   Box,
@@ -16,10 +17,13 @@ import {
 import { gridSpacing } from "@src/store/constant";
 
 import useAuth from "@src/hooks/useAuth";
+import { initAdminService } from "@src/services";
+import { dispatchMessage } from "@src/utils";
 
 //===========================|| CONTACT CARD - FORMS ||===========================//
 
 const ContactCard = () => {
+  const dispatch = useDispatch();
   const { user } = useAuth();
 
   const [errorMessage, setErrorMessage] = React.useState("");
@@ -31,15 +35,27 @@ const ContactCard = () => {
     school_id: user?.school_id,
   });
 
-  const handleMessage = () => {
+  const handleMessage = async () => {
     if (message.subject && message.message) {
-      console.log(message);
-      setErrorMessage("");
-      setMessage({
-        ...message,
-        subject: "",
-        message: "",
-      });
+      const { service } = await initAdminService(null, "POST");
+
+      const response = await service.createMessage(message);
+
+      if (response.status === 204) {
+        setErrorMessage("");
+        setMessage({
+          ...message,
+          subject: "",
+          message: "",
+        });
+      } else {
+        dispatch(
+          dispatchMessage(
+            "Ocorreu um erro, por favor tente mais tarde",
+            "error"
+          )
+        );
+      }
     } else {
       setErrorMessage("Preencha todos os campos");
     }
