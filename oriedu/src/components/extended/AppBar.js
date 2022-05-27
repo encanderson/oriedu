@@ -74,9 +74,11 @@ const AppBar = ({ ...others }) => {
   const handleMode = () => {
     if (navType === "dark") {
       setNavType("light");
+      window.localStorage.setItem("theme", "light");
       dispatch({ type: MENU_TYPE, navType: "light" });
     } else {
       setNavType("dark");
+      window.localStorage.setItem("theme", "dark");
       dispatch({ type: MENU_TYPE, navType: "dark" });
     }
   };
