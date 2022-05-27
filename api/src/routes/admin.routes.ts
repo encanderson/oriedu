@@ -12,3 +12,4 @@ router.post(
   AdminControllers.createSchoolAndAdminUser
 );
 router.post("/contact", AdminControllers.contact);
+router.post("/questions", adminMiddleware, AdminControllers.getMessages);

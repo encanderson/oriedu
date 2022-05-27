@@ -1,6 +1,6 @@
 import { SchoolRepository, Users, AdminRepository } from "../repositories";
 
-import { School, User } from "../../@types";
+import { School, User, Message } from "../../@types";
 
 import { filterForm } from "../validators";
 import { htmlCode, userForm, schoolForm } from "../../config";
@@ -61,5 +61,15 @@ export class AdminServices {
       "Verificação de email",
       `${msg.name} deseja informações. Telegone: ${msg.phone}, email: ${msg.email} - Mensagem: ${msg.message}`
     );
+  }
+
+  static async createMessage(message: Message): Promise<void> {
+    await AdminRepository.createQuestion(message);
+  }
+
+  static async getMessages(): Promise<Message[]> {
+    const messages = await AdminRepository.getMessages();
+
+    return messages;
   }
 }

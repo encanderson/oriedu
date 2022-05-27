@@ -51,4 +51,32 @@ export class AdminControllers {
       next(err);
     }
   }
+
+  static async createMessage(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const message = req.body;
+
+      await AdminServices.createMessage(message);
+      res.status(204).end();
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async getMessages(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const messages = await AdminServices.getMessages();
+      res.status(200).send(messages);
+    } catch (err) {
+      next(err);
+    }
+  }
 }

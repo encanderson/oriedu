@@ -4,6 +4,7 @@ import {
   SchoolControllers,
   StudentControllers,
   ClassControllers,
+  AdminControllers,
 } from "../api/controllers";
 import { authMiddleware, AccessControlMiddleware } from "../api/middlewares";
 
@@ -24,3 +25,4 @@ router.get(
   [authMiddleware, AccessControlMiddleware.classes],
   ClassControllers.get
 );
+router.post("/questions", authMiddleware, AdminControllers.createMessage);

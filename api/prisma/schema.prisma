@@ -117,3 +117,14 @@ model Admin {
 
   @@map("admin")
 }
+
+model Questions {
+  id              String   @id @default(uuid())
+  name            String
+  subject         String
+  email           String
+  school_id       String
+  message         String
+
+  @@map("questions")
+}
