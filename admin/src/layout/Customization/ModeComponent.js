@@ -16,6 +16,7 @@ const ModeComponent = () => {
 
   const [navType, setNavType] = React.useState(customization.navType);
   React.useEffect(() => {
+    window.localStorage.setItem("theme", navType);
     dispatch({ type: MENU_TYPE, navType: navType });
   }, [dispatch, navType]);
 
