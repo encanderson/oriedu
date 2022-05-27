@@ -21,15 +21,14 @@ import {
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
-// import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 // project imports
 import { gridSpacing } from "@src/store/constant";
 import useScriptRef from "@src/hooks/useScriptRef";
 import { sendContact } from "@src/api";
 import TextMaskCExpDate from "@src/utils/Mask";
-import { SNACKBAR_OPEN } from "@src/store/actions";
 import config from "@src/config";
+import { dispatchMessage } from "@src/utils";
 
 // assets
 import mailImg from "@src/assets/images/landing/img-contact-mail.svg";
@@ -60,24 +59,6 @@ const ContactCard = ({ ...others }) => {
 
   const dispatch = useDispatch();
 
-  // const { executeRecaptcha } = useGoogleReCaptcha();
-  // const [recaptchaToken, setRecaptchaToken] = React.useState("");
-
-  // const handleReCaptchaVerify = React.useCallback(async () => {
-  //   if (!executeRecaptcha) {
-  //     console.log("Execute recaptcha not yet available");
-  //     return;
-  //   }
-
-  //   const token = await executeRecaptcha();
-
-  //   setRecaptchaToken(token);
-  // }, [executeRecaptcha]);
-
-  // React.useEffect(() => {
-  //   handleReCaptchaVerify();
-  // }, [handleReCaptchaVerify]);
-
   const handlerSend = async (values) => {
     const form = {
       email: values.email,
@@ -88,36 +69,19 @@ const ContactCard = ({ ...others }) => {
     if ("recaptchaToken") {
       const response = await sendContact(form);
       if (response.status === 204) {
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message: "Em breve entraremos em contato!",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "success",
-          close: false,
-        });
+        dispatch(dispatchMessage("Em breve entraremos em contato!", "success"));
       } else {
-        dispatch({
-          type: SNACKBAR_OPEN,
-          open: true,
-          message: "Ocorreu um erro, por favor tente novamente!",
-          variant: "alert",
-          anchorOrigin: { vertical: "top", horizontal: "center" },
-          alertSeverity: "error",
-          close: false,
-        });
+        dispatch(
+          dispatchMessage(
+            "Ocorreu um erro, por favor tente novamente!",
+            "error"
+          )
+        );
       }
     } else {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "Erro de verificação, tente mais tarde!",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "error",
-        close: false,
-      });
+      dispatch(
+        dispatchMessage("Erro de verificação, tente mais tarde!", "error")
+      );
     }
   };
 
