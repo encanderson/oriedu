@@ -22,6 +22,8 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 // project imports
 import { gridSpacing } from "@src/store/constant";
 import useScriptRef from "@src/hooks/useScriptRef";
@@ -56,8 +58,24 @@ const ContactCard = ({ ...others }) => {
   const classes = useStyles();
 
   const scriptedRef = useScriptRef();
-
   const dispatch = useDispatch();
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [recaptchaToken, setRecaptchaToken] = React.useState("");
+  const handleReCaptchaVerify = React.useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
+
+    const token = await executeRecaptcha();
+
+    setRecaptchaToken(token);
+  }, [executeRecaptcha]);
+
+  React.useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
 
   const handlerSend = async (values) => {
     const form = {
@@ -66,7 +84,7 @@ const ContactCard = ({ ...others }) => {
       phone: values.phone,
       message: values.message,
     };
-    if ("recaptchaToken") {
+    if (recaptchaToken) {
       const response = await sendContact(form);
       if (response.status === 204) {
         dispatch(dispatchMessage("Em breve entraremos em contato!", "success"));
@@ -78,10 +96,6 @@ const ContactCard = ({ ...others }) => {
           )
         );
       }
-    } else {
-      dispatch(
-        dispatchMessage("Erro de verificação, tente mais tarde!", "error")
-      );
     }
   };
 

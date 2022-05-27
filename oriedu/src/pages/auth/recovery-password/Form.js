@@ -17,10 +17,12 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 // project imports
 import useScriptRef from "@src/hooks/useScriptRef";
 import Mask from "@src/utils/Mask";
-import { SNACKBAR_OPEN } from "@src/store/actions";
+import { dispatchMessage } from "@src/utils";
 
 import { AuthServices } from "@src/services";
 
@@ -41,18 +43,31 @@ const ForgotPasswordForm = ({ ...others }) => {
 
   const navigate = useHistory();
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [recaptchaToken, setRecaptchaToken] = React.useState("");
+  const handleReCaptchaVerify = React.useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
+
+    const token = await executeRecaptcha();
+
+    setRecaptchaToken(token);
+  }, [executeRecaptcha]);
+
+  React.useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
+
   async function handlerSend(cpf) {
-    const response = await AuthServices.recoveryPassword(cpf, navigate);
-    if (response) {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "Verifique se os dados estão corretos.",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "error",
-        close: false,
-      });
+    if (recaptchaToken) {
+      const response = await AuthServices.recoveryPassword(cpf, navigate);
+      if (response) {
+        dispatch(
+          dispatchMessage("Verifique se os dados estão corretos.", "error")
+        );
+      }
     }
   }
 

@@ -7,7 +7,9 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Button, Grid, TextField } from "@material-ui/core";
 
-import { SNACKBAR_OPEN } from "@src/store/actions";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
+import { dispatchMessage } from "@src/utils";
 
 import { AuthServices } from "@src/services";
 
@@ -32,6 +34,24 @@ const FormVerification = () => {
   const { token } = useParams();
   const dispatch = useDispatch();
   const navigate = useHistory();
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [recaptchaToken, setRecaptchaToken] = React.useState("");
+
+  const handleReCaptchaVerify = React.useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
+
+    const token = await executeRecaptcha();
+
+    setRecaptchaToken(token);
+  }, [executeRecaptcha]);
+
+  React.useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
 
   const [code, setCode] = React.useState({
     code1: "",
@@ -61,18 +81,12 @@ const FormVerification = () => {
       code.code5 +
       code.code6;
 
-    const response = await AuthServices.isUser(codeData, token, navigate);
+    if (recaptchaToken) {
+      const response = await AuthServices.isUser(codeData, token, navigate);
 
-    if (response) {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: "Código não corresponde",
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "error",
-        close: false,
-      });
+      if (response) {
+        dispatch(dispatchMessage("Código não corresponde", "error"));
+      }
     }
   }
 

@@ -21,11 +21,13 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 // project imports
 import useScriptRef from "@src/hooks/useScriptRef";
 import { strengthColor, strengthIndicator } from "@src/utils/password-strength";
 
-import { SNACKBAR_OPEN } from "@src/store/actions";
+import { dispatchMessage } from "@src/utils";
 
 // assets
 import Visibility from "@material-ui/icons/Visibility";
@@ -68,25 +70,36 @@ const FormResetPassword = ({ ...others }) => {
     setLevel(strengthColor(temp));
   };
 
-  async function handlerSubmit(password) {
-    const response = await resetPassword({
-      password: password,
-      token: token,
-    });
-    if (response.status === 204) {
-      await confirmRegister(token);
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [recaptchaToken, setRecaptchaToken] = React.useState("");
+  const handleReCaptchaVerify = React.useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
 
-      navigate.push("/login");
-    } else {
-      dispatch({
-        type: SNACKBAR_OPEN,
-        open: true,
-        message: response.data.message,
-        variant: "alert",
-        anchorOrigin: { vertical: "top", horizontal: "center" },
-        alertSeverity: "warning",
-        close: false,
+    const token = await executeRecaptcha();
+
+    setRecaptchaToken(token);
+  }, [executeRecaptcha]);
+
+  React.useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
+
+  async function handlerSubmit(password) {
+    if (recaptchaToken) {
+      const response = await resetPassword({
+        password: password,
+        token: token,
       });
+      if (response.status === 204) {
+        await confirmRegister(token);
+
+        navigate.push("/login");
+      } else {
+        dispatch(dispatchMessage(response.data.message, "warning"));
+      }
     }
   }
 
