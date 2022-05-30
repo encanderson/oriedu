@@ -9,7 +9,6 @@ import { Box, Tab, Tabs } from "@material-ui/core";
 import MainCard from "@src/components/cards/MainCard";
 import { EDIT_USER } from "@src/store/actions";
 import ProfileData from "./Profile";
-import School from "./School";
 import Security from "./Password";
 
 import useAuth from "@src/hooks/useAuth";
@@ -97,21 +96,17 @@ const Profile = () => {
           variant="scrollable"
         >
           <Tab component={RouterLink} to="#" label="Perfil" {...a11yProps(0)} />
-          <Tab component={RouterLink} to="#" label="Escola" {...a11yProps(1)} />
           <Tab
             component={RouterLink}
             to="#"
             label="Segurança"
-            {...a11yProps(2)}
+            {...a11yProps(1)}
           />
         </Tabs>
         <TabPanel value={value} index={0}>
           <ProfileData />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <School />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
           <Security />
         </TabPanel>
       </div>
