@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import LoginRoutes from "./LoginRoutes";
 import DashboardRoutes from "../apps/dashboard/routes";
 import ProfileRoutes from "../apps/profile/routes";
+import QuestionsRoutes from "../apps/questions/routes";
 
 import config from "@src/config";
 
@@ -24,6 +25,7 @@ const Routes = () => {
         <LoginRoutes />
         <DashboardRoutes />
         <ProfileRoutes />
+        <QuestionsRoutes />
       </React.Fragment>
     </Switch>
   );
