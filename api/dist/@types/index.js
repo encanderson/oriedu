@@ -81,3 +81,55 @@ Object.keys(_profile).forEach(function (key) {
     }
   });
 });
+
+var _class = require("./class");
+
+Object.keys(_class).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _class[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _class[key];
+    }
+  });
+});
+
+var _employee = require("./employee");
+
+Object.keys(_employee).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _employee[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _employee[key];
+    }
+  });
+});
+
+var _student = require("./student");
+
+Object.keys(_student).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _student[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _student[key];
+    }
+  });
+});
+
+var _message = require("./message");
+
+Object.keys(_message).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _message[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _message[key];
+    }
+  });
+});

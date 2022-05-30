@@ -29,3 +29,16 @@ Object.keys(_redis).forEach(function (key) {
     }
   });
 });
+
+var _Encrypt = require("./Encrypt");
+
+Object.keys(_Encrypt).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _Encrypt[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _Encrypt[key];
+    }
+  });
+});

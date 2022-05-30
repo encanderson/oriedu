@@ -55,3 +55,55 @@ Object.keys(_SchoolControllers).forEach(function (key) {
     }
   });
 });
+
+var _AdminControllers = require("./AdminControllers");
+
+Object.keys(_AdminControllers).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _AdminControllers[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _AdminControllers[key];
+    }
+  });
+});
+
+var _ClassControllers = require("./ClassControllers");
+
+Object.keys(_ClassControllers).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ClassControllers[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _ClassControllers[key];
+    }
+  });
+});
+
+var _EmployeeControllers = require("./EmployeeControllers");
+
+Object.keys(_EmployeeControllers).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _EmployeeControllers[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _EmployeeControllers[key];
+    }
+  });
+});
+
+var _StudentControllers = require("./StudentControllers");
+
+Object.keys(_StudentControllers).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _StudentControllers[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _StudentControllers[key];
+    }
+  });
+});

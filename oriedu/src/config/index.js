@@ -1,4 +1,4 @@
-const environment = "development";
+const environment = "production";
 
 let home;
 let api;

@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 class AccessToken {
   static generateToken(data) {
     const token = _jsonwebtoken.default.sign({
-      userId: data.userId,
+      user_id: data.user_id,
       app: data.app,
       id: data.id
     }, _config.config.secretkey, {

@@ -15,12 +15,13 @@ class Users {
   constructor(user) {
     this.date = (0, _utils.createdAt)();
     this.user = user;
+    this.user_id = (0, _utils.hashFunction)(user.cpf);
   }
 
   static async searchUser(newUser) {
     const user = await _database.prisma.user.findUnique({
       where: {
-        userId: (0, _utils.hashFunction)(newUser.cpf)
+        user_id: (0, _utils.hashFunction)(newUser.cpf)
       },
       select: {
         app: true
@@ -36,41 +37,31 @@ class Users {
     });
 
     if (user || email) {
-      throw new _errors.UserExist();
+      throw new _errors.UserExist("Usuário já registrado.");
     }
 
     return new Users(newUser);
   }
 
-  async createUser(code) {
-    const password = await (0, _utils.hashPassword)(this.user.password);
+  async create() {
     await _database.prisma.user.create({
       data: {
         active: false,
         app: this.user.app,
-        userId: (0, _utils.hashFunction)(this.user.cpf),
+        user_id: this.user_id,
         email: this.user.email,
-        code: code,
-        password: password,
-        createdAt: this.date,
-        updatedAt: this.date,
-        consents: this.user.consents
-      }
-    });
-    await _database.prisma.profile.create({
-      data: {
-        userId: (0, _utils.hashFunction)(this.user.cpf),
-        name: this.user.name,
-        job: this.user.job
+        created_at: this.date,
+        updated_at: this.date,
+        consents: {}
       }
     });
   }
 
-  static async confirmUser(userId) {
+  static async confirmUser(user_id) {
     try {
       await _database.prisma.user.update({
         where: {
-          userId: userId
+          user_id: user_id
         },
         data: {
           active: true
@@ -81,45 +72,52 @@ class Users {
     }
   }
 
-  static async getUser(userId) {
+  static async getUser(user_id) {
     var _profile$school, _profile$school2, _profile$school3, _profile$school4;
 
     const user = await _database.prisma.user.findUnique({
       where: {
-        userId: userId
+        user_id: user_id
       },
       select: {
         id: true,
         app: true,
-        userId: true,
+        user_id: true,
         email: true,
         password: true
       }
     });
-    const profile = await _database.prisma.profile.findUnique({
+    const profile = await _database.prisma.employee.findUnique({
       where: {
-        userId: userId
+        user_id: user_id
       },
       select: {
-        name: true,
         job: true,
         picture: true,
+        name: true,
         school: {
           select: {
-            contacts: true,
+            id: true,
             address: true,
+            contacts: true,
             cnpj: true,
-            fantasia: true
+            fantasia: true,
+            modalities: true,
+            register: true
           }
         }
       }
     });
+    const name = profile.name.split(" ");
     const data = { ...user,
-      name: profile.name,
+      name: name[0] + " " + name[name.length - 1],
       job: profile.job,
       picture: profile.picture,
+      school_id: profile.school.id,
       address: (_profile$school = profile.school) === null || _profile$school === void 0 ? void 0 : _profile$school.address,
       contacts: (_profile$school2 = profile.school) === null || _profile$school2 === void 0 ? void 0 : _profile$school2.contacts,
+      modalities: profile === null || profile === void 0 ? void 0 : profile.school.modalities,
+      register: profile === null || profile === void 0 ? void 0 : profile.school.register,
       school: {
         cnpj: (_profile$school3 = profile.school) === null || _profile$school3 === void 0 ? void 0 : _profile$school3.cnpj,
         fantasia: (_profile$school4 = profile.school) === null || _profile$school4 === void 0 ? void 0 : _profile$school4.fantasia
@@ -128,23 +126,23 @@ class Users {
     return data;
   }
 
-  static async update(userId, data) {
-    await _database.prisma.profile.update({
+  static async update(user_id, data) {
+    await _database.prisma.employee.update({
       where: {
-        userId: userId
+        user_id: user_id
       },
       data: data
     });
   }
 
-  static async updatePassword(userId, password) {
+  static async updatePassword(user_id, password) {
     await _database.prisma.user.update({
       where: {
-        userId: userId
+        user_id: user_id
       },
       data: {
         password: password,
-        updatedAt: (0, _utils.createdAt)()
+        updated_at: (0, _utils.createdAt)()
       }
     });
   }

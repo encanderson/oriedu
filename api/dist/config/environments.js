@@ -22,7 +22,7 @@ let config = {
   emailServer: process.env.MAIL_SERVER,
   geobingKey: process.env.GEOBING_KEY,
   corsOptions: {
-    origin: ["http://oriedu.orianderson.com", "http://secretaria.orianderson.com:3000"],
+    origin: ["http://oriedu.orianderson.com", "http://admin.orianderson.com:3000", "http://secretaria.orianderson.com:3000", "http://professor.orianderson.com:3000", "http://aluno.orianderson.com:3000"],
     "Access-Control-Allow-Credentials": true
   },
   allowlist: {
@@ -31,8 +31,12 @@ let config = {
   blocklist: {
     prefix: "blocklist-access-token:"
   },
-  url: "http://localhost:3002",
-  api: "http://localhost:4000/api/v1"
+  url: "http://oriedu.orianderson.com",
+  api: "http://localhost:4000/api/v1",
+  awsAccessKeyId: process.env.AWS_ACCESS_KEY,
+  awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  awsRegion: process.env.AWS_REGION,
+  kmsKeyId: process.env.AWS_KEY_ID
 };
 exports.config = config;
 
@@ -46,7 +50,7 @@ if (environment === "production") {
     emailServer: process.env.MAIL_SERVER_ZOHO,
     geobingKey: process.env.GEOBING_KEY,
     corsOptions: {
-      origin: ["https://www.tiadidi.com.br", "https://secretaria.tiadidi.com.br"],
+      origin: ["https://www.tiadidi.com.br", "https://admin.tiadidi.com.br", "https://secretaria.tiadidi.com.br", "https://professor.tiadidi.com.br", "https://aluno.tiadidi.com.br"],
       "Access-Control-Allow-Credentials": true
     },
     allowlist: {
@@ -60,28 +64,10 @@ if (environment === "production") {
       port: 6379
     },
     url: "https://www.tiadidi.com.br",
-    api: "https://api.tiadidi.com.br/api/v1"
-  };
-} else {
-  exports.config = config = {
-    secretkey: process.env.SECRET_KEY,
-    POSTGRESQL_URI: process.env.POSTGRESQL_URI,
-    PORT: 4000,
-    emailUser: process.env.EMAIL_USER,
-    emailPass: process.env.EMAIL_PASS,
-    emailServer: process.env.MAIL_SERVER,
-    geobingKey: process.env.GEOBING_KEY,
-    corsOptions: {
-      origin: ["http://oriedu.orianderson.com", "http://secretaria.orianderson.com:3000"],
-      "Access-Control-Allow-Credentials": true
-    },
-    allowlist: {
-      prefix: "allowlist-refresh-token:"
-    },
-    blocklist: {
-      prefix: "blocklist-access-token:"
-    },
-    url: "http://localhost:3002",
-    api: "http://localhost:4000/api/v1"
+    api: "https://api.tiadidi.com.br/api/v1",
+    awsAccessKeyId: process.env.AWS_ACCESS_KEY,
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    awsRegion: process.env.AWS_REGION,
+    kmsKeyId: process.env.AWS_KEY_ID
   };
 }

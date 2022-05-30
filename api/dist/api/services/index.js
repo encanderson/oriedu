@@ -55,3 +55,55 @@ Object.keys(_SchoolServices).forEach(function (key) {
     }
   });
 });
+
+var _AdminServices = require("./AdminServices");
+
+Object.keys(_AdminServices).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _AdminServices[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _AdminServices[key];
+    }
+  });
+});
+
+var _ClassServices = require("./ClassServices");
+
+Object.keys(_ClassServices).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ClassServices[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _ClassServices[key];
+    }
+  });
+});
+
+var _EmployeeServices = require("./EmployeeServices");
+
+Object.keys(_EmployeeServices).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _EmployeeServices[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _EmployeeServices[key];
+    }
+  });
+});
+
+var _StudentServices = require("./StudentServices");
+
+Object.keys(_StudentServices).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _StudentServices[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _StudentServices[key];
+    }
+  });
+});

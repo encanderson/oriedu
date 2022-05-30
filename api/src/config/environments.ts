@@ -17,8 +17,10 @@ export let config: Config = {
   corsOptions: {
     origin: [
       "http://oriedu.orianderson.com",
-      "http://secretaria.orianderson.com:3000",
       "http://admin.orianderson.com:3000",
+      "http://secretaria.orianderson.com:3000",
+      "http://professor.orianderson.com:3000",
+      "http://aluno.orianderson.com:3000",
     ],
     "Access-Control-Allow-Credentials": true,
   },
@@ -48,8 +50,10 @@ if (environment === "production") {
     corsOptions: {
       origin: [
         "https://www.tiadidi.com.br",
-        "https://secretaria.tiadidi.com.br",
         "https://admin.tiadidi.com.br",
+        "https://secretaria.tiadidi.com.br",
+        "https://professor.tiadidi.com.br",
+        "https://aluno.tiadidi.com.br",
       ],
       "Access-Control-Allow-Credentials": true,
     },

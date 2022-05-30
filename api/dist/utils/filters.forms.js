@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.verifyTermsConsents = exports.verifyRegister = exports.filterProfile = void 0;
+exports.verifyTermsConsents = exports.verifyRegister = exports.filterProfile = exports.filterPayload = exports.filterOptions = void 0;
 
 var _errors = require("../errors");
 
@@ -41,8 +41,7 @@ const verifyRegister = user => {
 
 exports.verifyRegister = verifyRegister;
 
-const filterProfile = data => {
-  const fields = ["id", "userId", "name", "job", "picture", "contacts"];
+const filterProfile = (data, fields) => {
   const obj = {};
   Object.keys(data).forEach(key => {
     if (fields.includes(key)) {
@@ -53,3 +52,31 @@ const filterProfile = data => {
 };
 
 exports.filterProfile = filterProfile;
+
+const filterPayload = (payload, fields) => {
+  const obj = {};
+  fields.forEach(key => {
+    if (payload[key]) {
+      obj[key] = payload[key];
+    } else {
+      throw new _errors.InvalidField("Todos os campos obrigatórios devem ser preenchidos.");
+    }
+  });
+  return obj;
+};
+
+exports.filterPayload = filterPayload;
+
+const filterOptions = (payload, fields) => {
+  const obj = {};
+
+  for (let i = 0; i < fields.length; i += 1) {
+    if (payload[fields[i]]) {
+      obj[fields[i]] = payload[fields[i]];
+    }
+  }
+
+  return obj;
+};
+
+exports.filterOptions = filterOptions;
