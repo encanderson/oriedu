@@ -8,12 +8,15 @@ import { Avatar, Button, Grid, TextField, Typography } from "@material-ui/core";
 
 // project imports
 import SubCard from "@src/components/cards/SubCard";
+import ProfileDialog from "../components/DialogProfile";
+
 import { gridSpacing } from "@src/store/constant";
 import { saveImage } from "@src/utils/Images";
 import { EDIT_USER } from "@src/store/actions";
-import useAuth from "@src/hooks/useAuth";
 import { initUserService } from "../services";
 import { dispatchMessage } from "@src/utils";
+
+import { useAuth } from "@src/hooks";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -96,8 +99,14 @@ const ProfileData = () => {
     }
   };
 
+  const [open, setOpen] = React.useState(false);
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
   return (
     <Grid container spacing={gridSpacing}>
+      <ProfileDialog open={open} handleClose={handleCloseDialog} />
       <Grid item sm={6} md={4}>
         <SubCard title="Foto do Perfil" contentClass={classes.accountContent}>
           <Grid container spacing={2}>
