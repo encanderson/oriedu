@@ -18,6 +18,9 @@ const settingsEmailProduction = {
   auth: {
     user: _.config.emailUser,
     pass: _.config.emailPass
+  },
+  tls: {
+    rejectUnauthorized: false
   }
 };
 
