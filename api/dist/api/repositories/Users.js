@@ -73,7 +73,7 @@ class Users {
   }
 
   static async getUser(user_id) {
-    var _profile$school, _profile$school2, _profile$school3, _profile$school4;
+    var _profile$school, _profile$school2, _profile$school3, _profile$school4, _profile$school5;
 
     const user = await _database.prisma.user.findUnique({
       where: {
@@ -103,7 +103,8 @@ class Users {
             cnpj: true,
             fantasia: true,
             modalities: true,
-            register: true
+            register: true,
+            new: true
           }
         }
       }
@@ -118,9 +119,10 @@ class Users {
       contacts: (_profile$school2 = profile.school) === null || _profile$school2 === void 0 ? void 0 : _profile$school2.contacts,
       modalities: profile === null || profile === void 0 ? void 0 : profile.school.modalities,
       register: profile === null || profile === void 0 ? void 0 : profile.school.register,
+      new: profile === null || profile === void 0 ? void 0 : (_profile$school3 = profile.school) === null || _profile$school3 === void 0 ? void 0 : _profile$school3.new,
       school: {
-        cnpj: (_profile$school3 = profile.school) === null || _profile$school3 === void 0 ? void 0 : _profile$school3.cnpj,
-        fantasia: (_profile$school4 = profile.school) === null || _profile$school4 === void 0 ? void 0 : _profile$school4.fantasia
+        cnpj: (_profile$school4 = profile.school) === null || _profile$school4 === void 0 ? void 0 : _profile$school4.cnpj,
+        fantasia: (_profile$school5 = profile.school) === null || _profile$school5 === void 0 ? void 0 : _profile$school5.fantasia
       }
     };
     return data;
