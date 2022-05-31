@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 // material-ui
@@ -31,7 +31,7 @@ import ModeComponent from "@src/layout/Customization/ModeComponent";
 
 // assets
 import { IconLogout, IconSettings, IconFlare, IconMoon } from "@tabler/icons";
-import useAuth from "@src/hooks/useAuth";
+import { useAuth, useApp } from "@src/hooks";
 
 // style const
 const useStyles = makeStyles((theme) => ({
@@ -110,12 +110,21 @@ const ProfileSection = () => {
   const classes = useStyles();
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
+  const history = useHistory();
 
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const { logout, user } = useAuth();
+  const { isProfile } = useApp();
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!isProfile) {
+      history.push("/perfil");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleLogout = async () => {
     try {
