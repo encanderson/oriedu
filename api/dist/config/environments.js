@@ -45,9 +45,9 @@ if (environment === "production") {
     secretkey: process.env.SECRET_KEY,
     POSTGRESQL_URI: process.env.POSTGRESQL_URI,
     PORT: 4000,
-    emailUser: process.env.EMAIL_USER_ZOHO,
-    emailPass: process.env.EMAIL_PASS_ZOHO,
-    emailServer: process.env.MAIL_SERVER_ZOHO,
+    emailUser: process.env.EMAIL_USER,
+    emailPass: process.env.EMAIL_PASS,
+    emailServer: process.env.MAIL_SERVER,
     geobingKey: process.env.GEOBING_KEY,
     corsOptions: {
       origin: ["https://www.tiadidi.com.br", "https://admin.tiadidi.com.br", "https://secretaria.tiadidi.com.br", "https://professor.tiadidi.com.br", "https://aluno.tiadidi.com.br"],

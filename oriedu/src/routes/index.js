@@ -29,47 +29,28 @@ const UserVerification = Loadable(
 
 const ErrorPage = Loadable(lazy(() => import("@src/pages/NotFound")));
 
-const routes = [
-  "/",
-  "/contato",
-  "/confirmar-registro/:token",
-  "/login",
-  "/recuperar-senha",
-  "/recuperar-senha/:token",
-  "/atualizar-senha/:token",
-];
-
 const Routes = () => {
   const location = useLocation();
 
   return (
     <MinimalLayout>
       <Switch location={location} key={location.pathname}>
-        {routes.includes(location.pathname) ? (
-          <>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/contato" component={ContactUsPage} />
-            <Route
-              exact
-              path="/confirmar-registro/:token"
-              component={ConfirmUser}
-            />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/recuperar-senha" component={ForgotPassword} />
-            <Route
-              exact
-              path="/recuperar-senha/:token"
-              component={UserVerification}
-            />
-            <Route
-              exact
-              path="/atualizar-senha/:token"
-              component={ResetPassword}
-            />
-          </>
-        ) : (
-          <Route component={ErrorPage} />
-        )}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/contato" component={ContactUsPage} />
+        <Route
+          exact
+          path="/confirmar-registro/:token"
+          component={ConfirmUser}
+        />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/recuperar-senha" component={ForgotPassword} />
+        <Route
+          exact
+          path="/recuperar-senha/:token"
+          component={UserVerification}
+        />
+        <Route exact path="/atualizar-senha/:token" component={ResetPassword} />
+        <Route component={ErrorPage} />
       </Switch>
     </MinimalLayout>
   );

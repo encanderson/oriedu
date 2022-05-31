@@ -539,7 +539,7 @@ const Company = () => {
                         color="success"
                         onClick={() => {
                           setIsDisabled(!isDisabled);
-                          handleSubmit("company");
+                          handleSubmit();
                         }}
                       >
                         Salvar
