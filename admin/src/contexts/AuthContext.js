@@ -19,6 +19,7 @@ export const AuthContext = createContext({
   ...initialState,
   signIn: () => Promise.resolve(),
   logout: () => Promise.resolve(),
+  refreshUser: () => Promise.resolve(),
 });
 
 export const AuthProvider = ({ children }) => {
@@ -42,6 +43,20 @@ export const AuthProvider = ({ children }) => {
       }
     } else {
       return "Usuário não autorizado";
+    }
+  };
+
+  const refreshUser = async () => {
+    const user = await AuthServices.getUser();
+
+    if (user) {
+      dispatch({
+        type: ACCOUNT_INITIALIZE,
+        payload: {
+          isLoggedIn: true,
+          user: user,
+        },
+      });
     }
   };
 
@@ -112,6 +127,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         ...state,
         signIn,
+        refreshUser,
         logout,
       }}
     >

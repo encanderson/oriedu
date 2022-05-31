@@ -16,7 +16,7 @@ import { EDIT_USER } from "@src/store/actions";
 import { initUserService } from "../services";
 import { dispatchMessage } from "@src/utils";
 
-import { useApp, useAuth } from "@src/hooks";
+import { useAuth } from "@src/hooks";
 
 // style constant
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +42,6 @@ const ProfileData = () => {
   const hiddenFileInput = React.useRef(null);
   const classes = useStyles();
 
-  const { isProfile } = useApp();
   const { user } = useAuth();
   const [isDisabled, setIsDisabled] = React.useState(true);
 
@@ -106,11 +105,10 @@ const ProfileData = () => {
   };
 
   React.useEffect(() => {
-    if (!isProfile) {
+    if (!user?.new) {
       setOpen(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isProfile]);
+  }, [user]);
 
   return (
     <Grid container spacing={gridSpacing}>

@@ -31,7 +31,7 @@ import ModeComponent from "@src/layout/Customization/ModeComponent";
 
 // assets
 import { IconLogout, IconSettings, IconFlare, IconMoon } from "@tabler/icons";
-import { useAuth, useApp } from "@src/hooks";
+import { useAuth } from "@src/hooks";
 
 // style const
 const useStyles = makeStyles((theme) => ({
@@ -114,13 +114,12 @@ const ProfileSection = () => {
 
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const { logout, user } = useAuth();
-  const { isProfile } = useApp();
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
   React.useEffect(() => {
-    if (!isProfile) {
+    if (!user?.new) {
       history.push("/perfil");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

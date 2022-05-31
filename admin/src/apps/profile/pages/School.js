@@ -22,13 +22,12 @@ import { schoolModalities } from "@src/store/constant";
 import { initSchoolService } from "../../services/SchoolServices";
 import { dispatchMessage } from "@src/utils";
 
-import { useAuth, useApp } from "@src/hooks";
+import { useAuth } from "@src/hooks";
 
 const Company = () => {
   const dispatch = useDispatch();
 
-  const { user } = useAuth();
-  const { handleSetProfile } = useApp();
+  const { user, refreshUser } = useAuth();
 
   const [city, setCity] = React.useState(null);
   const [cities, setCities] = React.useState([]);
@@ -46,11 +45,10 @@ const Company = () => {
     const response = await service.update(data);
 
     if (response) {
+      await refreshUser();
       dispatch(
         dispatchMessage("Atualização realizada com sucesso!", "success")
       );
-      window.localStorage.setItem("profile", true);
-      handleSetProfile();
     } else {
       dispatch(
         dispatchMessage("Ocorreu um erro, por favor, tente mais tarde", "error")
