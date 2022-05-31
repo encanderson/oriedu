@@ -20,4 +20,5 @@ export interface User {
     name?: string;
   };
   modalities?: string[];
+  new?: boolean;
 }

@@ -1,0 +1,25 @@
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-31T19:37:50.861Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-31T19:48:17.177Z'
+}
+{
+  message: "Cannot read property 'app' of undefined",
+  level: 'error',
+  timestamp: '2022-05-31T20:06:45.444Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-31T21:07:32.177Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-05-31T21:15:27.733Z'
+}

@@ -106,6 +106,7 @@ export class Users {
             fantasia: true,
             modalities: true,
             register: true,
+            new: true,
           },
         },
       },
@@ -123,6 +124,7 @@ export class Users {
       contacts: profile.school?.contacts,
       modalities: profile?.school.modalities,
       register: profile?.school.register,
+      new: profile?.school?.new,
       school: {
         cnpj: profile.school?.cnpj,
         fantasia: profile.school?.fantasia,

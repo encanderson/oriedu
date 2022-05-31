@@ -56,7 +56,10 @@ export class SchoolRepository {
       where: {
         id: school_id,
       },
-      data: data,
+      data: {
+        ...data,
+        new: true,
+      },
     });
   }
 }

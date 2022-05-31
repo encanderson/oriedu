@@ -33,7 +33,7 @@ model School {
   contacts    Json?
   address     Json?
   modalities  String[]
-  classes     String[]
+  new         Boolean?
   school      Employee[]
   turmas      Class[]
   students    Student[]
