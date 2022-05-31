@@ -1,21 +1,19 @@
 import React, { createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import { MENU_TYPE } from "@src/store/actions";
 import { initialState } from "@src/store/customizationReducer";
 
 export const AppContext = createContext({
   ...initialState,
-  isProfile: false,
+  isProfile: true,
   handleSetProfile: () => {},
 });
 
 export const AppProvider = ({ children }) => {
   const dispatch = useDispatch();
   const customization = useSelector((state) => state.customization);
-  const history = useHistory();
-  const [isProfile, setIsProfile] = React.useState(false);
+  const [isProfile, setIsProfile] = React.useState(true);
 
   React.useEffect(() => {
     const theme = window.localStorage.getItem("theme");
@@ -35,9 +33,7 @@ export const AppProvider = ({ children }) => {
     const profile = window.localStorage.getItem("profile");
 
     if (!profile) {
-      history.push("/perfil");
-    } else {
-      setIsProfile(true);
+      setIsProfile(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

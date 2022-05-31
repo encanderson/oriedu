@@ -18,7 +18,7 @@ const initialState = {
 export const AuthContext = createContext({
   ...initialState,
   signIn: () => Promise.resolve(),
-  logout: () => {},
+  logout: () => Promise.resolve(),
 });
 
 export const AuthProvider = ({ children }) => {

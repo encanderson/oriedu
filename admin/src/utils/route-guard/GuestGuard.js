@@ -3,7 +3,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 // project imports
-import useAuth from "@src/hooks/useAuth";
+import { useAuth } from "@src/hooks";
 import config from "@src/config";
 
 //-----------------------|| GUEST GUARD ||-----------------------//

@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Button, Grid, TextField } from "@material-ui/core";
 
-import useAuth from "@src/hooks/useAuth";
+import { useAuth } from "@src/hooks";
 
 import { SNACKBAR_OPEN } from "@src/store/actions";
 
