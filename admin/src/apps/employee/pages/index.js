@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,11 +8,6 @@ import MainCard from "@src/components/cards/MainCard";
 import Identification from "./Identification";
 import Contacts from "./Contacts";
 import WorkInfo from "./Work";
-import { validateForm } from "@src/utils";
-import useAuth from "@src/hooks/useAuth";
-import { dispatchMessage } from "@src/utils";
-import { REMOVE_EMPLOYEE } from "@src/store/actions";
-import { initEmployeeService } from "../services";
 
 const useStyles = makeStyles((theme) => ({
   accountTab: {
@@ -58,40 +52,11 @@ function a11yProps(index) {
 
 const EmployeeRegister = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.employee.employee);
-  const { user } = useAuth();
 
   const [value, setValue] = React.useState(0);
 
   const handleForms = async (form, fields) => {
-    const obj = validateForm(form, fields);
-
-    if (value !== 2) {
-      if (!obj) {
-        dispatch(dispatchMessage("Preencha todos os campos", "error"));
-      } else {
-        setValue(value + 1);
-      }
-    } else {
-      if (!obj) {
-        dispatch(dispatchMessage("Preencha todos os campos", "error"));
-      } else {
-        const { service } = await initEmployeeService(
-          `${user.school_id}/employees`,
-          "POST"
-        );
-
-        const response = await service.request(data);
-
-        if (response.status === 204) {
-          dispatch({
-            type: REMOVE_EMPLOYEE,
-          });
-          setValue(0);
-        }
-      }
-    }
+    setValue(value + 1);
   };
 
   const handleBack = () => {
@@ -135,7 +100,7 @@ const EmployeeRegister = () => {
           <Contacts handleForms={handleForms} handleBack={handleBack} />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <WorkInfo handleForms={handleForms} handleBack={handleBack} />
+          <WorkInfo setValue={setValue} handleBack={handleBack} />
         </TabPanel>
       </div>
     </MainCard>

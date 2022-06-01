@@ -10,15 +10,17 @@ import AutoCompleteClasses from "./AutoCompleteClasses";
 import AutoComplete from "@src/components/AutoComplete";
 import ButtonSecondary from "@src/components/buttons/ButtonSecondary";
 import TextMaskCExpDate from "@src/utils/Mask";
-import { ADD_EMPLOYEE } from "@src/store/actions";
+import { ADD_EMPLOYEE, REMOVE_EMPLOYEE } from "@src/store/actions";
 import { jobs } from "@src/store/constant";
 
 import useAuth from "@src/hooks/useAuth";
 import { initClassService } from "../../class/services";
+import { validateNext, dispatchMessage } from "@src/utils";
+import { initEmployeeService } from "../services";
 
 //-----------------------|| PROFILE 3 - PROFILE ||-----------------------//
 
-const WorkInfo = ({ handleForms, handleBack }) => {
+const WorkInfo = ({ setValue, handleBack }) => {
   const dispatch = useDispatch();
   const employee = useSelector((state) => state.employee.employee);
 
@@ -65,8 +67,6 @@ const WorkInfo = ({ handleForms, handleBack }) => {
       return item.id;
     });
 
-    console.log(data);
-
     dispatch({
       type: ADD_EMPLOYEE,
       payload: {
@@ -80,6 +80,34 @@ const WorkInfo = ({ handleForms, handleBack }) => {
       ...form,
       classes: data,
     });
+  };
+
+  const handleNext = async () => {
+    const obj = validateNext(employee, [
+      "bank",
+      "agency",
+      "count",
+      "job",
+      "hired",
+      "salary",
+    ]);
+
+    if (!obj) {
+      dispatch(dispatchMessage("Preencha todos os campos", "error"));
+    } else {
+      const { service } = await initEmployeeService(
+        `${user.school_id}/employees`,
+        "POST"
+      );
+      const response = await service.request(employee);
+
+      if (response.status === 204) {
+        dispatch({
+          type: REMOVE_EMPLOYEE,
+        });
+        setValue(0);
+      }
+    }
   };
 
   return (
@@ -193,8 +221,8 @@ const WorkInfo = ({ handleForms, handleBack }) => {
               <Grid item xs={12} md={4}>
                 <AutoComplete
                   options={jobs}
-                  handleChange={handleJob || "Cargo"}
-                  placeholder={employee?.job}
+                  handleChange={handleJob}
+                  placeholder={employee?.job || "Cargo"}
                 />
               </Grid>
               {job === "Professor" ? (
@@ -344,16 +372,7 @@ const WorkInfo = ({ handleForms, handleBack }) => {
                 variant="contained"
                 color="primary"
                 onClick={() => {
-                  handleForms(form, [
-                    "bank",
-                    "agency",
-                    "count",
-                    "job",
-                    "classes",
-                    "course",
-                    "finished",
-                    "hired",
-                  ]);
+                  handleNext();
                 }}
               >
                 Salvar

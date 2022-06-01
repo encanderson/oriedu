@@ -11,7 +11,7 @@ import AutoComplete from "@src/components/AutoComplete";
 import { ethnic, gender } from "@src/store/constant";
 import { convertToDate, formatDate } from "@src/utils";
 import { ADD_EMPLOYEE } from "@src/store/actions";
-// import useAuth from "@src/hooks/useAuth";
+import { validateNext, dispatchMessage } from "@src/utils";
 
 //-----------------------|| PROFILE 3 - PROFILE ||-----------------------//
 
@@ -44,6 +44,22 @@ const Identification = ({ handleForms }) => {
         },
       },
     });
+  };
+
+  const handleNext = () => {
+    const obj = validateNext(employee, [
+      "name",
+      "birthday",
+      "ethnic",
+      "gender",
+      "cpf",
+      "rg",
+    ]);
+    if (!obj) {
+      dispatch(dispatchMessage("Preencha todos os campos", "error"));
+    } else {
+      handleForms();
+    }
   };
 
   return (
@@ -205,14 +221,7 @@ const Identification = ({ handleForms }) => {
                 variant="contained"
                 color="primary"
                 onClick={() => {
-                  handleForms(employee, [
-                    "name",
-                    "birthday",
-                    "ethnic",
-                    "gender",
-                    "cpf",
-                    "rg",
-                  ]);
+                  handleNext();
                 }}
               >
                 Próximo

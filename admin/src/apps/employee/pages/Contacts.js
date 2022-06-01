@@ -14,6 +14,7 @@ import { ADD_EMPLOYEE } from "@src/store/actions";
 import { states } from "@src/store/constant";
 
 import { getCities } from "@src/api";
+import { validateNext, dispatchMessage } from "@src/utils";
 
 //-----------------------|| PROFILE 3 - PROFILE ||-----------------------//
 
@@ -67,6 +68,25 @@ const Contacts = ({ handleForms, handleBack }) => {
       ...form,
       city: value,
     });
+  };
+
+  const handleNext = () => {
+    const obj = validateNext(employee, [
+      "street",
+      "number",
+      "zip",
+      "district",
+      "city",
+      "state",
+      "email",
+      "phone",
+    ]);
+
+    if (!obj) {
+      dispatch(dispatchMessage("Preencha todos os campos", "error"));
+    } else {
+      handleForms();
+    }
   };
 
   return (
@@ -323,16 +343,7 @@ const Contacts = ({ handleForms, handleBack }) => {
                 variant="contained"
                 color="primary"
                 onClick={() => {
-                  handleForms(form, [
-                    "street",
-                    "number",
-                    "zip",
-                    "district",
-                    "city",
-                    "state",
-                    "email",
-                    "phone",
-                  ]);
+                  handleNext();
                 }}
               >
                 Próximo

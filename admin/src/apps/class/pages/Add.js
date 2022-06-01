@@ -103,14 +103,14 @@ const ClassRegister = () => {
             <AutoComplete
               options={modalities}
               handleChange={handleModality}
-              label={"Modalidade de Ensino"}
+              placeholder={classes.modality || "Modalidade de Ensino"}
             />
           </Grid>
           <Grid item xs={12} md={6}>
             <AutoComplete
               options={shifts}
               handleChange={handleShift}
-              label={"Turno"}
+              placeholder={classes.shift || "Turno"}
             />
           </Grid>
           <Grid item xs={12} md={6}>
@@ -128,7 +128,7 @@ const ClassRegister = () => {
               }}
             />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={12} md={2}>
             <Button
               fullWidth
               variant="contained"

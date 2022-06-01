@@ -215,7 +215,7 @@ export const logradouros = [
 ];
 
 export const schoolModalities = [
-  "Ensino Infantil",
+  "Educação Infantil",
   "Ensino Fundamental",
   "Ensino Médio",
 ];
@@ -243,7 +243,14 @@ export const elementary = [
   "Ensino Religioso",
 ];
 
-export const ethnic = ["Amarela", "Branca", "Indígena", "Parda", "Preta"];
+export const ethnic = [
+  "Amarela",
+  "Branca",
+  "Indígena",
+  "Parda",
+  "Preta",
+  "Outro",
+];
 
 export const gender = ["Feminino", "Masculino", "Outro"];
 

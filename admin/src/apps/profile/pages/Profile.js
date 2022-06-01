@@ -248,7 +248,7 @@ const ProfileData = () => {
                 alignItems="flex-end"
               >
                 {isDisabled ? (
-                  <Grid item xs={2}>
+                  <Grid item xs={12} md={2}>
                     <Button
                       fullWidth
                       variant="contained"
@@ -269,7 +269,7 @@ const ProfileData = () => {
                     alignItems="flex-end"
                     spacing={2}
                   >
-                    <Grid item xs={2}>
+                    <Grid item xs={12} md={2}>
                       <Button
                         fullWidth
                         variant="contained"
@@ -281,7 +281,7 @@ const ProfileData = () => {
                         Cancelar
                       </Button>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={12} md={2}>
                       <Button
                         fullWidth
                         variant="contained"

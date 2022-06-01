@@ -497,7 +497,7 @@ const Company = () => {
                 flexDirection="row-reverse"
               >
                 {isDisabled ? (
-                  <Grid item xs={2}>
+                  <Grid item xs={12} md={2}>
                     <Button
                       fullWidth
                       variant="contained"
@@ -518,7 +518,7 @@ const Company = () => {
                     alignItems="flex-end"
                     spacing={2}
                   >
-                    <Grid item xs={2}>
+                    <Grid item xs={12} md={2}>
                       <Button
                         fullWidth
                         variant="contained"
@@ -530,7 +530,7 @@ const Company = () => {
                         Cancelar
                       </Button>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={12} md={2}>
                       <Button
                         fullWidth
                         variant="contained"
