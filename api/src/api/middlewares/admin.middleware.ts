@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
 import { NotFound } from "../../errors";
-import { prisma } from "../database";
+import { admin as db } from "../database";
 import { comparePassword, hashFunction } from "../../utils";
 
 export const adminMiddleware = async (
@@ -12,7 +12,7 @@ export const adminMiddleware = async (
   try {
     const { userId, password } = req.body;
 
-    const user = await prisma.admin.findUnique({
+    const user = await db.admin.findUnique({
       where: {
         user_id: hashFunction(userId),
       },

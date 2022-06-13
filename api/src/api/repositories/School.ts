@@ -1,4 +1,4 @@
-import { prisma } from "../database";
+import { school as db } from "../database";
 
 import { School, User } from "../../@types";
 import { UserExist } from "../../errors";
@@ -13,7 +13,7 @@ export class SchoolRepository {
   }
 
   static async searchSchool(newSchool: School): Promise<SchoolRepository> {
-    const school = await prisma.school.findUnique({
+    const school = await db.school.findUnique({
       where: {
         cnpj: newSchool.cnpj,
       },
@@ -28,7 +28,7 @@ export class SchoolRepository {
 
   async create(user: User, register: number): Promise<void> {
     try {
-      await prisma.employee.create({
+      await db.employee.create({
         data: {
           user_id: user.user_id,
           name: user.user.name,
@@ -52,7 +52,7 @@ export class SchoolRepository {
   }
 
   static async update(school_id: string, data: School): Promise<void> {
-    await prisma.school.update({
+    await db.school.update({
       where: {
         id: school_id,
       },

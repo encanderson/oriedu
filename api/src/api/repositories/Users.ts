@@ -1,4 +1,4 @@
-import { prisma } from "../database";
+import { auth as db, school } from "../database";
 
 import { User } from "@src/@types";
 
@@ -21,7 +21,7 @@ export class Users {
   }
 
   static async searchUser(newUser: User): Promise<Users> {
-    const user = await prisma.user.findUnique({
+    const user = await db.user.findUnique({
       where: {
         user_id: hashFunction(newUser.cpf),
       },
@@ -30,7 +30,7 @@ export class Users {
       },
     });
 
-    const email = await prisma.user.findUnique({
+    const email = await db.user.findUnique({
       where: {
         email: newUser.email,
       },
@@ -47,11 +47,12 @@ export class Users {
   }
 
   async create(): Promise<void> {
-    await prisma.user.create({
+    await db.user.create({
       data: {
         active: false,
         app: this.user.app,
         user_id: this.user_id,
+        name: this.user.name,
         email: this.user.email,
         created_at: this.date,
         updated_at: this.date,
@@ -62,7 +63,7 @@ export class Users {
 
   static async confirmUser(user_id: string): Promise<void> {
     try {
-      await prisma.user.update({
+      await db.user.update({
         where: {
           user_id: user_id,
         },
@@ -76,7 +77,7 @@ export class Users {
   }
 
   static async getUser(user_id: string): Promise<User> {
-    const user = await prisma.user.findUnique({
+    const user = await db.user.findUnique({
       where: {
         user_id: user_id,
       },
@@ -86,16 +87,16 @@ export class Users {
         user_id: true,
         email: true,
         password: true,
+        picture: true,
       },
     });
 
-    const profile = await prisma.employee.findUnique({
+    const profile = await school.employee.findUnique({
       where: {
         user_id: user_id,
       },
       select: {
         job: true,
-        picture: true,
         name: true,
         school: {
           select: {
@@ -118,7 +119,6 @@ export class Users {
       ...user,
       name: name[0] + " " + name[name.length - 1],
       job: profile.job,
-      picture: profile.picture,
       school_id: profile.school.id,
       address: profile.school?.address,
       contacts: profile.school?.contacts,
@@ -135,7 +135,7 @@ export class Users {
   }
 
   static async update(user_id: string, data: User): Promise<void> {
-    await prisma.employee.update({
+    await school.employee.update({
       where: {
         user_id: user_id,
       },
@@ -147,7 +147,7 @@ export class Users {
     user_id: string,
     password: string
   ): Promise<void> {
-    await prisma.user.update({
+    await db.user.update({
       where: {
         user_id: user_id,
       },

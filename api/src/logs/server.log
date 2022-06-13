@@ -3,3 +3,63 @@
   level: 'info',
   timestamp: '2022-06-13T19:58:02.851Z'
 }
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-06-13T21:23:25.758Z'
+}
+{
+  message: "Cannot read property 'admin' of undefined",
+  level: 'error',
+  timestamp: '2022-06-13T21:26:51.988Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-06-13T21:28:32.167Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-06-13T21:28:36.212Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-06-13T21:29:30.421Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-06-13T21:30:20.437Z'
+}
+{
+  message: 'URL: https://ethereal.email/message/Yqesg51qjBpyGYTNYqesjP6sK6DBiikuAAAAAaof4Cg5nQG9zDsGOaqQFSA',
+  level: 'info',
+  timestamp: '2022-06-13T21:30:52.521Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-06-13T21:32:22.797Z'
+}
+{
+  message: 'Listening at 4000',
+  level: 'info',
+  timestamp: '2022-06-13T21:42:46.714Z'
+}
+{
+  message: 'URL: https://ethereal.email/message/Yqevo51qjBpyGZ2yYqevp5lPyoAwz2oXAAAAAePsmjDBJyx-oNys8WjT3PE',
+  level: 'info',
+  timestamp: '2022-06-13T21:44:07.722Z'
+}
+{
+  message: 'Usuário já registrado.',
+  level: 'error',
+  timestamp: '2022-06-13T23:18:53.206Z'
+}
+{
+  message: 'URL: https://ethereal.email/message/Yqevo51qjBpyGZ2yYqfGPjAjZYAPJZzBAAAAAikJAsur3L1WSWDT0SkFvyI',
+  level: 'info',
+  timestamp: '2022-06-13T23:20:30.276Z'
+}

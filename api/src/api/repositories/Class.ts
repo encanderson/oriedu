@@ -1,10 +1,10 @@
-import { prisma } from "../database";
+import { school as db } from "../database";
 
 import { ClassForm } from "../../@types";
 
 export class ClassRepository {
   static async create(school_id: string, form: ClassForm): Promise<void> {
-    await prisma.class.create({
+    await db.class.create({
       data: {
         class: form.class,
         modality: form.modality,
@@ -16,7 +16,7 @@ export class ClassRepository {
   }
 
   static async get(school_id: string): Promise<ClassForm[]> {
-    const classes = await prisma.class.findMany({
+    const classes = await db.class.findMany({
       where: {
         school_id: school_id,
       },
@@ -26,7 +26,7 @@ export class ClassRepository {
   }
 
   static async getClass(class_id: string): Promise<ClassForm> {
-    const turma = (await prisma.class.findUnique({
+    const turma = (await db.class.findUnique({
       where: {
         id: class_id,
       },
@@ -46,14 +46,14 @@ export class ClassRepository {
     })) as ClassForm;
 
     const teachers =
-      (await prisma.$queryRaw`SELECT employee_id FROM teachers WHERE ${class_id} = ANY(classes)`) as {
+      (await db.$queryRaw`SELECT employee_id FROM teachers WHERE ${class_id} = ANY(classes)`) as {
         employee_id: string;
       }[];
 
     const obj = [];
     if (teachers.length) {
       for (let i = 0; i < teachers.length; i += 1) {
-        const employee = await prisma.employee.findUnique({
+        const employee = await db.employee.findUnique({
           where: {
             id: teachers[i].employee_id,
           },

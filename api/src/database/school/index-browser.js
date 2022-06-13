@@ -103,7 +103,6 @@ exports.Prisma.EmployeeScalarFieldEnum = makeEnum({
   qualifications: 'qualifications',
   salary: 'salary',
   bank: 'bank',
-  picture: 'picture',
   school_id: 'school_id'
 });
 

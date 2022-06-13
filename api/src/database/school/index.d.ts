@@ -47,7 +47,6 @@ export type Employee = {
   qualifications: Prisma.JsonValue | null
   salary: number | null
   bank: string | null
-  picture: string | null
   school_id: string
 }
 
@@ -1954,7 +1953,6 @@ export namespace Prisma {
     address: string | null
     salary: number | null
     bank: string | null
-    picture: string | null
     school_id: string | null
   }
 
@@ -1971,7 +1969,6 @@ export namespace Prisma {
     address: string | null
     salary: number | null
     bank: string | null
-    picture: string | null
     school_id: string | null
   }
 
@@ -1990,7 +1987,6 @@ export namespace Prisma {
     qualifications: number
     salary: number
     bank: number
-    picture: number
     school_id: number
     _all: number
   }
@@ -2017,7 +2013,6 @@ export namespace Prisma {
     address?: true
     salary?: true
     bank?: true
-    picture?: true
     school_id?: true
   }
 
@@ -2034,7 +2029,6 @@ export namespace Prisma {
     address?: true
     salary?: true
     bank?: true
-    picture?: true
     school_id?: true
   }
 
@@ -2053,7 +2047,6 @@ export namespace Prisma {
     qualifications?: true
     salary?: true
     bank?: true
-    picture?: true
     school_id?: true
     _all?: true
   }
@@ -2165,7 +2158,6 @@ export namespace Prisma {
     qualifications: JsonValue | null
     salary: number | null
     bank: string | null
-    picture: string | null
     school_id: string
     _count: EmployeeCountAggregateOutputType | null
     _avg: EmployeeAvgAggregateOutputType | null
@@ -2203,7 +2195,6 @@ export namespace Prisma {
     qualifications?: boolean
     salary?: boolean
     bank?: boolean
-    picture?: boolean
     school_id?: boolean
     school?: boolean | SchoolArgs
     teacher?: boolean | TeacherArgs
@@ -7203,7 +7194,6 @@ export namespace Prisma {
     qualifications: 'qualifications',
     salary: 'salary',
     bank: 'bank',
-    picture: 'picture',
     school_id: 'school_id'
   };
 
@@ -7409,7 +7399,6 @@ export namespace Prisma {
     qualifications?: JsonNullableFilter
     salary?: FloatNullableFilter | number | null
     bank?: StringNullableFilter | string | null
-    picture?: StringNullableFilter | string | null
     school_id?: StringFilter | string
     school?: XOR<SchoolRelationFilter, SchoolWhereInput>
     teacher?: XOR<TeacherRelationFilter, TeacherWhereInput> | null
@@ -7430,7 +7419,6 @@ export namespace Prisma {
     qualifications?: SortOrder
     salary?: SortOrder
     bank?: SortOrder
-    picture?: SortOrder
     school_id?: SortOrder
     school?: SchoolOrderByWithRelationInput
     teacher?: TeacherOrderByWithRelationInput
@@ -7456,7 +7444,6 @@ export namespace Prisma {
     qualifications?: SortOrder
     salary?: SortOrder
     bank?: SortOrder
-    picture?: SortOrder
     school_id?: SortOrder
     _count?: EmployeeCountOrderByAggregateInput
     _avg?: EmployeeAvgOrderByAggregateInput
@@ -7483,7 +7470,6 @@ export namespace Prisma {
     qualifications?: JsonNullableWithAggregatesFilter
     salary?: FloatNullableWithAggregatesFilter | number | null
     bank?: StringNullableWithAggregatesFilter | string | null
-    picture?: StringNullableWithAggregatesFilter | string | null
     school_id?: StringWithAggregatesFilter | string
   }
 
@@ -7877,7 +7863,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
     school: SchoolCreateNestedOneWithoutSchoolInput
     teacher?: TeacherCreateNestedOneWithoutEmployeeInput
   }
@@ -7897,7 +7882,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
     school_id: string
     teacher?: TeacherUncheckedCreateNestedOneWithoutEmployeeInput
   }
@@ -7917,7 +7901,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolInput
     teacher?: TeacherUpdateOneWithoutEmployeeInput
   }
@@ -7937,7 +7920,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
     school_id?: StringFieldUpdateOperationsInput | string
     teacher?: TeacherUncheckedUpdateOneWithoutEmployeeInput
   }
@@ -7957,7 +7939,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
     school_id: string
   }
 
@@ -7976,7 +7957,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EmployeeUncheckedUpdateManyInput = {
@@ -7994,7 +7974,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
     school_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -8602,7 +8581,6 @@ export namespace Prisma {
     qualifications?: SortOrder
     salary?: SortOrder
     bank?: SortOrder
-    picture?: SortOrder
     school_id?: SortOrder
   }
 
@@ -8623,7 +8601,6 @@ export namespace Prisma {
     address?: SortOrder
     salary?: SortOrder
     bank?: SortOrder
-    picture?: SortOrder
     school_id?: SortOrder
   }
 
@@ -8640,7 +8617,6 @@ export namespace Prisma {
     address?: SortOrder
     salary?: SortOrder
     bank?: SortOrder
-    picture?: SortOrder
     school_id?: SortOrder
   }
 
@@ -9579,7 +9555,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
     teacher?: TeacherCreateNestedOneWithoutEmployeeInput
   }
 
@@ -9598,7 +9573,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
     teacher?: TeacherUncheckedCreateNestedOneWithoutEmployeeInput
   }
 
@@ -9722,7 +9696,6 @@ export namespace Prisma {
     qualifications?: JsonNullableFilter
     salary?: FloatNullableFilter | number | null
     bank?: StringNullableFilter | string | null
-    picture?: StringNullableFilter | string | null
     school_id?: StringFilter | string
   }
 
@@ -10034,7 +10007,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
     school: SchoolCreateNestedOneWithoutSchoolInput
   }
 
@@ -10053,7 +10025,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
     school_id: string
   }
 
@@ -10082,7 +10053,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolInput
   }
 
@@ -10101,7 +10071,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
     school_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -10232,7 +10201,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: number | null
     bank?: string | null
-    picture?: string | null
   }
 
   export type ClassCreateManySchoolInput = {
@@ -10277,7 +10245,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
     teacher?: TeacherUpdateOneWithoutEmployeeInput
   }
 
@@ -10296,7 +10263,6 @@ export namespace Prisma {
     qualifications?: NullableJsonNullValueInput | InputJsonValue
     salary?: NullableFloatFieldUpdateOperationsInput | number | null
     bank?: NullableStringFieldUpdateOperationsInput | string | null
-    picture?: NullableStringFieldUpdateOperationsInput | string | null
     teacher?: TeacherUncheckedUpdateOneWithoutEmployeeInput
   }
 

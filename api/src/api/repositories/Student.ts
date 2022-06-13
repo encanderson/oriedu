@@ -1,11 +1,11 @@
-import { prisma } from "../database";
+import { school as db } from "../database";
 
 import { Student } from "../../@types";
 
 export class StudentRepository {
   static async create(form: Student): Promise<void> {
     const parents = form.parents as string;
-    await prisma.student.create({
+    await db.student.create({
       data: {
         birthday: form.birthday,
         birthplace: form.birthplace,
@@ -26,7 +26,7 @@ export class StudentRepository {
     });
   }
   static async getAll(school_id: string): Promise<unknown> {
-    const students = await prisma.student.findMany({
+    const students = await db.student.findMany({
       where: {
         school_id: school_id,
       },
@@ -49,7 +49,7 @@ export class StudentRepository {
   }
 
   static async get(student_id: string): Promise<unknown> {
-    const student = await prisma.student.findUnique({
+    const student = await db.student.findUnique({
       where: {
         id: student_id,
       },

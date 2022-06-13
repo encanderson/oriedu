@@ -3,5 +3,5 @@ export interface Message {
   subject: string;
   message: string;
   email: string;
-  school_id: string;
+  user_id: string;
 }

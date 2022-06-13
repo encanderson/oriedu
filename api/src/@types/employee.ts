@@ -21,9 +21,8 @@ export interface Employee {
   finished?: string;
   forecast_completed?: string;
   comments?: string;
-  salary?: string;
+  salary?: number;
   bank?: string;
-  picture?: string;
   school_id: string;
   classes: string[];
   email?: string;
