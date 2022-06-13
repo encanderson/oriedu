@@ -42,7 +42,6 @@ export class AdminControllers {
   ): Promise<void> {
     try {
       const msg = req.body;
-      console.log(msg);
 
       await AdminServices.contact(msg);
 

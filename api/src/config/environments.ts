@@ -1,77 +1,46 @@
+/* eslint-disable indent */
 import * as dotenv from "dotenv";
 
 import { Config } from "../@types";
 
 dotenv.config();
 
-const environment = process.env.NODE_ENV;
+const redis = process.env.REDIS
+  ? {
+      allowlist: {
+        prefix: process.env.ALLOWS_LIST,
+        ...JSON.parse(process.env.REDIS),
+      },
+      blocklist: {
+        prefix: process.env.BLOCK_LIST,
+        ...JSON.parse(process.env.REDIS),
+      },
+    }
+  : {
+      allowlist: {
+        prefix: process.env.ALLOWS_LIST,
+      },
+      blocklist: {
+        prefix: process.env.BLOCK_LIST,
+      },
+    };
 
-export let config: Config = {
+export const config: Config = {
   secretkey: process.env.SECRET_KEY,
-  POSTGRESQL_URI: process.env.POSTGRESQL_URI,
-  PORT: 4000,
   emailUser: process.env.EMAIL_USER,
   emailPass: process.env.EMAIL_PASS,
   emailServer: process.env.MAIL_SERVER,
   geobingKey: process.env.GEOBING_KEY,
+  PORT: 4000,
+  url: process.env.URL,
   corsOptions: {
-    origin: [
-      "http://oriedu.orianderson.com",
-      "http://admin.orianderson.com:3000",
-      "http://secretaria.orianderson.com:3000",
-      "http://professor.orianderson.com:3000",
-      "http://aluno.orianderson.com:3000",
-    ],
+    origin: JSON.parse(process.env.ALLOW_CORS),
     "Access-Control-Allow-Credentials": true,
   },
-  allowlist: {
-    prefix: "allowlist-refresh-token:",
-  },
-  blocklist: {
-    prefix: "blocklist-access-token:",
-  },
-  url: "http://oriedu.orianderson.com",
-  api: "http://localhost:4000/api/v1",
   awsAccessKeyId: process.env.AWS_ACCESS_KEY,
   awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   awsRegion: process.env.AWS_REGION,
   kmsKeyId: process.env.AWS_KEY_ID,
+  root: process.env.ROOT,
+  ...redis,
 };
-
-if (environment === "production") {
-  config = {
-    secretkey: process.env.SECRET_KEY,
-    POSTGRESQL_URI: process.env.POSTGRESQL_URI,
-    PORT: 4000,
-    emailUser: process.env.EMAIL_USER,
-    emailPass: process.env.EMAIL_PASS,
-    emailServer: process.env.MAIL_SERVER,
-    geobingKey: process.env.GEOBING_KEY,
-    corsOptions: {
-      origin: [
-        "https://www.tiadidi.com.br",
-        "https://admin.tiadidi.com.br",
-        "https://secretaria.tiadidi.com.br",
-        "https://professor.tiadidi.com.br",
-        "https://aluno.tiadidi.com.br",
-      ],
-      "Access-Control-Allow-Credentials": true,
-    },
-    allowlist: {
-      prefix: "allowlist-refresh-token:",
-      host: "redis",
-      port: 6379,
-    },
-    blocklist: {
-      prefix: "blocklist-access-token:",
-      host: "redis",
-      port: 6379,
-    },
-    url: "https://www.tiadidi.com.br",
-    api: "https://api.tiadidi.com.br/api/v1",
-    awsAccessKeyId: process.env.AWS_ACCESS_KEY,
-    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    awsRegion: process.env.AWS_REGION,
-    kmsKeyId: process.env.AWS_KEY_ID,
-  };
-}
