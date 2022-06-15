@@ -2,7 +2,7 @@ import express from "express";
 
 import { StudentControllers } from "../api/controllers";
 
-import { authMiddleware, AccessControlMiddleware } from "../api/middlewares";
+import { authMiddleware, AccessControlMiddleware } from "../api/middleware";
 
 export const router = express.Router();
 

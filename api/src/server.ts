@@ -9,7 +9,7 @@ import { Config } from "./@types";
 
 import routes from "./routes";
 
-import { headersMiddleware, errorMiddleware } from "./api/middlewares";
+import { headersMiddleware, errorMiddleware } from "./api/middleware";
 import { initialize } from "./api/services";
 
 export class ServerSetup {

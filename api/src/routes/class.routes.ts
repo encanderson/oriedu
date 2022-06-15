@@ -1,6 +1,6 @@
 import express from "express";
 
-import { authMiddleware, AccessControlMiddleware } from "../api/middlewares";
+import { authMiddleware, AccessControlMiddleware } from "../api/middleware";
 
 import { ClassControllers } from "../api/controllers";
 

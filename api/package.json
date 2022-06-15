@@ -12,7 +12,7 @@
     "test": "jest --detectOpenHandles",
     "commit": "git-cz",
     "db": "prisma db push --schema ./prisma/school.prisma && prisma db push --schema ./prisma/auth.prisma && prisma db push --schema ./prisma/admin.prisma",
-    "migrate": "prisma migrate dev --schema ./prisma/school.prisma && prisma migrate dev --schema ./prisma/auth.prisma && prisma migrate dev --schema ./prisma/admin.prisma"
+    "migrate": "prisma migrate dev --schema ./prisma/school/school.prisma && prisma migrate dev --schema ./prisma/auth/auth.prisma && prisma migrate dev --schema ./prisma/admin/admin.prisma"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
