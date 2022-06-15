@@ -28,7 +28,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import useScriptRef from "@src/hooks/useScriptRef";
 import { gridSpacing } from "@src/store/constant";
 import { strengthColor, strengthIndicator } from "@src/utils/password-strength";
-import { initUserService } from "../services";
+import { initAuthService } from "@src/apps/services";
 import { dispatchMessage } from "@src/utils";
 
 // style constant
@@ -61,7 +61,7 @@ const Security = ({ ...others }) => {
         password: values.password,
         newPassword: values.newPassword,
       };
-      const { service } = await initUserService(null, "PUT");
+      const { service } = await initAuthService(null, "PUT");
       const response = await service.update(data);
       if (response.status !== 204) {
         dispatch(

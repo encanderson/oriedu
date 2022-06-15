@@ -19,7 +19,7 @@ class Users {
   }
 
   static async searchUser(newUser) {
-    const user = await _database.prisma.user.findUnique({
+    const user = await _database.auth.user.findUnique({
       where: {
         user_id: (0, _utils.hashFunction)(newUser.cpf)
       },
@@ -27,7 +27,7 @@ class Users {
         app: true
       }
     });
-    const email = await _database.prisma.user.findUnique({
+    const email = await _database.auth.user.findUnique({
       where: {
         email: newUser.email
       },
@@ -44,11 +44,12 @@ class Users {
   }
 
   async create() {
-    await _database.prisma.user.create({
+    await _database.auth.user.create({
       data: {
         active: false,
         app: this.user.app,
         user_id: this.user_id,
+        name: this.user.name,
         email: this.user.email,
         created_at: this.date,
         updated_at: this.date,
@@ -59,7 +60,7 @@ class Users {
 
   static async confirmUser(user_id) {
     try {
-      await _database.prisma.user.update({
+      await _database.auth.user.update({
         where: {
           user_id: user_id
         },
@@ -75,7 +76,7 @@ class Users {
   static async getUser(user_id) {
     var _profile$school, _profile$school2, _profile$school3, _profile$school4, _profile$school5;
 
-    const user = await _database.prisma.user.findUnique({
+    const user = await _database.auth.user.findUnique({
       where: {
         user_id: user_id
       },
@@ -84,16 +85,16 @@ class Users {
         app: true,
         user_id: true,
         email: true,
-        password: true
+        password: true,
+        picture: true
       }
     });
-    const profile = await _database.prisma.employee.findUnique({
+    const profile = await _database.school.employee.findUnique({
       where: {
         user_id: user_id
       },
       select: {
         job: true,
-        picture: true,
         name: true,
         school: {
           select: {
@@ -113,7 +114,6 @@ class Users {
     const data = { ...user,
       name: name[0] + " " + name[name.length - 1],
       job: profile.job,
-      picture: profile.picture,
       school_id: profile.school.id,
       address: (_profile$school = profile.school) === null || _profile$school === void 0 ? void 0 : _profile$school.address,
       contacts: (_profile$school2 = profile.school) === null || _profile$school2 === void 0 ? void 0 : _profile$school2.contacts,
@@ -129,7 +129,7 @@ class Users {
   }
 
   static async update(user_id, data) {
-    await _database.prisma.employee.update({
+    await _database.school.employee.update({
       where: {
         user_id: user_id
       },
@@ -138,7 +138,7 @@ class Users {
   }
 
   static async updatePassword(user_id, password) {
-    await _database.prisma.user.update({
+    await _database.auth.user.update({
       where: {
         user_id: user_id
       },
