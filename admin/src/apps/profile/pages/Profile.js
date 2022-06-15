@@ -14,6 +14,7 @@ import { gridSpacing } from "@src/store/constant";
 import { saveImage } from "@src/utils/Images";
 import { EDIT_USER } from "@src/store/actions";
 import { initUserService } from "../services";
+import { initAuthService } from "@src/apps/services";
 import { dispatchMessage } from "@src/utils";
 
 import { useAuth } from "@src/hooks";
@@ -73,7 +74,7 @@ const ProfileData = () => {
 
   const handleSubmit = async (action) => {
     if (action === "picture") {
-      const { service } = await initUserService(null, "PUT");
+      const { service } = await initAuthService(null, "PUT");
       const response = await service.update({ picture: user.picture });
 
       if (response.status !== 204) {
