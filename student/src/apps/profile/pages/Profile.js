@@ -56,7 +56,7 @@ const ProfileData = () => {
     const reader = saveImage(files);
 
     if (reader) {
-      reader.onload = () => {
+      reader.onload = async () => {
         var base64 = reader.result.split(",")[1];
 
         dispatch({
@@ -68,35 +68,35 @@ const ProfileData = () => {
             },
           },
         });
+        const { service } = await initAuthService(null, "PUT");
+        const response = await service.update({ picture: base64 });
+
+        if (response.status !== 204) {
+          dispatch(
+            dispatchMessage(
+              "Atualização falhou, por favor tente mais tarde.",
+              "error"
+            )
+          );
+        }
+        dispatch(
+          dispatchMessage("Atualização realizada com sucesso!", "success")
+        );
       };
     }
   };
 
   const handleSubmit = async (action) => {
-    if (action === "picture") {
-      const { service } = await initAuthService(null, "PUT");
-      const response = await service.update({ picture: user.picture });
+    const { service } = await initUserService(null, "PUT");
+    const response = await service.update({ job: user?.job });
 
-      if (response.status !== 204) {
-        dispatch(
-          dispatchMessage(
-            "Atualização falhou, por favor tente mais tarde.",
-            "error"
-          )
-        );
-      }
-    } else {
-      const { service } = await initUserService(null, "PUT");
-      const response = await service.update({ job: user?.job });
-
-      if (response.status !== 204) {
-        dispatch(
-          dispatchMessage(
-            "Atualização falhou, por favor tente mais tarde.",
-            "error"
-          )
-        );
-      }
+    if (response.status !== 204) {
+      dispatch(
+        dispatchMessage(
+          "Atualização falhou, por favor tente mais tarde.",
+          "error"
+        )
+      );
     }
   };
 
