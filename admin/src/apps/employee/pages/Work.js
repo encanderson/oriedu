@@ -106,6 +106,13 @@ const WorkInfo = ({ setValue, handleBack }) => {
           type: REMOVE_EMPLOYEE,
         });
         setValue(0);
+      } else {
+        dispatch(
+          dispatchMessage(
+            "Verifique se os dados estão corretos ou se o usuário já existe",
+            "error"
+          )
+        );
       }
     }
   };
