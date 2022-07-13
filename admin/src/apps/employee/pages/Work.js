@@ -28,7 +28,6 @@ const WorkInfo = ({ setValue, handleBack }) => {
   const [turmas, setTurmas] = React.useState([]);
 
   const [form, setForm] = React.useState(null);
-  const [job, setJob] = React.useState("");
 
   React.useEffect(() => {
     (async () => {
@@ -45,8 +44,6 @@ const WorkInfo = ({ setValue, handleBack }) => {
   }, []);
 
   const handleJob = (_, value) => {
-    setJob(value);
-
     dispatch({
       type: ADD_EMPLOYEE,
       payload: {
@@ -232,7 +229,7 @@ const WorkInfo = ({ setValue, handleBack }) => {
                   placeholder={employee?.job || "Cargo"}
                 />
               </Grid>
-              {job === "Professor" ? (
+              {employee?.job === "Professor" ? (
                 <>
                   <Grid item xs={12} md={4}>
                     <AutoCompleteClasses
