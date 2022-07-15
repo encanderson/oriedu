@@ -25,7 +25,7 @@ export class Blocklist {
     const tokenHash = hashFunction(token);
     const check = await managerBlocklist.isKey(tokenHash);
     if (check) {
-      throw new InvalidToken("Token inválidado.");
+      throw new InvalidToken("Token invalidado.");
     }
   }
 

@@ -18,7 +18,6 @@ const Emergency = ({ handleForms, handleBack }) => {
 
   const handleNext = () => {
     const obj = validateNext(student, [
-      "securityHealth",
       "blood",
       "rhFactor",
       "goHomeAlone",
@@ -150,11 +149,13 @@ const Emergency = ({ handleForms, handleBack }) => {
                   options={bloodType}
                   handleChange={handleBlood}
                   label={"Tipo Sanguíneo"}
+                  value={student?.blood || "Fator Rh"}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <AutoComplete
                   options={["Negativo", "Positivo"]}
+                  value={student?.rhFactor || "Fator Rh"}
                   handleChange={(_, value) =>
                     dispatch({
                       type: ADD_STUDENT,
@@ -172,6 +173,7 @@ const Emergency = ({ handleForms, handleBack }) => {
               <Grid item xs={12} md={6}>
                 <AutoComplete
                   options={["Sim", "Não"]}
+                  value={student?.goHomeAlone || ""}
                   handleChange={(_, value) =>
                     dispatch({
                       type: ADD_STUDENT,
